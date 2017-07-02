@@ -46,8 +46,8 @@ Metawords
 * `sends` — ususal sending
 * `participants` — depending on number of mates
 
-Protocols
----------
+Sub Protocols
+-------------
 
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/INIT.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/FTP.md) — 1
