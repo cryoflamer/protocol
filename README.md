@@ -94,7 +94,7 @@ Messages
                      created=[], access=[], starred=[],
                      payload=[], mime=[], seen_by=[], status=[]}).
 
--record('History', {roster_id=[],contact_id=[],data=[],status=[]}).
+-record('History',  {roster_id=[],contact_id=[],data=[],status=[]}).
 
 -record('Person',   {id=[], name=[], surname=[], username=[], phonelist=[],
                      alias=[], avatar=[], localize=[], 'NotificationSettings'=[],
@@ -103,6 +103,8 @@ Messages
 
 -record('Roster',   {id=[], names=[], surnames=[], user_id=[],
                      size=[], userlist=[], roomlist=[], status=[]}).
+
+-record('Contact',  {id=[], phone = [], names=[], surnames=[], status=[], person_id=[]}).
 
 -record('Profile',  {id=[], phone=[],data=[],accounts=[]}).
 -record('Friend',   {id=[], roster_id=[], friend_id=[], status=[]}).
