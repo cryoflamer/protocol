@@ -47,7 +47,7 @@ Protocol
              or `{io,{error, actual_session}, <<>>}`
              or `{io,{error, session_not_found}, <<>>}`
 
-### User Delete (temporary, only for development)
+### User Delete (development)
 
 1. client sends `{delete_user, Phone}` once.
-2. server sends `{io,{ok, delete}, {'Token', Token}}` once. Temporary, only for development
+2. server sends `{io,{ok, delete}, {'Token', Token}}` once.
