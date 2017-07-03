@@ -6,9 +6,20 @@ Version 1.0 Maxim Sokhatsky
 OVERVIEW
 --------
 
-To support the development of messaging apps and IOT infrastructure, NYNJA Protocol is designed from the ground up to be the most efficient, stable and scalable protocol available.  NYNJA itself is an open-source specification for Messaging and IOT applications and is a part of an open source family of N2O protocols. While it can be used with any transport we promote MQTT as an efficient binary protocol dedicated for applications over unreliable networks such as GSM, CDMA and other wireless networks.
+To support the development of messaging apps and IOT infrastructure,
+NYNJA Protocol is designed from the ground up to be the most efficient,
+stable and scalable protocol available.  NYNJA itself is an open-source
+specification for Messaging and IOT applications and is a part of an
+open source family of N2O protocols. While it can be used with any
+transport we promote MQTT as an efficient binary protocol dedicated
+for applications over unreliable networks such as GSM, CDMA and other
+wireless networks.
 
-NYNJA Protocol enables all companies, regardless of size, to build systems that can compete with the world’s most sophisticated communication platforms. NYNJA Protocol has been made open source for the benefit of the global community of developers. NYNJA Protocol powers the NYNJA Mobile Communicator.
+NYNJA Protocol enables all companies, regardless of size, to build
+systems that can compete with the world’s most sophisticated
+communication platforms. NYNJA Protocol has been made open source
+for the benefit of the global community of developers. NYNJA Protocol
+powers the NYNJA Mobile Communicator.
 
 FEATURES
 --------
@@ -75,16 +86,35 @@ Messages
 -record('ok',       {data=[]}).
 -record('io',       {code=[],data=[]}).
 
--record('Auth',     {username=[], token=[], services=[]}).
--record('Person',   {id=[], name=[], surname=[], username=[], status=[]}).
--record('Roster',   {size=[], userlist=[]}). % server to client message
--record('Friend',   {id=[], user=[], status=[]}).
--record('Confirm',  {user=[], type=[]}).
--record('Private',  {id=[], recipient=[], body=[], author=[], status=[]}).
+-record('Auth',     {token=[], user_id=[], phone=[], dev_key=[],
+                     type=[], sms_code=[], attempts=[], services=[]}).
+
+-record('Message',  {id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
+                     msg_id = [], from = [], to = [],
+                     sync = [], % timestamp, last sync
+                     created = [], access = [], starred = [],
+                     payload = [], mime = [], seen_by = [], status = []}).
+
+-record('History', {roster_id=[],contact_id=[],data=[],status=[]}).
+
+-record('Person',   {id=[], name=[], surname=[], username=[], phonelist=[],
+                     alias=[], avatar=[], localize=[], 'NotificationSettings'=[],
+                     'SoundSettings'=[], 'ThemeID'=[], 'voxImplantID'=[],
+                     'BlockUsers'=[], 'balance'=[], 'isParticipants'=[], status=[]}).
+
+-record('Roster',   {id=[], names=[], surnames=[], user_id=[],
+                     size=[], userlist=[], roomlist=[], status=[]})
+
+-record('Profile',  {id=[], phone=[],data=[],accounts=[]}).
+-record('Friend',   {id=[], roster_id = [], friend_id = [], status=[]}).
+-record('Confirm',  {id=[], roster_id=[], friend_id=[], status=[]}).
+-record('Revoke',   {id=[], user=[], status=[]}).
 -record('Typing',   {room=[], author=[]}).
 -record('Room',     {room=[], description=[], acl=[], settings=[]}).
--record('Join',     {user=[], room=[], answer=[]}).
--record('Public',   {id=[], room=[], message=[], author=[], status=[]}).
+-record('Join',     {id=[], user=[], room=[], answer=[]}).
+-record('Leave',    {id=[], user=[], room=[], answer=[]}).
+-record('Approve',  {id=[], user=[], room=[], answer=[]}).
+
 ```
 
 Payloads
