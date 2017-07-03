@@ -102,7 +102,7 @@ Messages
                      'BlockUsers'=[], 'balance'=[], 'isParticipants'=[], status=[]}).
 
 -record('Roster',   {id=[], names=[], surnames=[], user_id=[],
-                     size=[], userlist=[], roomlist=[], status=[]})
+                     size=[], userlist=[], roomlist=[], status=[]}).
 
 -record('Profile',  {id=[], phone=[],data=[],accounts=[]}).
 -record('Friend',   {id=[], roster_id=[], friend_id=[], status=[]}).
