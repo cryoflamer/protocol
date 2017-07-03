@@ -13,7 +13,6 @@ Tuples
 ------
 
 * `{'Auth',Token,UserId,Phone,DevKey,Type,SmsCode,Attempts,Services}`
-* `{'Contact',Id,Container,FeedId,Prev,Next,Feeds,Username,Phone,Names,Surnames,Status}`
 
 Overview
 --------
