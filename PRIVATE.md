@@ -5,8 +5,6 @@ Version 1.0 Maxim Sokhatsky
 
 Endpoints
 ---------
-* `p2p/RosterId/ParityRosterId` — Topic for client send MQTT
-* `p2p/+/RosterId` — Topic for client subscribe MQTT
 * `actions/api/ClientId` — MQTT
 * `events/Node/api/anon/ClientId/Token` — MQTT
 

@@ -6,8 +6,8 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* p2p online/offline presence   `p2p/AccId` — MQTT
-* p2p typing presence           `p2p/AccId/ParityAccId` — MQTT
+* `actions/api/ClientId` — MQTT
+* `events/Node/api/anon/ClientId/Token` — MQTT
 
 Tuples
 ------
