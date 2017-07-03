@@ -90,10 +90,9 @@ Messages
                      type=[], sms_code=[], attempts=[], services=[]}).
 
 -record('Message',  {id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
-                     msg_id = [], from = [], to = [],
-                     sync = [], % timestamp, last sync
-                     created = [], access = [], starred = [],
-                     payload = [], mime = [], seen_by = [], status = []}).
+                     msg_id=[], from=[], to=[], sync=[],
+                     created=[], access=[], starred=[],
+                     payload=[], mime=[], seen_by=[], status=[]}).
 
 -record('History', {roster_id=[],contact_id=[],data=[],status=[]}).
 
@@ -106,7 +105,7 @@ Messages
                      size=[], userlist=[], roomlist=[], status=[]})
 
 -record('Profile',  {id=[], phone=[],data=[],accounts=[]}).
--record('Friend',   {id=[], roster_id = [], friend_id = [], status=[]}).
+-record('Friend',   {id=[], roster_id=[], friend_id=[], status=[]}).
 -record('Confirm',  {id=[], roster_id=[], friend_id=[], status=[]}).
 -record('Revoke',   {id=[], user=[], status=[]}).
 -record('Typing',   {room=[], author=[]}).
