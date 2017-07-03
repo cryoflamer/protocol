@@ -6,9 +6,9 @@ Version 1.0 Maxim Sokhatsky
 OVERVIEW
 --------
 
-The NYNJA Protocol is designed from the ground up to be the most efficient, stable and scalable protocol available to support the development of messaging apps and IOT infrastructure. NYNJA itself is an open-source specification for Messaging applications and is a part of an open source family of N2O protocols. While it can be used with any transport we promote MQTT as an most efficiend binary protocol dedicated for applications over unreliable networks such as GSM, CDMA an other wireless networks.
+To support the development of messaging apps and IOT infrastructure, NYNJA Protocol is designed from the ground up to be the most efficient, stable and scalable protocol available.  NYNJA itself is an open-source specification for Messaging and IOT applications and is a part of an open source family of N2O protocols. While it can be used with any transport we promote MQTT as an efficient binary protocol dedicated for applications over unreliable networks such as GSM, CDMA and other wireless networks.
 
-NYNJA Protocol enables all companies, regardless of size, to build systems that can compete with the world’s most sophisticated communication platforms. NYNJA Protocol has been made open source for the benefit of the global community of developers.  NYNJA Protocol powers the NYNJA Mobile Communicator.
+NYNJA Protocol enables all companies, regardless of size, to build systems that can compete with the world’s most sophisticated communication platforms. NYNJA Protocol has been made open source for the benefit of the global community of developers. NYNJA Protocol powers the NYNJA Mobile Communicator.
 
 FEATURES
 --------
