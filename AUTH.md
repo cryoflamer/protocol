@@ -24,7 +24,6 @@ Protocol
 
 ### Auth Issuing / SMS sending
 
-`_` is optional. By default is `[]`.
 1. client sends `{'Auth',_,_,Phone,_,_,_,_,_}` to `events/2/api/anon/ClientId/Token` once.
 2. server sends `{io,{ok, login},{'Token',Token}}`
              or `{io,{ok, sms_send},{'Token',Token}}`
@@ -32,7 +31,6 @@ Protocol
              or `{io,{error, mismatch_user_data},<<>>}`
              or `{io,{error, Error},{'Token',Token}}}`
              to `actions/api/ClientId/VNode` once.
-                          
 
 ### User Confirmation
 
@@ -43,12 +41,11 @@ Protocol
              to `actions/api/ClientId` once.
 
 ### Resend User Confirmation
+
 1. client sends `{resend_sms, {'Token', Token}}` once.
 2. server sends `{io,{ok, sms_send},{'Token',Token}}`
              or `{io,{error, actual_session}, <<>>}`
              or `{io,{error, session_not_found}, <<>>}`
-
-
 
 ### User Delete (temporary, only for development)
 

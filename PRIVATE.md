@@ -29,12 +29,10 @@ Protocol
 ### Publish Private Message to a Friend
 
 1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `p2p/Roster/ParityRoster` once.
-<!-- 1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `events/Node/api/anon/ClientId/Token` once. -->
-<!-- 2. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `actions/api/{PartyId,ClientId}/Token` twice -->
 
 ### Friend Request
+
 1. client sends `{'Friend',Id,UserId,FriendId,Status}` to `p2p/RosterId/ParityRosterId` once.
-<!-- 1. client sends `{'Friend',Id,User,Status}` to `events/Node/api/anon/ClientId/Token` once. -->
 
 ### Confirmation / Authorization
 

@@ -71,6 +71,10 @@ Messages
 
 ```erlang
 -record('Token',    {data=[]}).
+-record('error',    {data=[]}).
+-record('ok',       {data=[]}).
+-record('io',       {code=[],data=[]}).
+
 -record('Auth',     {username=[], token=[], services=[]}).
 -record('Person',   {id=[], name=[], surname=[], username=[], status=[]}).
 -record('Roster',   {size=[], userlist=[]}). % server to client message
