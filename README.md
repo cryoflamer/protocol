@@ -109,7 +109,7 @@ Messages
 
 -record('Typing', { author=[], room=[] }).
 
--record('Contact', { phone_id=[], names=[], surnames=[], status=[], person_id=[] }).
+-record('Contact', { phone_id=[], names=[], surnames=[], person_id=[], status=[] }).
 
 -record('Profile', { phone=[], data=[], person_id=[], accounts=[], status=[] }).
 
