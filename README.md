@@ -89,6 +89,12 @@ Messages
 
 -record('io', { code=[], data=[] }).
 
+-record('Auth', { token=[], user_id=[], phone=[], dev_key=[], client_id=[],
+                  type=[], sms_code=[], attempts=[], services=[] }).
+
+-record('Roster', { id=[], names=[], surnames=[], size=[], userlist=[],
+                    roomlist=[], subscribe=true, phone=[], status=[] }).
+
 -record('Message', { id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
                      msg_id=[], from=[], to=[], sync=[],
                      created=[], access=[], starred=[],
@@ -104,12 +110,6 @@ Messages
 -record('Typing', { author=[], room=[] }).
 
 -record('Contact', { phone_id=[], names=[], surnames=[], status=[], person_id=[] }).
-
--record('Auth', { token=[], user_id=[], phone=[], dev_key=[], client_id=[],
-                  type=[], sms_code=[], attempts=[], services=[] }).
-
--record('Roster', { id=[], names=[], surnames=[], size=[], userlist=[],
-                    roomlist=[], subscribe=true, phone=[], status=[] }).
 
 -record('Profile', { phone=[], data=[], person_id=[], accounts=[], status=[] }).
 
