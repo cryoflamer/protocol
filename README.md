@@ -82,8 +82,11 @@ Messages
 
 ```erlang
 -record('Token', { data=[] }).
+
 -record('error', { data=[] }).
+
 -record('ok', { data=[] }).
+
 -record('io', { code=[], data=[] }).
 
 -record('Message', { id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
