@@ -16,7 +16,6 @@ Tuples
 * `{'Room',Room,Description,Acl,Settings}`
 * `{'Approve',_,_,_}`
 * `{'Leave',_,_,_}`
-* `{'Message',_,_,_,_,_,_,MsgId,From,To,Sync,Timings,Access,Likes,Payload,Mime,Status}`
 
 Overview
 --------
@@ -44,15 +43,10 @@ Protocol
 1. client sends `{'Leave',_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
 2. server sends `{'Room',_,_,_,_}` to `actions/api/{ClientId}/Token` participants times.
 
-### Publish Public Message to Room
-
-1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
-
 ### Joined
 
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
+1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
 
 ### Leaved
 
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
+1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.

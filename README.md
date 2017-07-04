@@ -70,9 +70,9 @@ Sub Protocols
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/INIT.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/FTP.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/AUTH.md) — 2
+* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/MESSAGE.md) — 7
 * [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/PUBLIC.md) — 7
 * [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/PRIVATE.md) — 4
-* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/PRESENCE.md) — 2
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/ROSTER.md) — 5
 
 ![SCHEMA](https://github.com/NYNJA-MC/protocol/blob/master/roster.png)
@@ -81,47 +81,58 @@ Messages
 --------
 
 ```erlang
--record('Token',    {data=[]}).
--record('error',    {data=[]}).
--record('ok',       {data=[]}).
--record('io',       {code=[],data=[]}).
+-record('Token', { data=[] }).
+-record('error', { data=[] }).
+-record('ok', { data=[] }).
+-record('io', { code=[], data=[] }).
 
--record('Auth',     {token=[], user_id=[], phone=[], dev_key=[],
-                     type=[], sms_code=[], attempts=[], services=[]}).
-
--record('Message',  {id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
+-record('Message', { id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
                      msg_id=[], from=[], to=[], sync=[],
                      created=[], access=[], starred=[],
-                     payload=[], mime=[], seen_by=[], status=[]}).
+                     payload=[], mime=[], seen_by=[], status=[] }).
 
--record('History',  {roster_id=[],contact_id=[],data=[],status=[]}).
-
--record('Person',   {id=[], name=[], surname=[], username=[], phonelist=[],
+-record('Person',  { id=[], name=[], surname=[], username=[], phonelist=[],
                      alias=[], avatar=[], localize=[], 'NotificationSettings'=[],
                      'SoundSettings'=[], 'ThemeID'=[], 'voxImplantID'=[],
-                     'BlockUsers'=[], 'balance'=[], 'isParticipants'=[], status=[]}).
+                     'BlockUsers'=[], 'balance'=[], 'isParticipants'=[], status=[] }).
 
--record('Roster',   {id=[], names=[], surnames=[], user_id=[],
-                     size=[], userlist=[], roomlist=[], status=[]}).
+-record('History', { roster_id=[],contact_id=[],data=[],status=[] }).
 
--record('Contact',  {id=[], phone = [], names=[], surnames=[], status=[], person_id=[]}).
+-record('Typing', { author=[], room=[] }).
 
--record('Profile',  {id=[], phone=[],data=[],accounts=[]}).
--record('Friend',   {id=[], roster_id=[], friend_id=[], status=[]}).
--record('Confirm',  {id=[], roster_id=[], friend_id=[], status=[]}).
--record('Revoke',   {id=[], user=[], status=[]}).
--record('Typing',   {room=[], author=[]}).
--record('Room',     {room=[], description=[], acl=[], settings=[]}).
--record('Join',     {id=[], user=[], room=[], answer=[]}).
--record('Leave',    {id=[], user=[], room=[], answer=[]}).
--record('Approve',  {id=[], user=[], room=[], answer=[]}).
+-record('Contact', { phone_id=[], names=[], surnames=[], status=[], person_id=[] }).
 
+-record('Auth', { token=[], user_id=[], phone=[], dev_key=[], client_id=[],
+                  type=[], sms_code=[], attempts=[], services=[] }).
+
+-record('Roster', { id=[], names=[], surnames=[], size=[], userlist=[],
+                    roomlist=[], subscribe=true, phone=[], status=[] }).
+
+-record('Profile', { phone=[], data=[], person_id=[], accounts=[], status=[] }).
+
+-record('Friend', { id=[], roster_id = [], friend_id = [], status=[] }).
+
+-record('Confirm', { id=[], roster_id=[], friend_id=[], status=[] }).
+
+-record('Revoke', { id=[], user=[], status=[] }).
+
+-record('Room', { room=[], description=[], acl=[], settings=[] }).
+
+-record('Join', { id=[], user=[], room=[], answer=[] }).
+
+-record('Leave', { id=[], user=[], room=[], answer=[] }).
+
+-record('Approve', { id=[], user=[], room=[], answer=[] }).
 ```
 
 Payloads
 --------
 
-Payloads are MIME-driven, so Video, Audio and Text messages correspond to MIME types. **Events** come from server and is a subscription topic for client, **Actions** come from client and is a publishing topic for client. This is a front channel for raw BERT messages. Other topics may bind to event or action topics.
+Payloads are MIME-driven, so Video, Audio and Text messages correspond to MIME types.
+**Events** come from server and is a subscription topic for client,
+**Actions** come from client and is a publishing topic for client.
+This is a front channel for raw BERT messages.
+Other topics may bind to event or action topics.
 
 Credits
 -------

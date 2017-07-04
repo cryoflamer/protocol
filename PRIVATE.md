@@ -11,7 +11,6 @@ Endpoints
 Tuples
 ------
 
-* `{'Message',_,_,_,_,_,_,MsgId,From,To,Sync,Timings,Access,Likes,Payload,Mime,Status}`
 * `{'Friend',Roster,User,Status}`
 * `{'Confirm',Roster,User,Status}`
 * `{'Revoke',Roster,User,Status}`
@@ -23,10 +22,6 @@ PRIVATE API serves the peer-to-peer private conversations.
 
 Protocol
 --------
-
-### Publish Private Message to a Friend
-
-1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `p2p/Roster/ParityRoster` once.
 
 ### Friend Request
 

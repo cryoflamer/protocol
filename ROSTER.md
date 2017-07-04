@@ -12,10 +12,9 @@ Endpoints
 Tuples
 ------
 
-* `{'History',RosterId,UserOrRoomId,[],get}`
-* `{'Profile',UserId,Data,Accounts}`
-* `{'Roster',Id,UserId,Size,Userlist,RoomList,Status}`
-* `{'Person',RosterId, Name, Surname, Username, Phonelist, SoundSettings, ThemeID, VoxImplantID, BlockUsers, Balance, IsParticipants, Status}`
+* `{'Profile',Phone,Data,PersonId,Accounts,Status}`
+* `{'Roster',Id,Names,Surnames,Size,Userlist,Roomlist,Flags,Phone,Status}`
+* `{'Person',Id,Names,Surnames,Login,List,Settings,ThemeID,VoxID,BlockUsers,Balance,Is,Status}`
 
 Overview
 --------
@@ -25,46 +24,58 @@ ROSTER API manages different accounts with different contact lists.
 Protocol
 --------
 
-### Contact List Retrieval
+### GET ROSTER
 
-1. client sends `{'Roster',Id,_,Size,_,_,get}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Roster',Id,UserId,Size,Userlist,RoomList,Status}` to `actions/api/ClientId` nonzero times.
+1. client sends `{'Roster,Id,_,_,_,_,_,_,_,get}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
+             or `{io,{error,roster_not_found},<<>>}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
-### Create Account
+### SET ROSTER
 
-1. client sends `{'Roster',_,UserId,_,_,_,create}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Roster',Id,UserId,_,_,_,created}` to `actions/api/ClientId` once.
+1. client sends `{'Roster,Id,_,_,_,_,_,_,_,set}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
-### Delete Account
+### REMOVE ROSTER
 
-1. client sends `{'Roster',Id,_,_,_,_,delete}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Roster',Id,UserID,0,[],[],deleted}` to `actions/api/ClientId` once.
+1. client sends `{'Roster,Id,_,_,_,_,_,_,_,remove}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{io,{error,not_authorized},<<>>}`
+             or `{io,{error,profile_not_found},<<>>}`
+             or `{io,{error,roster_not_found},<<>>}`
+             or `{io,{ok,removed},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
+### CREATE ROSTER
 
-### Retrieve History
+1. client sends `{'Roster,Id,_,_,_,_,_,_,_,create}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
-1. client sends `{'History',RosterId,UserOrRoomId,[],get}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'History',RosterId,UserOrRoomId,Messages,{history,1,100}}` to `actions/api/ClientId` once.
+### LIST ROSTERS
 
-### Retrieve/Set Account Profile
+1. client sends `{'Roster,_,_,_,_,_,_,_,Phone,list}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{io,List,<<>>}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
-1. client sends `{'Profile',UserId, _ ,<<>>}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Profile',UserId,Data,Accounts}` and
-`[{'Person',RosterId, Name, Surname, Username, Phonelist, SoundSettings, ThemeID, VoxImplantID, BlockUsers, Balance, IsParticipants, Status},...]`
-to `actions/api/ClientId` once.
+### ADD ROSTER CONTACTS
 
-### Update Roster
+1. client sends `{'Roster,Id,_,_,_,List,_,_,_,add}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{io,{error,roster_not_found},<<>>}`
+             or `{io,{error,not_authorized},<<>>}`
+             or `{io,{ok,added},<<>>}`
+             or `{io,{ok,{already_present,_}},<<>>}`
+             to `actions/api/ClientId` nonzero times.
 
-1. client sends `{'Roster',Id,_,Size,Userlist,RoomList,add}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Roster',Id,UserId,_,Userlist,RoomList,updated}` and
-  `[{'Person',RosterId, Name, Surname, Username, Phonelist,[], [], VoxImplantID, [], [], [], []},...]`to `actions/api/ClientId` once.
+### DELETE ROSTER CONTACTS
 
-3. client sends `{'Roster',Id,_,Size,Userlist,RoomList,del}` to `events/Node/api/anon/ClientId/Token` once.
-4. server sends `{'Roster',Id,UserId,Size,Userlist,RoomList,updated}` to `actions/api/ClientId` once.
-
-
-### Retrieve Person
-
-1. client sends `{'Person',RosterId, _, _, _, _,_, _, _, _, _, _, get}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Person',RosterId, Name, Surname, Username, Phonelist,[], [], VoxImplantID, [], [], [], []}`to `actions/api/ClientId` once.
-
+1. client sends `{'Roster,Id,_,_,_,List,_,_,_,add}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{io,{error,roster_not_found},<<>>}`
+             or `{io,{error,not_authorized},<<>>}`
+             or `{io,{error,contacts_not_found},<<>>}`
+             or `{io,{ok,removed},<<>>}`
+             to `actions/api/ClientId` nonzero times.
