@@ -34,16 +34,18 @@ Protocol
 
 ### User Confirmation
 
-1. client sends `{{verify, SmsCode},{'Token', Token}}` once.
+1. client sends `{'Auth',Token,_,Phone,_,_,verify,SMS,_,_}` once.
 2. server sends `{io,{ok,login},{'Token',Token}}`
              or `{io,{error,attempts_expired},{'Token',Token}}`
+             or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error,invalid_sms_code}, {'Token',Token}}`
              to `actions/api/ClientId` once.
 
 ### Resend User Confirmation
 
-1. client sends `{resend_sms, {'Token', Token}}` once.
+1. client sends `{'Auth',_,_,_,_,_,resend_sms,SMS,_,_}` once.
 2. server sends `{io,{ok, sms_send},{'Token',Token}}`
              or `{io,{error, actual_session}, <<>>}`
+             or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error, session_not_found}, <<>>}`
              to `actions/api/ClientId` once.
