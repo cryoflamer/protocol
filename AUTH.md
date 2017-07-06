@@ -45,7 +45,6 @@ Protocol
 
 1. client sends `{'Auth',_,_,_,_,_,resend_sms,SMS,_,_}` once.
 2. server sends `{io,{ok, sms_send},{'Token',Token}}`
-             or `{io,{error, actual_session}, <<>>}`
              or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error, session_not_found}, <<>>}`
              to `actions/api/ClientId` once.
