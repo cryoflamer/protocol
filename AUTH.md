@@ -27,6 +27,7 @@ Protocol
 1. client sends `{'Auth',_,_,Phone,_,_,_,_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
 2. server sends `{io,{ok, login},{'Token',Token}}`
              or `{io,{ok, sms_send},{'Token',Token}}`
+             or `{io,{error, sms_send},{'Token',Token}}`
              or `{io,{error, not_verified},{'Token',Token}}`
              or `{io,{error, mismatch_user_data},<<>>}`
              or `{io,{error, Error},{'Token',Token}}}`
@@ -45,6 +46,7 @@ Protocol
 
 1. client sends `{'Auth',_,_,_,_,_,resend_sms,SMS,_,_}` once.
 2. server sends `{io,{ok, sms_send},{'Token',Token}}`
+             or `{io,{error, sms_send},{'Token',Token}}`
              or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error, session_not_found}, <<>>}`
              to `actions/api/ClientId` once.
