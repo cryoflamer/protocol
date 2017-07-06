@@ -12,7 +12,7 @@ Endpoints
 Tuples
 ------
 
-* `{'Auth',Token,UserId,Phone,DevKey,Type,SmsCode,Attempts,Services}`
+* `{'Auth',Token,UserId,Phone,DevKey,ClientId,Type,SmsCode,Attempts,Services}`
 
 Overview
 --------
@@ -24,7 +24,7 @@ Protocol
 
 ### Auth Issuing / SMS sending
 
-1. client sends `{'Auth',_,_,Phone,_,_,_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
+1. client sends `{'Auth',_,_,Phone,_,_,_,_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
 2. server sends `{io,{ok, login},{'Token',Token}}`
              or `{io,{ok, sms_send},{'Token',Token}}`
              or `{io,{error, not_verified},<<>>}`
