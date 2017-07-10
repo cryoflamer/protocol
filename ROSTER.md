@@ -75,7 +75,7 @@ Protocol
 
 ### DELETE ROSTER CONTACTS
 
-1. client sends `{'Roster,Id,_,_,_,List,_,_,_,add}` to `events/Node/api/anon/ClientId/Token` once.
+1. client sends `{'Roster,Id,_,_,_,List,_,_,_,del}` to `events/Node/api/anon/ClientId/Token` once.
 2. server sends `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,contacts_not_found},<<>>}`
