@@ -74,6 +74,7 @@ Sub Protocols
 * [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/PUBLIC.md) — 6
 * [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/PRIVATE.md) — 4
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/ROSTER.md) — 7
+* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/PROFILE.md) — 3
 
 ![SCHEMA](https://github.com/NYNJA-MC/protocol/blob/master/roster.png)
 
