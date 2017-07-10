@@ -26,7 +26,6 @@ Protocol
 
 1. client sends `{'Profile',Phone,_,_,_,get}` to `events/Node/api/anon/ClientId/Token` once.
 2. server sends `{'Profile',Phone,_,_,_,_}`
-             or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/api/ClientId` nonzero times.
 
@@ -40,9 +39,7 @@ Protocol
 ### REMOVE PROFILE
 
 1. client sends `{'Roster,Phone,_,_,_,remove}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{io,{error,not_authorized},<<>>}`
-             or `{io,{error,profile_not_found},<<>>}`
-             or `{io,{error,roster_not_found},<<>>}`
-             or `{io,{ok,removed},<<>>}`
+2. server sends `{'Roster,Phone,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
              to `actions/api/ClientId` nonzero times.
 
