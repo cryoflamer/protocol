@@ -14,9 +14,6 @@ Tuples
 
 * `{'Profile',Phone,Data,PersonId,Accounts,Status}`
 * `{'Roster',Id,Names,Surnames,Size,Userlist,Roomlist,Flags,Phone,Status}`
-* `{'Person',Id,Names,Surnames,Login,List,
-             Alias,Avatar,Locale,NotifySettings,Settings,ThemeID,VoxID,
-             BlockUsers,Balance,Is,Status}`
 
 Overview
 --------
