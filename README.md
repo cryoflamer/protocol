@@ -42,14 +42,15 @@ INTRO
 URI Components
 --------------
 
-### Client
+### Client:
 
-* `actions/index/emqttd_198234215548221`
+* `actions/1/index/emqttd_198234215548221` &mdash; version 1
+* `actions/2/index/emqttd_198234215548221` &mdash; version 2
 
 ### Server:
 
-* `events/3/index/maxim@synrc.com/emqttd_198234215548221`
-* `events/2/login/anon/emqttd_198234215548221`
+* `events/2/3/index/maxim@synrc.com/emqttd_198234215548221` &mdash; version 3
+* `events/1/2/login/anon/emqttd_198234215548221`
 
 ### Review Application:
 
