@@ -22,5 +22,12 @@ FTP API covert very simple and fast binary file transfer over websockets.
 Protocol
 --------
 
-1. client sends `{ftp,_,_,_,_,_,_,_,_,_}` to `:8000/ws` once.
-2. server sends `{ftpack,_,_,_,_,_,_,_,_,_}` to `:8000/ws` once.
+```
+1. client sends `{ftp,_,_,_,_,_,_,_,_,_}`
+             to `:8000/ws` once.
+```
+
+```
+2. server sends `{ftpack,_,_,_,_,_,_,_,_,_}`
+             to `:8000/ws` once.
+```

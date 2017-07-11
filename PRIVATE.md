@@ -5,6 +5,7 @@ Version 1.0 Maxim Sokhatsky
 
 Endpoints
 ---------
+
 * `actions/1/api/:client` — MQTT
 * `events/1/:node/api/anon/:client/:token` — MQTT
 

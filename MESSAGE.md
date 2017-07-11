@@ -73,5 +73,5 @@ Protocol
 
 ```
 2. server sends `{'History',Id,_,Messages,_}`
-             to `actions/1/api/:client` one or more times.
+             to `actions/1/api/:client` once or more.
 ```
