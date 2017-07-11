@@ -42,13 +42,13 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok, login},{'Token',Token}}`
-             or `{io,{ok, sms_send},{'Token',Token}}`
-             or `{io,{error, sms_send},{'Token',Token}}`
-             or `{io,{error, not_verified},{'Token',Token}}`
-             or `{io,{error, mismatch_user_data},<<>>}`
-             or `{io,{error, session_not_found},<<>>}`
-             or `{io,{error, miltiple_devices},<<>>}}`
+2. server sends `{io,{ok,    login,              Token},<<>>}`
+             or `{io,{ok,    sms_send,           Token},<<>>}`
+             or `{io,{error, sms_send,           Token},<<>>}`
+             or `{io,{error, not_verified,       Token},<<>>}`
+             or `{io,{error, mismatch_user_data, _},<<>>}`
+             or `{io,{error, session_not_found,  _},<<>>}`
+             or `{io,{error, miltiple_devices,   _},<<>>}`
              to `actions/api/ClientId` once.
 ```
 
@@ -60,12 +60,12 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok, login},{'Token',Token}}`
-             or `{io,{error, attempts_expired},{'Token',Token}}`
-             or `{io,{error, already_registered},<<>>}`
-             or `{io,{error, roster_not_found},<<>>}`
-             or `{io,{error, session_not_found},<<>>}`
-             or `{io,{error, invalid_sms_code}, {'Token',Token}}`
+2. server sends `{io,{ok,    login,              Token},<<>>}`
+             or `{io,{error, attempts_expired,   Token},<<>>}`
+             or `{io,{error, already_registered, Token},<<>>}`
+             or `{io,{error, roster_not_found,   _},<<>>}`
+             or `{io,{error, session_not_found,  _},<<>>}`
+             or `{io,{error, invalid_sms_code,   Token},<<>>}`
              to `actions/api/ClientId` once.
 ```
 
@@ -77,9 +77,9 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok, sms_send},{'Token',Token}}`
-             or `{io,{error, sms_send},{'Token',Token}}`
-             or `{io,{error, roster_not_found},<<>>}`
-             or `{io,{error, session_not_found}, <<>>}`
+2. server sends `{io,{ok,    sms_send,          Token},<<>>}`
+             or `{io,{error, sms_send,          Token},<<>>}`
+             or `{io,{error, roster_not_found,  _}, <<>>}`
+             or `{io,{error, session_not_found, _}, <<>>}`
              to `actions/api/ClientId` once.
 ```
