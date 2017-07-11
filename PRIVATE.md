@@ -5,8 +5,8 @@ Version 1.0 Maxim Sokhatsky
 
 Endpoints
 ---------
-* `actions/1/api/ClientId` — MQTT
-* `events/1/Node/api/anon/ClientId/Token` — MQTT
+* `actions/1/api/:client` — MQTT
+* `events/1/:node/api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -43,21 +43,21 @@ Protocol
 
 ```
 1. client sends `{'Friend',Id,UserId,FriendId,Status}`
-             to `events/1/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `<<>>`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/PartyId/Token` once.
+             to `actions/1/api/:party` once.
 ```
 
 ### Confirmation / Authorization
 
 ```
 1. client sends `{'Confirm',Id,UserId,FriendId,Status}`
-             to `events/1/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
@@ -65,17 +65,17 @@ Protocol
              or `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/PartyId/Token` once.
+             to `actions/1/api/:party` once.
 ```
 
 ### Revoke
 
 ```
 1. client sends `{'Revoke',Id,User,Status}`
-             to `events/1/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Revoke',Id,User,Status}`
-             to `actions/1/api/PartyId/Token` once.
+             to `actions/1/api/:party` once.
 ```

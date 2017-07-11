@@ -7,7 +7,8 @@ Endpoints
 --------
 
 * `room/Room` — MQTT
-* `events/1/Node/api/anon/ClientId/Token` — MQTT
+* `actions/1/api/:client/:token` — MQTT
+* `events/1/:node/api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -52,38 +53,38 @@ Protocol
 
 ```
 1. client sends `{'Join',_,_,_}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ### Auto Join
 
 ```
 2. server sends `{'Room',_,_,_,_}`
-             to `actions/api/ClientId/Token` once.
+             to `actions/1/api/:client/:token` once.
 ```
 
 ### Approve Join
 
 ```
 1. client sends `{'Approve',_,_,_}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Room',_,_,_,_}`
-             to `actions/api/PartyId/Token` once.
+             to `actions/1/api/:party/:token` once.
 ```
 
 ### Leave Room
 
 ```
 1. client sends `{'Leave',_,_,_}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Room',_,_,_,_}`
-             to `actions/api/{ClientId}/Token` participants times.
+             to `actions/1/api/:client/:token` participants times.
 ```
 
 ### Joined

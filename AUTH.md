@@ -6,8 +6,8 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/api/ClientId` — MQTT
-* `events/1//api/anon/ClientId/Token` — MQTT
+* `actions/1/api/:client` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -38,7 +38,7 @@ Protocol
 
 ```
 1. client sends `{'Auth',Token,_,ClientId,Phone,_,Type,_,_,_}`
-             to `events/1//api/anon/ClientId/Token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
@@ -49,14 +49,14 @@ Protocol
              or `{io,{error, mismatch_user_data}, {Table, Token}}`
              or `{io,{error, session_not_found},  {Table, Token}}`
              or `{io,{error, miltiple_devices},   {Table, Token}}`
-             to `actions/1/api/ClientId` once.
+             to `actions/1/api/:client` once.
 ```
 
 ### User Confirmation
 
 ```
 1. client sends `{'Auth',Token,_,ClientId,Phone,_,verify,SMS,_,_}`
-             to `events/1//api/anon/ClientId/Token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
@@ -66,14 +66,14 @@ Protocol
              or `{io,{error, roster_not_found},   {Table, Token}}`
              or `{io,{error, session_not_found},  {Table, Token}}`
              or `{io,{error, invalid_sms_code},   {Table, Token}}`
-             to `actions/1/api/ClientId` once.
+             to `actions/1/api/:client` once.
 ```
 
 ### Resend User Confirmation
 
 ```
 1. client sends `{'Auth',_,_,_,Token,_,resend_sms,_,_,_}`
-             to `events/1//api/anon/ClientId/Token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
@@ -81,5 +81,5 @@ Protocol
              or `{io,{error, sms_send},          {Table, Token}}`
              or `{io,{error, roster_not_found},  {Table, Token}}`
              or `{io,{error, session_not_found}, {Table, Token}}`
-             to `actions/1/api/ClientId` once.
+             to `actions/1/api/:client` once.
 ```

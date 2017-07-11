@@ -6,8 +6,8 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/api/ClientId` — MQTT
-* `events/1/Node/api/anon/ClientId/Token` — MQTT
+* `actions/1/api/:client` — MQTT
+* `events/1/:node/api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -40,34 +40,34 @@ Protocol
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,get}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### SET ROSTER
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,set}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### REMOVE ROSTER
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,remove}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
@@ -75,40 +75,40 @@ Protocol
              or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{ok,removed},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### CREATE ROSTER
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,create}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### LIST ROSTERS
 
 ```
 1. client sends `{'Roster,_,_,_,_,_,_,_,Phone,list}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io,List,<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### ADD ROSTER CONTACTS
 
 ```
 1. client sends `{'Roster,Id,_,_,_,List,_,_,_,add}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
@@ -116,14 +116,14 @@ Protocol
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{ok,added},<<>>}`
              or `{io,{ok,{already_present,_}},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
 
 ### DELETE ROSTER CONTACTS
 
 ```
 1. client sends `{'Roster,Id,_,_,_,List,_,_,_,del}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
@@ -131,5 +131,5 @@ Protocol
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,contacts_not_found},<<>>}`
              or `{io,{ok,removed},<<>>}`
-             to `actions/api/ClientId` nonzero times.
+             to `actions/1/api/:client` nonzero times.
 ```
