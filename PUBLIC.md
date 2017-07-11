@@ -50,26 +50,52 @@ Protocol
 
 ### Join Room
 
-1. client sends `{'Join',_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
+```
+1. client sends `{'Join',_,_,_}`
+             to `events/Node/api/anon/ClientId/Token` once.
+```
 
 ### Auto Join
 
-2. server sends `{'Room',_,_,_,_}` to `actions/api/ClientId/Token` once.
+```
+2. server sends `{'Room',_,_,_,_}`
+             to `actions/api/ClientId/Token` once.
+```
 
 ### Approve Join
 
-1. client sends `{'Approve',_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Room',_,_,_,_}` to `actions/api/PartyId/Token` once.
+```
+1. client sends `{'Approve',_,_,_}`
+             to `events/Node/api/anon/ClientId/Token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_}`
+             to `actions/api/PartyId/Token` once.
+```
 
 ### Leave Room
 
-1. client sends `{'Leave',_,_,_}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Room',_,_,_,_}` to `actions/api/{ClientId}/Token` participants times.
+```
+1. client sends `{'Leave',_,_,_}`
+             to `events/Node/api/anon/ClientId/Token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_}`
+             to `actions/api/{ClientId}/Token` participants times.
+```
 
 ### Joined
 
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
+```
+1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
+             to `room/Room` participants times.
+```
 
 ### Leaved
 
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}` to `room/Room` participants times.
+```
+1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
+             to `room/Room` participants times.
+```
