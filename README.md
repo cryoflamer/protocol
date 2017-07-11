@@ -46,7 +46,7 @@ URI Components
 
 ### Server:
 
-* `events/2/3/index/maxim@synrc.com/emqttd_198234215548221` &mdash; version 3
+* `events/2/3/index/maxim@synrc.com/emqttd_198234215548221`
 * `events/1/2/login/anon/emqttd_198234215548221`
 
 ### Review Application:
@@ -73,8 +73,6 @@ Sub Protocols
 * [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/PRIVATE.md) — 4
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/ROSTER.md) — 7
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/PROFILE.md) — 3
-
-<!-- ![SCHEMA](https://github.com/NYNJA-MC/protocol/blob/master/roster.png) -->
 
 Payloads
 --------
