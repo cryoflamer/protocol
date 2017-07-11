@@ -36,7 +36,12 @@ Protocol
 
 ### Auth Issuing / SMS sending
 
-1. client sends `{'Auth',DevKey,_,Phone,Token,_,_,_,_,_}` to `events//api/anon/ClientId/Token` once. `DevKey` MUST be unique.
+```
+1. client sends `{'Auth',DevKey,_,Phone,Token,_,_,_,_,_}`
+             to `events//api/anon/ClientId/Token` once. `DevKey` MUST be unique.
+```
+
+```
 2. server sends `{io,{ok, login},{'Token',Token}}`
              or `{io,{ok, sms_send},{'Token',Token}}`
              or `{io,{error, sms_send},{'Token',Token}}`
@@ -45,22 +50,35 @@ Protocol
              or `{io,{error, session_not_found},<<>>}`
              or `{io,{error, miltiple_devices},<<>>}}`
              to `actions/api/ClientId` once.
+```
 
 ### User Confirmation
 
-1. client sends `{'Auth',_,_,_,Token,_,verify,SMS,_,_}` to `events//api/anon/ClientId/Token` once.
+```
+1. client sends `{'Auth',_,_,_,Token,_,verify,SMS,_,_}`
+             to `events//api/anon/ClientId/Token` once.
+```
+
+```
 2. server sends `{io,{ok, login},{'Token',Token}}`
              or `{io,{error, attempts_expired},{'Token',Token}}`
              or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error, session_not_found},<<>>}`
              or `{io,{error, invalid_sms_code}, {'Token',Token}}`
              to `actions/api/ClientId` once.
+```
 
 ### Resend User Confirmation
 
-1. client sends `{'Auth',_,_,_,Token,_,resend_sms,_,_,_}` to `events//api/anon/ClientId/Token` once.
+```
+1. client sends `{'Auth',_,_,_,Token,_,resend_sms,_,_,_}`
+             to `events//api/anon/ClientId/Token` once.
+```
+
+```
 2. server sends `{io,{ok, sms_send},{'Token',Token}}`
              or `{io,{error, sms_send},{'Token',Token}}`
              or `{io,{error, roster_not_found},<<>>}`
              or `{io,{error, session_not_found}, <<>>}`
              to `actions/api/ClientId` once.
+```
