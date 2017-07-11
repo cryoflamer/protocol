@@ -7,7 +7,7 @@ Endpoints
 --------
 
 * `room/Room` — MQTT
-* `events/Node/api/anon/ClientId/Token` — MQTT
+* `events/1/Node/api/anon/ClientId/Token` — MQTT
 
 Tuples
 ------

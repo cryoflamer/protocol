@@ -6,8 +6,8 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/api/ClientId` — MQTT
-* `events/Node/api/anon/ClientId/Token`
+* `actions/1/api/ClientId` — MQTT
+* `events/1/Node/api/anon/ClientId/Token`
 
 Tuples
 ------

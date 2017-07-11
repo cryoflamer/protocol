@@ -24,14 +24,11 @@ powers the NYNJA Mobile Communicator.
 FEATURES
 --------
 
-* Presence
-* Voice
-* Video
-* File Transfer
-* GPS
-* Text
-* Multi-User Conferences
-* Multi Accounts
+* Versioning
+* Two-topic: Actions/Events Async Event Bus Topics
+* Media: Voice, Video, File Transfer, GPS, Text
+* Multi-User Conferences (Tribes)
+* Multi Accounts (Rosters)
 
 INTRO
 -----
