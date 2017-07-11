@@ -12,10 +12,33 @@ Endpoints
 Tuples
 ------
 
-* `{'Join',User,Room,Answer}`
-* `{'Room',Room,Description,Acl,Settings}`
-* `{'Approve',_,_,_}`
-* `{'Leave',_,_,_}`
+```erlang
+-record('Room',     {room=[] :: [] | binary(),
+                     description=[] :: [] | binary(),
+                     acl=[] :: list(),
+                     settings=[] :: list()}).
+```
+
+```erlang
+-record('Join',     {id=[] :: [] | binary(),
+                     user=[] :: [] | binary(),
+                     room=[] :: [] | binary(),
+                     answer=[] :: [] | binary()}).
+```
+
+```erlang
+-record('Leave',    {id=[] :: [] | binary(),
+                     user=[] :: [] | binary(),
+                     room=[] :: [] | binary(),
+                     answer=[] :: [] | binary()}).
+```
+
+```erlang
+-record('Approve',  {id=[] :: [] | binary(),
+                     user=[] :: [] | binary(),
+                     room=[] :: [] | binary(),
+                     answer=[] :: [] | binary()}).
+```
 
 Overview
 --------

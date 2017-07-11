@@ -12,10 +12,37 @@ Endpoints
 Tuples
 ------
 
-* `{'Typing',Author,Channel}`
-* `{'History',Id,Cursor,Data,Status}`
-* `{'Message',Id,Container,FeedId,Prev,Next,Feeds,MsgId,From,To,Sync,Created,Access,Starred,Payload,Mime,Seen,Status}`
+```erlang
+-record('Typing',   {author=[] :: list(),
+                     room=[] :: list()}).
+```
 
+```erlang
+-record('History',  {roster_id= [] :: [] | binary(),
+                     contact_id=[] :: list(),
+                     data=[] :: list(#'Message'{}),
+                     status=[] :: atom() | []}).
+```
+
+```erlang
+-record('Message',  {id=[] :: [] | integer(),
+                     container=Container :: atom(),
+                     feed_id=[] :: term(),
+                     prev=[] :: [] | integer(),
+                     next=[] :: [] | integer(),
+                     feeds=[] :: list()
+                     msg_id = [] :: [] | binary(),
+                     from = [] :: [] | binary(),
+                     to = [] :: [] | binary(),
+                     sync = [] :: [],
+                     created = [] :: [],
+                     access = [] :: [],
+                     starred = [] :: [],
+                     payload = <<>> :: [] | binary(),
+                     mime = [],
+                     seen_by = [],
+                     status = [] :: [] | atom()}).
+```
 Overview
 --------
 

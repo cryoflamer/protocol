@@ -12,8 +12,21 @@ Endpoints
 Tuples
 ------
 
-* `{'Profile',Phone,Data,PersonId,Accounts,Status}`
-* `{'Roster',Id,Names,Surnames,Size,Userlist,Roomlist,Flags,Phone,Status}`
+The Roster class represents User Impersonified Account or
+Contact Book or Contact List of the User. Each account connected to single
+Phone or Profile or Device.
+
+```erlang
+-record('Roster',   {id=[] :: [] | integer(),
+                     names=[] :: [] | binary(),
+                     surnames=[] :: [] | binary(),
+                     size=0 :: integer(),
+                     userlist=[] :: list(#'Contact'{}),
+                     roomlist=[] :: list(#'Room'{}),
+                     subscribe=true :: boolean(),
+                     phone=[] :: [] | binary(),
+                     status=[] :: [] | atom()}).
+```
 
 Overview
 --------

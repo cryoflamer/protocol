@@ -76,58 +76,7 @@ Sub Protocols
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/ROSTER.md) — 7
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/PROFILE.md) — 3
 
-![SCHEMA](https://github.com/NYNJA-MC/protocol/blob/master/roster.png)
-
-Messages
---------
-
-```erlang
--record('Token', { data=[] }).
-
--record('error', { data=[] }).
-
--record('ok', { data=[] }).
-
--record('io', { code=[], data=[] }).
-
--record('Auth', { token=[], user_id=[], phone=[], dev_key=[], client_id=[],
-                  type=[], sms_code=[], attempts=[], services=[] }).
-
--record('Roster', { id=[], names=[], surnames=[], size=[], userlist=[],
-                    roomlist=[], subscribe=true, phone=[], status=[] }).
-
--record('Message', { id=[], container=Container, feed_id=[], prev=[], next=[], feeds=[],
-                     msg_id=[], from=[], to=[], sync=[],
-                     created=[], access=[], starred=[],
-                     payload=[], mime=[], seen_by=[], status=[] }).
-
--record('Person',  { id=[], name=[], surname=[], username=[], phonelist=[],
-                     alias=[], avatar=[], localize=[], 'NotificationSettings'=[],
-                     'SoundSettings'=[], 'ThemeID'=[], 'voxImplantID'=[],
-                     'BlockUsers'=[], 'balance'=[], 'isParticipants'=[], status=[] }).
-
--record('History', { roster_id=[],contact_id=[],data=[],status=[] }).
-
--record('Typing', { author=[], room=[] }).
-
--record('Contact', { phone_id=[], names=[], surnames=[], person_id=[], status=[] }).
-
--record('Profile', { phone=[], data=[], person_id=[], accounts=[], status=[] }).
-
--record('Friend', { id=[], roster_id = [], friend_id = [], status=[] }).
-
--record('Confirm', { id=[], roster_id=[], friend_id=[], status=[] }).
-
--record('Revoke', { id=[], user=[], status=[] }).
-
--record('Room', { room=[], description=[], acl=[], settings=[] }).
-
--record('Join', { id=[], user=[], room=[], answer=[] }).
-
--record('Leave', { id=[], user=[], room=[], answer=[] }).
-
--record('Approve', { id=[], user=[], room=[], answer=[] }).
-```
+<!-- ![SCHEMA](https://github.com/NYNJA-MC/protocol/blob/master/roster.png) -->
 
 Payloads
 --------

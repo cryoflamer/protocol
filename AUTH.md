@@ -12,7 +12,19 @@ Endpoints
 Tuples
 ------
 
-* `{'Auth',DevKey,UserId,Phone,Token,ClientId,Type,SmsCode,Attempts,Services}`
+Auth tuple represents token storage instances.
+
+```erlang
+-record('Auth',     {token=[] :: [] | binary(),
+                     dev_key=[] :: [] | binary(),
+                     user_id=[] :: [] | binary(),
+                     phone=[] :: [] | binary(),
+                     client_id=[] :: [] | binary(),
+                     type=[] :: [] | atom(),
+                     sms_code=[] :: [] | binary(),
+                     attempts=[] :: [] | integer(),
+                     services=[] :: list()}).
+```
 
 Overview
 --------

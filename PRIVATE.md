@@ -11,9 +11,21 @@ Endpoints
 Tuples
 ------
 
-* `{'Friend',Roster,User,Status}`
-* `{'Confirm',Roster,User,Status}`
-* `{'Revoke',Roster,User,Status}`
+```erlang
+-record('Friend',   {id=[] :: [] | binary(),
+                     roster_id = [] :: [] | integer(),
+                     friend_id = [] :: [] | binary(),
+                     status=[] :: [] | atom()}).
+
+-record('Confirm',  {id=[] :: [] | binary(),
+                     roster_id = [] :: [] | integer(),
+                     friend_id = [] :: [] | binary(),
+                     status=[] :: [] | atom()}).
+
+-record('Revoke',   {id=[] :: [] | binary(),
+                     user=[] :: [] | binary(),
+                     status=[] :: [] | atom()}).
+```
 
 Overview
 --------
@@ -29,8 +41,8 @@ Protocol
 
 ### Confirmation / Authorization
 
-1. client sends `{'Confirm',Id,User,Status}` to `events/Node/api/anon/ClientId/Token` once.
-2. server sends `{'Confirm',Id,User,Status}` to `actions/api/PartyId/Token` once.
+1. client sends `{'Confirm',Id,UserId,FriendId,Status}` to `events/Node/api/anon/ClientId/Token` once.
+2. server sends `{'Confirm',Id,UserId,FriendId,Status}` to `actions/api/PartyId/Token` once.
 
 ### Revoke
 
