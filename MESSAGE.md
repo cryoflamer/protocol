@@ -22,51 +22,6 @@ Tuples
                      contact_id=[] :: list(),
                      data=[] :: list(#'Message'{}),
                      status=[] :: atom() | []}).
-
-class Either<L,R> {
-     L left;
-     R right;
-     bool isLeft;
-}
-
-class IO {
-   Either<Ok,Error> code;
-   BinaryNull data;
-}
-
-class Profile {
-   List<Roster> account;
-}
-
-class Roster {
-   List<Either<Contact,Room>> userlist;
-}
-
-class Error {
-   Atom text;
-   Binary value;
-}
-
-class Ok {
-   Atom text;
-   Binary Value;
-}
-
-class Pair {
-   string atomName;
-   Any value;
-   public Pair(atomName) { this.atomName = atomName; }
-}
-
-class ListConst {
-   String list;
-   String const;
-   public Pair(c) { this.const = c; }
-}
-
-class ListNull { }
-class BinaryNull { }
-
 ```
 
 ```erlang
