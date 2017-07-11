@@ -68,14 +68,14 @@ Metawords
 Sub Protocols
 -------------
 
-* [INIT](https://github.com/NYNJA-MC/protocol/blob/master/INIT.md) — 1
-* [FTP](https://github.com/NYNJA-MC/protocol/blob/master/FTP.md) — 1
-* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/AUTH.md) — 3
-* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/MESSAGE.md) — 3
-* [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/PUBLIC.md) — 6
-* [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/PRIVATE.md) — 4
-* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/ROSTER.md) — 7
-* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/PROFILE.md) — 3
+* [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
+* [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
+* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 3
+* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
+* [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/v1/PUBLIC.md) — 6
+* [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRIVATE.md) — 4
+* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 7
+* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
 
 Payloads
 --------
