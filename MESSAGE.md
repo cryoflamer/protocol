@@ -55,23 +55,23 @@ Protocol
 
 ```
 1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/Node/api/anon/ClientId/Token` once.
 ```
 
 ```
 2. server sends `<<>>` to `actions/api/ClientId` issuer and
           sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
-             to `actions/api/ClientId` counterparty.
+             to `actions/1/api/ClientId` counterparty.
 ```
 
 ### Retrieve History
 
 ```
 1. client sends `{'History',Id,Cursor,_,_}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/Node/api/anon/ClientId/Token` once.
 ```
 
 ```
 2. server sends `{'History',Id,_,Messages,_}`
-             to `actions/api/ClientId` one or more times.
+             to `actions/1/api/ClientId` one or more times.
 ```

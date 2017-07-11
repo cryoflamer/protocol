@@ -43,21 +43,21 @@ Protocol
 
 ```
 1. client sends `{'Friend',Id,UserId,FriendId,Status}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/Node/api/anon/ClientId/Token` once.
 ```
 
 ```
 2. server sends `<<>>`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/PartyId/Token` once.
+             to `actions/1/api/PartyId/Token` once.
 ```
 
 ### Confirmation / Authorization
 
 ```
 1. client sends `{'Confirm',Id,UserId,FriendId,Status}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/Node/api/anon/ClientId/Token` once.
 ```
 
 ```
@@ -65,17 +65,17 @@ Protocol
              or `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/api/PartyId/Token` once.
+             to `actions/1/api/PartyId/Token` once.
 ```
 
 ### Revoke
 
 ```
 1. client sends `{'Revoke',Id,User,Status}`
-             to `events/Node/api/anon/ClientId/Token` once.
+             to `events/1/Node/api/anon/ClientId/Token` once.
 ```
 
 ```
 2. server sends `{'Revoke',Id,User,Status}`
-             to `actions/api/PartyId/Token` once.
+             to `actions/1/api/PartyId/Token` once.
 ```

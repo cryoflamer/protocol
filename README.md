@@ -39,17 +39,19 @@ INTRO
 URI Components
 --------------
 
-### Client:
+### Client Subscriptions:
 
 * `actions/1/index/emqttd_198234215548221` &mdash; version 1
 * `actions/2/index/emqttd_198234215548221` &mdash; version 2
+* `actions/1/api/client/token` &mdash; version 2
 
-### Server:
+### Server Subscriptions:
 
+* `events/1/api/anon/client/token` &mdash; version 2
 * `events/2/3/index/maxim@synrc.com/emqttd_198234215548221`
 * `events/1/2/login/anon/emqttd_198234215548221`
 
-### Review Application:
+### Review Application Subscriptions:
 
 * `room/n2o`
 
