@@ -59,11 +59,12 @@ Metawords
 ---------
 
 * `randomly` — may be received by client randomly
-* `once` — should be received once according to sub-protocol section
-* `issues` — may be sent randomly.
+* `once` — should be received exactly once
+* `more` — provided with `or` gives you infinity
+* `issues` — may be sent randomly
 * `sends` — ususal sending
 * `participants` — depending on number of mates
-* `counterpary` — in private and public chats
+* `counterpaty` — in private and public chats
 
 Sub Protocols
 -------------
