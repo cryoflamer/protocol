@@ -12,16 +12,16 @@ Tuples
 ------
 
 ```erlang
--record('Error', { code=[] :: [] | binary() }).
+-record(error, { code=[] :: [] | binary() }).
 ```
 
 ```erlang
--record('Ok', { code=[] :: [] | binary() }).
+-record(ok, { code=[] :: [] | binary() }).
 ```
 
 ```erlang
--record('Io', { code=[] :: [] | #'Ok'{} | #'Error'{},
-                data=[] :: [] | <<>> | { atom(), binary() | integer() } }).
+-record(io, { code=[] :: [] | #'Ok'{} | #'Error'{},
+              data=[] :: [] | <<>> | { atom(), binary() | integer() } }).
 ```
 
 Overview
