@@ -28,6 +28,14 @@ Phone or Profile or Device.
                      status=[] :: [] | atom()}).
 ```
 
+```erlang
+-record('Contact',  {phone_id=[] :: [] | binary(),
+                     names=[] :: [] | binary(),
+                     surnames=[] :: [] | binary(),
+                     person_id=[] :: [] | binary(),
+                     status=[] :: [] | atom()}).
+```
+
 Overview
 --------
 
