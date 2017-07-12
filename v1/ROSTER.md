@@ -25,6 +25,7 @@ Phone or Profile or Device.
                      roomlist=[] :: list(#'Room'{}),
                      subscribe=true :: boolean(),
                      phone=[] :: [] | binary(),
+                     avatar=[] :: [] | binary(),
                      status=[] :: [] | atom()}).
 ```
 
