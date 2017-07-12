@@ -20,7 +20,7 @@ Tuples
 ```
 
 ```erlang
--record(io, { code=[] :: [] | #'Ok'{} | #'Error'{},
+-record(io, { code=[] :: [] | #ok{} | #error{},
               data=[] :: [] | <<>> | { atom(), binary() | integer() } }).
 ```
 
