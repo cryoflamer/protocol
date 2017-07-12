@@ -50,7 +50,7 @@ Protocol
 ```
 2. server sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` nonzero times.
+             to `actions/1/api/:client` once.
 ```
 ### SET PERSON
 
@@ -62,5 +62,5 @@ Protocol
 ```
 2. server sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` nonzero times.
+             to `actions/1/api/:client` once.
 ```
