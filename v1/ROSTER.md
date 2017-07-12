@@ -30,6 +30,7 @@ Phone or Profile or Device.
 
 ```erlang
 -record('Contact',  {phone_id=[] :: [] | binary(),
+                     avatar=[] :: [] | binary(),
                      names=[] :: [] | binary(),
                      surnames=[] :: [] | binary(),
                      person_id=[] :: [] | binary(),
