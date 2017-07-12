@@ -43,7 +43,7 @@ URI Components
 
 * `actions/1/index/emqttd_198234215548221` &mdash; version 1
 * `actions/2/index/emqttd_198234215548221` &mdash; version 2
-* `actions/1/api/:client/:token` &mdash; version 2
+* `actions/1/api/:client/:token` &mdash; version 1
 
 ### Server Subscriptions:
 
