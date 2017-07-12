@@ -61,7 +61,7 @@ Metawords
 * `randomly` — may be received by client randomly
 * `once` — should be received exactly once
 * `more` — provided with `or` gives you infinity
-* `issues` — may be sent randomly
+* `issues` — sends randomly
 * `sends` — ususal sending
 * `participants` — depending on number of mates
 * `counterpaty` — in private and public chats
@@ -69,6 +69,7 @@ Metawords
 Sub Protocols
 -------------
 
+* [IO](https://github.com/NYNJA-MC/protocol/blob/master/v1/IO.md) — 1
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 3
