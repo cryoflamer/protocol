@@ -55,7 +55,7 @@ Protocol
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### SET ROSTER
@@ -68,7 +68,7 @@ Protocol
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### REMOVE ROSTER
@@ -83,7 +83,7 @@ Protocol
              or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{ok,removed},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### CREATE ROSTER
@@ -96,7 +96,7 @@ Protocol
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### LIST ROSTERS
@@ -109,7 +109,7 @@ Protocol
 ```
 2. server sends `{io,List,<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### ADD ROSTER CONTACTS
@@ -124,7 +124,7 @@ Protocol
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{ok,added},<<>>}`
              or `{io,{ok,{already_present,_}},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
 
 ### DELETE ROSTER CONTACTS
@@ -139,5 +139,5 @@ Protocol
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,contacts_not_found},<<>>}`
              or `{io,{ok,removed},<<>>}`
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/:client` once.
 ```
