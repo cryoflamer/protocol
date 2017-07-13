@@ -26,7 +26,7 @@ Phone or Profile or Device.
                      subscribe=true :: boolean(),
                      phone=[] :: [] | binary(),
                      avatar=[] :: [] | binary(),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | get | set | remove | create | del | add | list | atom()}).
 ```
 
 ```erlang
@@ -35,7 +35,7 @@ Phone or Profile or Device.
                      names=[] :: [] | binary(),
                      surnames=[] :: [] | binary(),
                      person_id=[] :: [] | binary(),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | confirmed | not_confirmed | atom()}).
 ```
 
 Overview
