@@ -16,14 +16,14 @@ Tuples
 -record('Friend',   {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | simple | atom()}).
 ```
 
 ```erlang
 -record('Confirm',  {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | roster | atom()}).
 ```
 
 ```erlang
