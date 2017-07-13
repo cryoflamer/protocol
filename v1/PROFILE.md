@@ -20,7 +20,7 @@ Profile has one-to-one linkage to Person and may hold custom data.
                      data=[] :: [] | binary(),
                      person_id=[] :: [] | binary(),
                      accounts=[] :: list(integer()),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | get | set | remove | atom()}).
 ```
 
 Overview
