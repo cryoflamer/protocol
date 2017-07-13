@@ -30,7 +30,7 @@ Tuples
                      feed_id=[] :: term(),
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
-                     feeds=[] :: list()
+                     feeds=[] :: list(),
                      msg_id = [] :: [] | binary(),
                      from = [] :: [] | binary(),
                      to = [] :: [] | binary(),
