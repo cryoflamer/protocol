@@ -62,7 +62,6 @@ Protocol
 ```
 2. server sends `{io,{ok,    login},              {Table, Token}}`
              or `{io,{error, attempts_expired},   {Table, Token}}`
-             or `{io,{error, already_registered}, {Table, Token}}`
              or `{io,{error, roster_not_found},   {Table, Token}}`
              or `{io,{error, session_not_found},  {Table, Token}}`
              or `{io,{error, invalid_sms_code},   {Table, Token}}`
