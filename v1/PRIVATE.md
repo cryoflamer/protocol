@@ -69,6 +69,11 @@ Protocol
              to `actions/1/api/:party` once.
 ```
 
+```
+3. server sends `{Contact,_,_,_,_,_,_}`
+             to `actions/1/api/:counterparty` once.
+```
+
 ### Revoke
 
 ```
