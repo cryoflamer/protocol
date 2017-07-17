@@ -19,7 +19,7 @@ Profile has one-to-one linkage to Person and may hold custom data.
 -record('Profile',  {phone=[] :: [] | binary(),
                      data=[] :: [] | binary(),
                      person_id=[] :: [] | binary(),
-                     accounts=[] :: list(integer()),
+                     accounts=[] :: list(integer()) | list(#'Roster'{}),
                      status=[] :: [] | get | set | remove | atom()}).
 ```
 
