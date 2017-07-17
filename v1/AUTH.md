@@ -71,7 +71,7 @@ Protocol
 ### Resend User Confirmation
 
 ```
-1. client sends `{'Auth',_,_,_,Token,_,resend_sms,_,_,_}`
+1. client sends `{'Auth',Token,_,ClientId,Phone,_,resend_sms,_,_,_}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
