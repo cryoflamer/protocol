@@ -82,3 +82,19 @@ Protocol
              or `{io,{error, session_not_found}, {Table, Token}}`
              to `actions/1/api/:client` once.
 ```
+
+### Request Voice Call
+
+```
+1. client sends `{'Auth',Token,_,_,_,_,voice_call,_,_,language_code}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+NOTE! Language code is atom (for example, en, ru).
+
+```
+2. server sends `{io,{ok,    login},             {Table, Token}}`
+             or `{io,{ok,    call_in_progress},  {Table, Token}}`
+             or `{io,{error, session_not_found}, {Table, Token}}`
+             to `actions/1/api/:client` once.
+```
