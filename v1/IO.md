@@ -16,7 +16,7 @@ Tuples
 ```
 
 ```erlang
--record(ok, { code=[] :: [] | binary() }).
+-record(ok, { code=[] :: [] | binary() | {atom(), binary()}}).
 ```
 
 ```erlang
