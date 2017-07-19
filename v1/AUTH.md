@@ -100,11 +100,11 @@ Protocol
 ### Request Voice Call
 
 ```
-1. client sends `{'Auth',Token,_,_,_,_,voice_call,_,_,language_code}`
+1. client sends `{'Auth',Token,_,_,_,_,voice_call,_,_,Services}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
-NOTE! Language code is atom (for example, en, ru).
+NOTE: Services should include language atom. E.g: `[ua,jwt]` or `[en]`.
 
 ```
 2. server sends `{io,{ok,    login},             {Table, Token}}`
