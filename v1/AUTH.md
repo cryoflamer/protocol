@@ -42,16 +42,13 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok,    login},              {Table, Token}}` 
-             or `{io,{ok,    sms_send},           {Table, Token}}` 
-             or `{io,{ok2,   jwt, JwtCode},       {Table, Token}}` 
-             or `{io,{error, sms_send},           {Table, Token}}` 
-             or `{io,{error, not_verified},       {Table, Token}}`
-             or `{io,{error, mismatch_user_data}, {Table, Token}}` 
-             or `{io,{error, session_not_found},  {Table, Token}}` 
-             or `{io,{error, miltiple_devices},   {Table, Token}}` 
+2. server sends `{io, ResultType, {Table, Token}}`
              to `actions/1/api/:client` once.
 ```
+
+Table: atom constant `Auth`
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
+ResultType:
 
 * `{ok,login}` — the session is verified.
 * `{ok,sms_send}` — the verified sms is sent successfully.
@@ -62,6 +59,7 @@ Protocol
 * `{error,session_not_found}` — the session with the token is not found.
 * `{error,miltiple_devices}` — more then one sessions with the same device key is found.
 
+
 ### User Confirmation
 
 ```
@@ -70,16 +68,19 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok,    login},              {Table, Token}}`
-             or `{io,{error, attempts_expired},   {Table, Token}}`
-             or `{io,{error, roster_not_found},   {Table, Token}}` 
-             or `{io,{error, session_not_found},  {Table, Token}}`
-             or `{io,{error, invalid_sms_code},   {Table, Token}}`
+2. server sends `{io, ResultType, {Table, Token}}`
              to `actions/1/api/:client` once.
 ```
 
+Table: atom constant `Auth`
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
+ResultType:
+
 * `{error,attempts_expired}` — the number of attempts is expired
 * `{error,roster_not_found}` — nothing rosters found in the user profile
+* `{ok,login}` — already on the state on sending sms
+* `{error,session_not_found}` — Auth record not found
+* `{error,invalid_sms_code}` — mistyping SMS
 
 ### Resend User Confirmation
 
@@ -97,6 +98,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
+
 ### Request Voice Call
 
 ```
@@ -104,11 +106,17 @@ Protocol
              to `events/1//api/anon/:client/:token` once.
 ```
 
-NOTE: Services should include language atom. E.g: `[ua,jwt]` or `[en]`.
+Services: should include language atom. E.g: `[ua,jwt]` or `[en]`.
 
 ```
-2. server sends `{io,{ok,    login},             {Table, Token}}`
-             or `{io,{ok,    call_in_progress},  {Table, Token}}`
-             or `{io,{error, session_not_found}, {Table, Token}}`
+2. server sends `{io, ResultType, {Table, Token}}`
              to `actions/1/api/:client` once.
 ```
+
+Table: atom constant `Auth`
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
+ResultType:
+
+* `{ok,login}` — already logged in
+* `{ok,call_in_progress}` — call in the air
+* `{error,session_not_found}` — Auth record is not found
