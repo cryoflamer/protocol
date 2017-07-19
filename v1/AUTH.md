@@ -90,13 +90,19 @@ ResultType: <br>
 ```
 
 ```
-2. server sends `{io,{ok,    login},             {Table, Token}}`
-             or `{io,{ok,    sms_send},          {Table, Token}}`
-             or `{io,{error, sms_send},          {Table, Token}}`
-             or `{io,{error, roster_not_found},  {Table, Token}}`
-             or `{io,{error, session_not_found}, {Table, Token}}`
+2. server sends `{io, ResultType, {Table, Token}}`
              to `actions/1/api/:client` once.
 ```
+
+Table: atom constant `Auth` <br>
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>` <br>
+ResultType: <br>
+
+* `{error,roster_not_found}` — nothing rosters found in the user profile
+* `{error,session_not_found}` — Auth record not found
+* `{error,sms_send}` — the verified sms is not sent.
+* `{ok,login}` — already on the state on sending sms
+* `{ok,sms_send}` — the verified sms is sent successfully.
 
 
 ### Request Voice Call
