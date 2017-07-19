@@ -25,7 +25,7 @@ Tuples
 -record(ok2,    {code=[] :: [] | atom(), src=[] :: [] | binary()}).
 ```
 ```erlang
--record(io, { code=[] :: [] | #ok{} | #error{},
+-record(io, { code=[] :: [] | #ok{} | #error{} | #ok2{} | #error2{},
               data=[] :: [] | <<>> | { atom(), binary() | integer() } }).
 ```
 
