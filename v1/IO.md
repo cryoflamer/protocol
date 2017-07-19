@@ -18,7 +18,12 @@ Tuples
 ```erlang
 -record(ok, { code=[] :: [] | binary() | {atom(), binary()}}).
 ```
-
+```erlang
+-record(error2, {code=[] :: [] | atom(), src=[] :: [] | binary()}).
+```
+```erlang
+-record(ok2,    {code=[] :: [] | atom(), src=[] :: [] | binary()}).
+```
 ```erlang
 -record(io, { code=[] :: [] | #ok{} | #error{},
               data=[] :: [] | <<>> | { atom(), binary() | integer() } }).

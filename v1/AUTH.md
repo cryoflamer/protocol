@@ -44,7 +44,7 @@ Protocol
 ```
 2. server sends `{io,{ok,    login},              {Table, Token}}`
              or `{io,{ok,    sms_send},           {Table, Token}}`
-             or `{io,{ok,    {jwt, JwtCode}},     {Table, Token}}`
+             or `{io,{ok2,   jwt, JwtCode}},      {Table, Token}}`
              or `{io,{error, sms_send},           {Table, Token}}`
              or `{io,{error, not_verified},       {Table, Token}}`
              or `{io,{error, mismatch_user_data}, {Table, Token}}`
