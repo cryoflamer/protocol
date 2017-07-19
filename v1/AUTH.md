@@ -37,14 +37,14 @@ Protocol
 ### Auth Issuing / SMS sending
 
 ```
-1. client sends `{'Auth',Token,_,ClientId,Phone,_,Type,_,_,_}`
+1. client sends `{'Auth',Token,_,ClientId,Phone,_,Type,_,_,Services}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io,{ok,    login},              {Table, Token}}` the session is verified.
              or `{io,{ok,    sms_send},           {Table, Token}}` the verified sms is sent successfully.
-             or `{io,{ok2,   jwt, JwtCode}},      {Table, Token}}` the verified jwt code is generated.
+             or `{io,{ok2,   jwt, JwtCode}},      {Table, Token}}` the verified jwt code is generated if Services = [jwt].
              or `{io,{error, sms_send},           {Table, Token}}` verified sms is not sent successfully.
              or `{io,{error, not_verified},       {Table, Token}}` the session is not verified.
              or `{io,{error, mismatch_user_data}, {Table, Token}}` the devkey and the phone are not matched for the session.
