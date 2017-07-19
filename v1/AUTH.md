@@ -40,11 +40,11 @@ session identifier that respawned with clear_session to `false`.
 Also ClientId should resemble all session columns:
 
 ```
-UNIQUE TOKEN   PHONE      DEVKEY  CLIENT    SERVICES
-       12131   3800001122 APPLE1  iOS       [ua]
-       10293   3800000000 NEXUS1  Android   [ua,jwt]
-       10294   3800000001 NEXUS1  Android   [ua,jwt]
-       12323   3800000000 SONY02  Android   [en,jwt]
+UNIQUE TOKEN PHONE      DEVKEY CLIENT  SERVICES
+       12131 3800001122 APPLE1 iOS     [ua]
+       10293 3800000000 NEXUS1 Android [ua,jwt]
+       10294 3800000001 NEXUS1 Android [ua,jwt]
+       12323 3800000000 SONY02 Android [en,jwt]
 ```
 
 Overview
