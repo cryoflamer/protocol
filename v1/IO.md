@@ -32,7 +32,7 @@ Tuples
 Overview
 --------
 
-IO PROTOCOL is intended to transport return codes, JavaScript acctions, Exceptions and other server effects.
+IO PROTOCOL is intended to transport return codes, JavaScript actions, Exceptions and other server effects.
 
 Protocol
 --------

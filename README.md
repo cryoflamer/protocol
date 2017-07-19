@@ -36,6 +36,26 @@ INTRO
 * Messages: Schema Definition
 * Endpoints: Topic Subscriptions (MQTT), WebSockets (WS)
 
+SERVERS
+-------
+
+### Amazon MQTT server ###
+
+```Text
+    URL:  http://34.211.25.163
+    Port: 8000
+    
+```
+
+### Max's MQTT server ###
+
+```Text
+    URL:  http://ns.synrc.com
+    Port: 8000
+
+```
+
+
 URI Components
 --------------
 
