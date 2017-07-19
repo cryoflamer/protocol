@@ -42,14 +42,14 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok,    login},              {Table, Token}}`
-             or `{io,{ok,    sms_send},           {Table, Token}}`
-             or `{io,{ok2,   jwt, JwtCode}},      {Table, Token}}`
-             or `{io,{error, sms_send},           {Table, Token}}`
-             or `{io,{error, not_verified},       {Table, Token}}`
-             or `{io,{error, mismatch_user_data}, {Table, Token}}`
-             or `{io,{error, session_not_found},  {Table, Token}}`
-             or `{io,{error, miltiple_devices},   {Table, Token}}`
+2. server sends `{io,{ok,    login},              {Table, Token}}` the session is verified.
+             or `{io,{ok,    sms_send},           {Table, Token}}` the verified sms is sent successfully.
+             or `{io,{ok2,   jwt, JwtCode}},      {Table, Token}}` the verified jwt code is generated.
+             or `{io,{error, sms_send},           {Table, Token}}` verified sms is not sent successfully.
+             or `{io,{error, not_verified},       {Table, Token}}` the session is not verified.
+             or `{io,{error, mismatch_user_data}, {Table, Token}}` the devkey and the phone are not matched for the session.
+             or `{io,{error, session_not_found},  {Table, Token}}` the session with the token is not found.
+             or `{io,{error, miltiple_devices},   {Table, Token}}` more then one sessions with the same device key is found.
              to `actions/1/api/:client` once.
 ```
 
@@ -62,8 +62,8 @@ Protocol
 
 ```
 2. server sends `{io,{ok,    login},              {Table, Token}}`
-             or `{io,{error, attempts_expired},   {Table, Token}}`
-             or `{io,{error, roster_not_found},   {Table, Token}}`
+             or `{io,{error, attempts_expired},   {Table, Token}}` the number of attempts is expired
+             or `{io,{error, roster_not_found},   {Table, Token}}` nothing rosters found in the user prfile
              or `{io,{error, session_not_found},  {Table, Token}}`
              or `{io,{error, invalid_sms_code},   {Table, Token}}`
              to `actions/1/api/:client` once.
