@@ -46,9 +46,9 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-Table: atom constant `Auth`
-Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
-ResultType:
+Table: atom constant `Auth` <br>
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>` <br>
+ResultType: <br>
 
 * `{ok,login}` — the session is verified.
 * `{ok,sms_send}` — the verified sms is sent successfully.
@@ -72,9 +72,9 @@ ResultType:
              to `actions/1/api/:client` once.
 ```
 
-Table: atom constant `Auth`
-Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
-ResultType:
+Table: atom constant `Auth` <br>
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>` <br>
+ResultType: <br>
 
 * `{error,attempts_expired}` — the number of attempts is expired
 * `{error,roster_not_found}` — nothing rosters found in the user profile
@@ -113,9 +113,9 @@ Services: should include language atom. E.g: `[ua,jwt]` or `[en]`.
              to `actions/1/api/:client` once.
 ```
 
-Table: atom constant `Auth`
-Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>`
-ResultType:
+Table: atom constant `Auth` <br>
+Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>` <br>
+ResultType: <br>
 
 * `{ok,login}` — already logged in
 * `{ok,call_in_progress}` — call in the air
