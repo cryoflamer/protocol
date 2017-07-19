@@ -23,7 +23,7 @@ Auth tuple represents token storage instances.
                      type=[] :: [] | atom(),
                      sms_code=[] :: [] | binary(),
                      attempts=[] :: [] | integer(),
-                     services=[] :: list()}).
+                     services=[] :: list(atom())}).
 ```
 
 Overview
@@ -52,7 +52,7 @@ ResultType: <br>
 
 * `{ok,login}` — the session is verified.
 * `{ok,sms_send}` — the verified sms is sent successfully.
-* `{ok2,jwt,Code}` — the verified jwt code is generated if Services = [jwt].
+* `{ok2,jwt,Code}` — the verified jwt code is generated if was requested with `jwt` in Services.
 * `{error,sms_send}` — verified sms is not sent successfully.
 * `{error,not_verified}` —  the session is not verified.
 * `{error,mismatch_user_data}` — the devkey and the phone are not matched for the session.
