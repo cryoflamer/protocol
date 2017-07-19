@@ -89,7 +89,8 @@ Protocol
 ```
 
 ```
-2. server sends `{io,{ok,    sms_send},          {Table, Token}}`
+2. server sends `{io,{ok,    login},             {Table, Token}}`
+             or `{io,{ok,    sms_send},          {Table, Token}}`
              or `{io,{error, sms_send},          {Table, Token}}`
              or `{io,{error, roster_not_found},  {Table, Token}}`
              or `{io,{error, session_not_found}, {Table, Token}}`
