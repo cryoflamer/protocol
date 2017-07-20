@@ -125,7 +125,7 @@ Protocol
 2. server sends `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{ok,added},<<>>}`
-             or `{io,{ok,{already_present,_}},<<>>}`
+             or `{io,{ok2, already_present,_},<<>>}`
              to `actions/1/api/:client` once.
 ```
 
