@@ -23,7 +23,9 @@ Auth tuple represents token storage instances.
                      type=[] :: [] | atom(),
                      sms_code=[] :: [] | binary(),
                      attempts=[] :: [] | integer(),
-                     services=[] :: list(atom())}).
+                     services=[] :: list(atom()),
+                     created = [] :: [] | integer() | binary(),
+                     last_online = [] :: [] | integer() | binary()}).
 ```
 
 AUTH model represents distinct non-duplicating 10-tuples with
@@ -58,7 +60,7 @@ Protocol
 ### Auth Issuing / SMS sending
 
 ```
-1. client sends `{'Auth',Token,_,ClientId,Phone,_,Type,_,_,Services}`
+1. client sends `{'Auth',Token,_,ClientId,Phone,_,Type,_,_,Services,_,_}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
@@ -84,7 +86,7 @@ ResultType: <br>
 ### User Confirmation
 
 ```
-1. client sends `{'Auth',Token,_,ClientId,Phone,_,verify,SMS,_,_}`
+1. client sends `{'Auth',Token,_,ClientId,Phone,_,verify,SMS,_,_,_,_}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
@@ -106,7 +108,7 @@ ResultType: <br>
 ### Resend User Confirmation
 
 ```
-1. client sends `{'Auth',Token,_,ClientId,Phone,_,resend_sms,_,_,_}`
+1. client sends `{'Auth',Token,_,ClientId,Phone,_,resend_sms,_,_,_,_,_}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
@@ -129,7 +131,7 @@ ResultType: <br>
 ### Request Voice Call
 
 ```
-1. client sends `{'Auth',Token,_,_,_,_,voice_call,_,_,Services}`
+1. client sends `{'Auth',Token,_,_,_,_,voice_call,_,_,Services,_,_}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
