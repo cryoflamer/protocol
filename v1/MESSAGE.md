@@ -10,7 +10,7 @@ Endpoints
 * `p2p/:from_phone_id/:to_phone_id` — MQTT
 * `p2p/:from_phone_id` — MQTT
 * `p2p/:from_phone_id/to_phone_id/:client` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -62,7 +62,7 @@ Protocol
 
 ```
 1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,client}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
@@ -80,7 +80,7 @@ Protocol
 ### P2P Read/Unread
 ```
 1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,_,_,_,last_read}` drops unread_counter
-             to `events/1/:node/api/anon/:client/:token` once and marks message as read.
+             to `events/1//api/anon/:client/:token` once and marks message as read.
 
 2. server sends `{'History',FromId,ToId,0,_,['Message'{} = LastMsg],last_msg}`
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
@@ -91,7 +91,7 @@ Protocol
 ```
 1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,SeenBy,EditMsgId,edit}`
             SeenBy is `-1` if message removed or `0` if seen by all or `1` if seen by only `from` user or `2` if seen by only `to` user
-             to `events/1/:node/api/anon/:client/:token` once and marks message as read.
+             to `events/1//api/anon/:client/:token` once and marks message as read.
 
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,edit}`
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
@@ -106,7 +106,7 @@ Protocol
 1. client sends `{'History',Id,Contact,_,LastLoadedMsgId,_,update}`
             where LastLoadedMsgId is message from where history has been loaded for the session.
              If LastLoadedMsgId is empty or 0 then the all history must be pulled for the session
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
