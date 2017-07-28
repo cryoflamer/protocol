@@ -102,15 +102,17 @@ Protocol
 ### Retrieve History
 
 ```
-1. client sends `{'History',Id,Contact,_,LastLoadedMsgId,_,update}` where LastLoadedMsgId is message from where history has been loaded for the session.
+1. client sends `{'History',Id,Contact,_,LastLoadedMsgId,_,update}`
+            where LastLoadedMsgId is message from where history has been loaded for the session.
              If LastLoadedMsgId is empty or 0 then the all history must be pulled for the session
              to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'History',Id,Contact,_,NewLastLoadedMsgId,Messages,update}` where NewLastLoadedMsgId is the new last retreived message id for the session.
-             Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
+2. server sends `{'History',Id,Contact,_,NewLastLoadedMsgId,Messages,update}`
+        where NewLastLoadedMsgId is the new last retreived message id for the session.
+          Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
              to `actions/1/api/:client` once or more.
           sends `{'History',Id,_,LastLoadedMsgId,[], last_loaded}` where
-             to `p2p/:from_phone_id/to_phone_id/:client` as retain.
+             to `p2p/:to_phone_id/:from_phone_id/:client` as retain.
 ```
