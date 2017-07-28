@@ -92,9 +92,9 @@ Protocol
             SeenBy is `-1` if message removed or `0` if seen by all or `1` if seen by only `from` user or `2` if seen by only `to` user
              to `events/1/:node/api/anon/:client/:token` once and marks message as read.
 
-2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,EditStatus}`
+2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,edit}`
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
-             sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,EditStatus}`
+             sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,edit}`
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
 ```
 
