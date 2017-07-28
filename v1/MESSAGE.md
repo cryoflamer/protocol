@@ -7,6 +7,8 @@ Endpoints
 --------
 
 * `actions/1/api/:phone` — MQTT
+* `p2p/:from_phone_id/:to_phone_id` — MQTT
+* `p2p/:from_phone_id/to_phone_id/:client` — MQTT
 * `events/1/:node/api/anon/:client/:token` — MQTT
 
 Tuples
@@ -44,7 +46,7 @@ Tuples
                      mime = [],
                      seen_by = [],
                      edit_msg = [] :: [] | integer(),
-                     status = [] :: [] | atom()}).
+                     status = [] :: [] | atom() | client | sent | internal | last_read | edit}).
 ```
 Overview
 --------
@@ -54,69 +56,40 @@ MESSAGE API deliver messages.
 Protocol
 --------
 
-### Sending Message
+### Sending P2P Message
+
 
 ```
-1. client sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
+1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,client}`
              to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `<<>>` to `actions/api/:client` issuer and
-          sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
-             to `actions/1/api/:client` counterparty.
-```
-
-### Retrieve History
-
-```
-1. client sends `{'History',Id,Contact,LastLoadedMsgId,_,_}` where LastLoadedMsgId is message from where history has been loaded for the session. If LastLoadedMsgId is empty or 0 then the all history must be pulled for the session
-             to `events/1/:node/api/anon/:client/:token` once.
-```
-
-```
-2. server sends `{'History',Id,Contact,NewLastLoadedMsgId,Messages,_}` where NewLastLoadedMsgId is the new last retreived message id for the session. Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
-             to `actions/1/api/:client` once or more.
-          sends `{'History',Id,_,LastLoadedMsgId,[],_}` where
-             to `p2p/:from_phone_id/to_phone_id/:client` as retain.
-```
-
-### P2P
-
-* `actions/1/api/:phone` — MQTT
-* `p2p/:from_phone_id/:to_phone_id` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
-
-```
-1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,_}`
-             to `events/1/:node/api/anon/:client/:token` once.
-```
-
-```
-2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,_}`
+2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
-             sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,_}`
+             sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
-             sends `{'History',FromId(?),ToId(?),0,_,[LastMsg],_}` where LastMsg - #'Message'{} - last sent message
+             sends `{'History',FromId(?),ToId(?),0,_,[LastMsg],last_msg}` where LastMsg - #'Message'{} - last sent message
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
-             sends `{'History',ToId(?),FromId(?),Unread+1,_,[LastMsg],_}` where LastMsg - #'Message'{} - last sent message
+             sends `{'History',ToId(?),FromId(?),Unread+1,_,[LastMsg],last_msg}` where LastMsg - #'Message'{} - last sent message
                 to `p2p/:from_phone_id/:to_phone_id` as retain.
 
 ```
 
 ### P2P Read/Unread
 ```
-1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,_,_,_,last_read}`
+1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,_,_,_,last_read}` drops unread_counter
              to `events/1/:node/api/anon/:client/:token` once and marks message as read.
 
-2. server sends `{'History',FromId,ToId,0,_,[LastMsg],_}`
+2. server sends `{'History',FromId,ToId,0,_,[LastMsg],last_msg}`
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
 ```
 
 ### P2P Edit/Remove Message
 
 ```
-1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,SeenBy,EditMsgId,EditStatus}`
+1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,SeenBy,EditMsgId,edit}`
+            SeenBy is `-1` if message removed or `0` if seen by all or `1` if seen by only `from` user or `2` if seen by only `to` user
              to `events/1/:node/api/anon/:client/:token` once and marks message as read.
 
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,EditStatus}`
@@ -125,3 +98,19 @@ Protocol
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
 ```
 
+
+### Retrieve History
+
+```
+1. client sends `{'History',Id,Contact,_,LastLoadedMsgId,_,update}` where LastLoadedMsgId is message from where history has been loaded for the session.
+             If LastLoadedMsgId is empty or 0 then the all history must be pulled for the session
+             to `events/1/:node/api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'History',Id,Contact,_,NewLastLoadedMsgId,Messages,update}` where NewLastLoadedMsgId is the new last retreived message id for the session.
+             Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
+             to `actions/1/api/:client` once or more.
+          sends `{'History',Id,_,LastLoadedMsgId,[],_}` where
+             to `p2p/:from_phone_id/to_phone_id/:client` as retain.
+```
