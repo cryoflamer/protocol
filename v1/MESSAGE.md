@@ -46,7 +46,7 @@ Tuples
                      mime = [],
                      seen_by = [],
                      edit_msg = [] :: [] | integer(),
-                     status = [] :: [] | atom() | client | sent | internal | last_read | edit}).
+                     status = [] :: [] | atom() | client | sent | offline| online | internal | last_read | edit}).
 ```
 Overview
 --------
