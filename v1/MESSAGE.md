@@ -75,7 +75,7 @@ Protocol
 ```
 
 ```
-2. server sends `{'History',Id,Contact,FromMsgId,Messages,_}` where FromMsgId is new last retreived message id for the session
+2. server sends `{'History',Id,Contact,NewLastLoadedMsgId,Messages,_}` where NewLastLoadedMsgId is the new last retreived message id for the session. Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
              to `actions/1/api/:client` once or more.
           sends `{'History',Id,_,LastLoadedMsgId,[],_}` where
              to `p2p/:from_phone_id/to_phone_id/:client` as retain.
