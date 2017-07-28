@@ -47,6 +47,11 @@ Protocol
              to `events/1/:node/api/anon/:client/:token` once.
 ```
 
+For Example:
+```
+ {'Friend', [], 1, «"2_2"», simple}
+```
+
 ```
 2. server sends `<<>>`
              or `{io,{error,roster_not_found},<<>>}`
@@ -59,6 +64,11 @@ Protocol
 ```
 1. client sends `{'Confirm',Id,UserId,FriendId,Status}`
              to `events/1/:node/api/anon/:client/:token` once.
+```
+
+For Example:
+```
+ {'Confirm', [], 2, «"1_1"», confirm}
 ```
 
 ```
