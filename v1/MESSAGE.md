@@ -31,7 +31,7 @@ Tuples
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
                      container=Container :: atom(),
-                     feed_id=[] :: term(),
+                     feed_id=[] :: term() | {p2p, binary(), binary()},
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
                      feeds=[] :: list(),
@@ -69,9 +69,9 @@ Protocol
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
              sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
-             sends `{'History',FromId(?),ToId(?),0,_,[LastMsg],last_msg}` where LastMsg - #'Message'{} - last sent message
+             sends `{'History',FromId(?),ToId(?),0,_,[#'Message'{} = LastMsg],last_msg}` where LastMsg - last sent message
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
-             sends `{'History',ToId(?),FromId(?),Unread+1,_,[LastMsg],last_msg}` where LastMsg - #'Message'{} - last sent message
+             sends `{'History',ToId(?),FromId(?),Unread+1,_,[#'Message'{} = LastMsg],last_msg}` where LastMsg - last sent message
                 to `p2p/:from_phone_id/:to_phone_id` as retain.
 
 ```
@@ -81,7 +81,7 @@ Protocol
 1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,_,_,_,last_read}` drops unread_counter
              to `events/1/:node/api/anon/:client/:token` once and marks message as read.
 
-2. server sends `{'History',FromId,ToId,0,_,[LastMsg],last_msg}`
+2. server sends `{'History',FromId,ToId,0,_,['Message'{} = LastMsg],last_msg}`
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
 ```
 
