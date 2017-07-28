@@ -98,9 +98,9 @@ Protocol
              sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,_}`
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
             server sends `{'History',FromId,ToId,0,_,[LastMsg],_}`
-                to `p2p/:from_phone_id/:to_phone_id` as retain.
-            server sends `{'History',ToId,FromId,Unread+1,_,[LastMsg],_}`
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
+            server sends `{'History',ToId,FromId,Unread+1,_,[LastMsg],_}`
+                to `p2p/:from_phone_id/:to_phone_id` as retain.
 
 ```
 
