@@ -6,7 +6,7 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/api/:phone` — MQTT
+* `actions/1/api/phone/:phone` — MQTT
 * `p2p/:from_phone_id/:to_phone_id` — MQTT
 * `p2p/:from_phone_id/to_phone_id/:client` — MQTT
 * `events/1/:node/api/anon/:client/:token` — MQTT
@@ -68,7 +68,7 @@ Protocol
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
              sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
-                to `actions/1/api/:from_phone` issuer to all "from" sessions.
+                to `actions/1/api/phone/:from_phone` issuer to all `from` sessions.
              sends `{'History',FromId(?),ToId(?),0,_,[#'Message'{} = LastMsg],last_msg}` where LastMsg - last sent message
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
              sends `{'History',ToId(?),FromId(?),Unread+1,_,[#'Message'{} = LastMsg],last_msg}` where LastMsg - last sent message
@@ -95,7 +95,7 @@ Protocol
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,edit}`
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
              sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,SeenBy,EditMsgId,edit}`
-                to `actions/1/api/:from_phone` issuer to all "from" sessions.
+                to `actions/1/api/phone/:from_phone` issuer to all "from" sessions.
 ```
 
 
@@ -112,7 +112,7 @@ Protocol
 2. server sends `{'History',Id,Contact,_,NewLastLoadedMsgId,Messages,update}`
         where NewLastLoadedMsgId is the new last retreived message id for the session.
           Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
-             to `actions/1/api/:client` once or more.
+             to `actions/1/api/phone/:client` once or more.
           sends `{'History',Id,Contact,_,LastLoadedMsgId,[], last_loaded}` where
              to `p2p/:to_phone_id/:from_phone_id/:client` as retain.
 ```

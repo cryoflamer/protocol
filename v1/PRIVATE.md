@@ -6,7 +6,7 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 ---------
 
-* `actions/1/api/:phone` — MQTT
+* `actions/1/api/phone/:phone` — MQTT
 * `events/1/:node/api/anon/:client/:token` — MQTT
 
 Tuples
@@ -56,7 +56,7 @@ For Example:
 2. server sends `<<>>`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:party` once.
+             to `actions/1/api/phone/:party` once.
 ```
 
 ### Confirmation / Authorization
@@ -76,12 +76,12 @@ For Example:
              or `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/:party` once.
+             to `actions/1/api/phone/:party` once.
 ```
 
 ```
 3. server sends `{Contact,_,_,_,_,_,_}`
-             to `actions/1/api/:counterparty` once.
+             to `actions/1/api/phone/:counterparty` once.
 ```
 
 ### Revoke
@@ -93,5 +93,5 @@ For Example:
 
 ```
 2. server sends `{'Revoke',Id,User,Status}`
-             to `actions/1/api/:party` once.
+             to `actions/1/api/phone/:party` once.
 ```
