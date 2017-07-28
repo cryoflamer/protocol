@@ -106,11 +106,11 @@ Protocol
 
 ### P2P Read/Unread
 ```
-1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,last_read}`
+1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,_,_,_,last_read}`
              to `events/1/:node/api/anon/:client/:token` once and marks message as read.
 
 2. server sends `{'History',FromId,ToId,0,_,[LastMsg],_}`
-                to `p2p/:from_phone_id/:to_phone_id` as retain.
+                to `p2p/:to_phone_id/:from_phone_id` as retain.
 ```
 
 ### P2P Edit/Remove Message
