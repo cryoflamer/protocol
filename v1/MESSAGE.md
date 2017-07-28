@@ -8,6 +8,7 @@ Endpoints
 
 * `actions/1/api/phone/:phone` — MQTT
 * `p2p/:from_phone_id/:to_phone_id` — MQTT
+* `p2p/:from_phone_id` — MQTT
 * `p2p/:from_phone_id/to_phone_id/:client` — MQTT
 * `events/1/:node/api/anon/:client/:token` — MQTT
 
@@ -115,4 +116,12 @@ Protocol
              to `actions/1/api/phone/:client` once or more.
           sends `{'History',Id,Contact,_,LastLoadedMsgId,[], last_loaded}` where
              to `p2p/:to_phone_id/:from_phone_id/:client` as retain.
+```
+
+### Presence Messages
+
+```
+1. server sends `{'Message',_,_,_,_,_,_,_,PhoneId,_,_,Created,_,_,_,_,_,Status}`
+        where Status is `online` by login or `offline` by disconnect
+             to `p2p/:phone_id`
 ```
