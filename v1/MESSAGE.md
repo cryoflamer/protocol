@@ -70,7 +70,7 @@ Protocol
 ### Retrieve History
 
 ```
-1. client sends `{'History',Id,Contact,_,_,_,_}` where FromMsgId is the last retreived message id. If FromMsgId is empty then the all history must be pulled for the session
+1. client sends `{'History',Id,Contact,LastLoadedMsgId,_,_}` where LastLoadedMsgId is message from where history has been loaded for the session. If LastLoadedMsgId is empty or 0 then the all history must be pulled for the session
              to `events/1/:node/api/anon/:client/:token` once.
 ```
 
@@ -97,9 +97,9 @@ Protocol
                 to `p2p/:from_phone_id/:to_phone_id` counterparty.
              sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,_}`
                 to `actions/1/api/:from_phone` issuer to all "from" sessions.
-            server sends `{'History',FromId,ToId,0,_,[LastMsg],_}`
+             sends `{'History',FromId(?),ToId(?),0,_,[LastMsg],_}` where LastMsg - #'Message'{} - last sent message
                 to `p2p/:to_phone_id/:from_phone_id` as retain.
-            server sends `{'History',ToId,FromId,Unread+1,_,[LastMsg],_}`
+             sends `{'History',ToId(?),FromId(?),Unread+1,_,[LastMsg],_}` where LastMsg - #'Message'{} - last sent message
                 to `p2p/:from_phone_id/:to_phone_id` as retain.
 
 ```
