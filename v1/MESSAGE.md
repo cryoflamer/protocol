@@ -25,7 +25,7 @@ Tuples
                      unread_counter = 0 :: integer(),
                      last_loaded_msg_id :: [] | integer() | binary(),
                      data=[] :: list(#'Message'{}),
-                     status=[] :: atom() | []}).
+                     status=[] :: atom() | updated | last_loaded | last_msg}).
 ```
 
 ```erlang
@@ -111,6 +111,6 @@ Protocol
 2. server sends `{'History',Id,Contact,_,NewLastLoadedMsgId,Messages,update}` where NewLastLoadedMsgId is the new last retreived message id for the session.
              Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
              to `actions/1/api/:client` once or more.
-          sends `{'History',Id,_,LastLoadedMsgId,[],_}` where
+          sends `{'History',Id,_,LastLoadedMsgId,[], last_loaded}` where
              to `p2p/:from_phone_id/to_phone_id/:client` as retain.
 ```
