@@ -7,7 +7,7 @@ Endpoints
 ---------
 
 * `actions/1/api/:client` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -20,6 +20,7 @@ Profile has one-to-one linkage to Person and may hold custom data.
                      data=[] :: [] | binary(),
                      person_id=[] :: [] | binary(),
                      accounts=[] :: list(integer() | #'Roster'{}),
+                     update=[] :: [] | integer(),
                      status=[] :: [] | get | set | remove | atom()}).
 ```
 
@@ -34,12 +35,25 @@ Protocol
 ### GET PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,get}`
-             to `events/1/:node/api/anon/:client/:token` once.
+1. client sends `{'Profile',Phone,_,_,_,_,get}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,_}`
+2. server sends `{'Profile',Phone,_,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/1/api/:client` once.
+```
+
+### UPDATE PROFILE
+
+```
+1. client sends `{'Profile',Phone,_,_,_,UpdateTime,update}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,update}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
@@ -47,12 +61,12 @@ Protocol
 ### SET PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,set}`
-             to `events/1/:node/api/anon/:client/:token` once.
+1. client sends `{'Profile',Phone,_,_,_,_,set}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,_}`
+2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,update}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
@@ -60,12 +74,12 @@ Protocol
 ### REMOVE PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,remove}`
-             to `events/1/:node/api/anon/:client/:token` once.
+1. client sends `{'Profile',Phone,_,_,_,_,remove}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,_}`
+2. server sends `{'Profile',Phone,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
