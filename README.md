@@ -79,6 +79,7 @@ Sub Protocols
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 7
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
+* [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
 
 Payloads
 --------
