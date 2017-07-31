@@ -65,7 +65,7 @@ Protocol
 ```
 
 ```
-2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_}`
+2. server sends `{'Roster,_,_,_,_,UserList,_,_,_,_,_,_}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
