@@ -7,7 +7,7 @@ Endpoints
 --------
 
 * `actions/1/api/:client` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -44,7 +44,7 @@ Protocol
 
 ```
 1. client sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,get}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
@@ -56,7 +56,7 @@ Protocol
 
 ```
 1. client sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,set}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```

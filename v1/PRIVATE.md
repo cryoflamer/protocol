@@ -7,7 +7,7 @@ Endpoints
 ---------
 
 * `actions/1/api/phone/:phone` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -16,14 +16,14 @@ Tuples
 -record('Friend',   {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | simple | atom()}).
+                     status=[] :: [] | simple | list | atom()}).
 ```
 
 ```erlang
 -record('Confirm',  {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | roster | atom()}).
+                     status=[] :: [] | roster | friend | atom()}).
 ```
 
 ```erlang
@@ -44,7 +44,7 @@ Protocol
 
 ```
 1. client sends `{'Friend',Id,UserId,FriendId,Status}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 For Example:
@@ -56,19 +56,19 @@ For Example:
 2. server sends `<<>>`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/phone/:party` once.
+             to `actions/1/api/phone/:party_phone` once.
 ```
 
 ### Confirmation / Authorization
 
 ```
 1. client sends `{'Confirm',Id,UserId,FriendId,Status}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 For Example:
 ```
- {'Confirm', [], 2, «"1_1"», confirm}
+ {'Confirm', [], 2, «"1_1"», friend}
 ```
 
 ```
@@ -76,19 +76,20 @@ For Example:
              or `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
-             to `actions/1/api/phone/:party` once.
+             to `actions/1/api/phone/:party_phone` once.
 ```
 
-```
-3. server sends `{Contact,_,_,_,_,_,_}`
-             to `actions/1/api/phone/:counterparty` once.
-```
+3.  server sends `{Contact,Party_phone,_,_,_,_,NewUpdateTime,_}`
+                to `actions/1/api/phone/:counterparty_phone`
+            and `{Contact,ConterParty_phone,_,_,_,_,NewUpdateTime,_}`
+                to `actions/1/api/phone/:party_phone`  once.
+   ```
 
 ### Revoke
 
 ```
 1. client sends `{'Revoke',Id,User,Status}`
-             to `events/1/:node/api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
