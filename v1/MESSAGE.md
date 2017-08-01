@@ -113,9 +113,7 @@ Protocol
 2. server sends `{'History',Id,Contact,NewLastLoadedMsgId,Messages,update}`
         where NewLastLoadedMsgId is the new last retreived message id for the session.
           Messages are exectly from LastLoadedMsgId to NewLastLoadedMsgId
-             to `actions/1/api/phone/:client` once or more.
-          sends `{'History',Id,Contact,_,LastLoadedMsgId,[], last_loaded}` where
-             to `p2p/:to_phone_id/:from_phone_id/:client` as retain.
+             to `actions/1/api/:client` once or more.
 ```
 
 ### Presence Messages
