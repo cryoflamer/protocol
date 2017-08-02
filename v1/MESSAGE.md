@@ -30,7 +30,7 @@ Tuples
 
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
-                     container=Container :: atom(),
+                     container = chain,
                      feed_id=[] :: term() | {p2p, binary(), binary()},
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
