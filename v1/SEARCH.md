@@ -16,7 +16,7 @@ Tuples
 
 ```
 -record('Search',   {id = [] :: [] | integer(),
-                     phone = [] :: [] | binary(),
+                     phone = [] :: [] | list(binary()),
                      names = [] :: [] | binary(),
                      surnames = [] :: [] | binary(),
                      query = [] :: [] | binary(),
