@@ -43,11 +43,16 @@ Tuples
                      created = [] :: [] | integer() | binary(),
                      access = [] :: [],
                      starred = [] :: [],
-                     payload = <<>> :: [] | binary(),
-                     mime = [],
+                     files = [] :: [] | list(#'Desc{}),
                      seen_by = [],
                      edit_msg = [] :: [] | integer(),
                      status = [] :: [] | atom() | client | sent | offline| online | internal | last_read | edit}).
+```
+
+```erlang
+-record('Desc',     {mime = [] :: [] | binary(),
+                     payload = [] :: [] | binary() }).
+
 ```
 Overview
 --------
