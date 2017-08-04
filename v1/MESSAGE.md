@@ -42,7 +42,7 @@ Tuples
                      created = [] :: [] | integer() | binary(),
                      access = [] :: [],
                      starred = [] :: [],
-                     files = [] :: [] | list(#'Desc{}),
+                     files = [] :: [] | list(#'Desc'{}),
                      seen_by = [],
                      edit_msg = [] :: [] | integer(),
                      status = [] :: [] | atom() | client | sent | offline
