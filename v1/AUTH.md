@@ -34,7 +34,7 @@ single unique key=token which represent session identifier.
 Client Id
 ---------
 
-* ClientId = `"3800000001_NEXUS1_Android_ua"`
+* ClientId = `"emqttd_3800000001_NEXUS1_Android_ua"`
 
 ClientId resembles all tuple fields to represent a unique
 row indexed naturally by token. ClientId is an unique MQTT
@@ -74,6 +74,7 @@ Token: binary string like: `<<"1fcac6caea64dd55d2cba",_/binary>>` <br>
 ResultType: <br>
 
 * `{ok,login}` — the session is verified.
+* `{'Profile',Phone,_,_,_,LastUpdate,update}` - server sends after `{ok,login}` if last profile update time later then last online time for the session.
 * `{ok,sms_send}` — the verified sms is sent successfully.
 * `{ok2,jwt,Code}` — the verified jwt code is generated if was requested with `jwt` in Services.
 * `{error,sms_send}` — verified sms is not sent successfully.
@@ -149,3 +150,6 @@ ResultType: <br>
 * `{ok,login}` — already logged in
 * `{ok,call_in_progress}` — call in the air
 * `{error,session_not_found}` — Auth record is not found
+
+### AUTOUPDATE PROFILE
+

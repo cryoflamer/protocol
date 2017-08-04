@@ -16,14 +16,15 @@ Tuples
 
 ```
 -record('Search',   {id = [] :: [] | integer(),
-                     phone = [] :: [] | binary(),
+                     phone = [] :: [] | list(binary()),
                      names = [] :: [] | binary(),
                      surnames = [] :: [] | binary(),
                      query = [] :: [] | binary(),
-                     status = [] :: [] | req | atom()}).
+                     status = [] :: [] | contact | atom()}).
 ```
 
 ```erlang
+
 -record('Roster',   {id=[] :: [] | integer(),
                      names=[] :: [] | binary(),
                      surnames=[] :: [] | binary(),
@@ -34,7 +35,7 @@ Tuples
                      phone=[] :: [] | binary(),
                      avatar=[] :: [] | binary(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | get | update | set | remove | create | del | add | list | atom()}).
+                     status=[] :: [] | get | update | set | remove | create | del | add | list | last_msg | atom()}).
 ```
 
 ```erlang
@@ -45,7 +46,7 @@ Tuples
                      person_id=[] :: [] | binary(),
                      unread=[] :: [] | integer(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | request | authorization | friend | ban | banned | atom()}).
+                     status=[] :: [] | request | authorization | friend | last_msg | ban | banned | atom()}).
 ```
 
 Overview
@@ -60,12 +61,13 @@ Protocol
 ### SEARCH ROSTERS
 
 ```
-1. client sends `{'Search,_,"380",_,_,[],simple}`
+1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Roster,_,_,_,_,UserList,_,_,_,_,_,_}`
+2. server sends `{'Roster,RosterId,_,_,_,UserList,_,_,_,_,_,_}`
+             or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
