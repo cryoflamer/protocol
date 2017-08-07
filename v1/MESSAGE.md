@@ -54,6 +54,14 @@ Tuples
                      payload = [] :: [] | binary() }).
 
 ```
+
+```erlang
+-record('Cursor',   {phone = [] :: [] | binary(),
+                     roster = [] :: [] | integer(),
+                     position = [] :: [] | integer() }).
+
+```
+
 Overview
 --------
 

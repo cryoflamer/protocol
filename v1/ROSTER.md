@@ -40,6 +40,7 @@ Phone or Profile or Device.
                      unread=[] :: [] | integer(),
                      last_msg=[] :: [] | #'Message'{},
                      update=[] :: [] | integer(),
+                     presence=[] :: [] | online | offline | atom(),
                      status=[] :: [] | request | authorization | friend | last_msg | ban | banned | atom()}).
 ```
 
