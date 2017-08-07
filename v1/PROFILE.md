@@ -36,12 +36,12 @@ Protocol
 ### GET PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,_,get}`
+1. client sends `{'Profile',Phone,_,_,_,_,_get}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,_,_}`
+2. server sends `{'Profile',Phone,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
@@ -49,12 +49,12 @@ Protocol
 ### UPDATE PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,UpdateTime,update}`
+1. client sends `{'Profile',Phone,_,_,_,UpdateTime,_,update}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,update}`
+2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,_,update}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
@@ -62,12 +62,12 @@ Protocol
 ### SET PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,_,set}`
+1. client sends `{'Profile',Phone,_,_,_,_,_,set}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,update}`
+2. server sends `{'Profile',Phone,_,_,_,NewUpdateTime,_,update}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
@@ -75,12 +75,12 @@ Protocol
 ### REMOVE PROFILE
 
 ```
-1. client sends `{'Profile',Phone,_,_,_,_,remove}`
+1. client sends `{'Profile',Phone,_,_,_,_,_,remove}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Profile',Phone,_,_,_,_,_}`
+2. server sends `{'Profile',Phone,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
