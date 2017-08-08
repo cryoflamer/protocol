@@ -37,7 +37,7 @@ Phone or Profile or Device.
                      avatar=[] :: [] | binary(),
                      names=[] :: [] | binary(),
                      surnames=[] :: [] | binary(),
-                     person_id=[] :: [] | binary(), # VoxImplant User Id
+                     person_id=[] :: [] | binary(),
                      unread=[] :: [] | integer(),
                      last_msg=[] :: [] | #'Message'{},
                      update=[] :: [] | integer(),
