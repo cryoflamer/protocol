@@ -23,7 +23,7 @@ Tuples
 ```erlang
 -record('History',  {roster_id= [] :: [] | binary(),
                      contact_id=[] :: [] | binary(),
-                     last_loaded_msg_id :: [] | integer() | binary(),
+                     cursor :: [] | integer() | binary(),
                      data=[] :: list(#'Message'{}),
                      status=[] :: atom() | updated | last_loaded | last_msg}).
 ```
