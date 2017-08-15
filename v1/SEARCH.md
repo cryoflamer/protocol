@@ -14,7 +14,7 @@ Tuples
 ------
 
 
-```
+```erlang
 -record('Search',   {id = [] :: [] | integer(),
                      phone = [] :: [] | list(binary()),
                      names = [] :: [] | binary(),
@@ -61,12 +61,12 @@ Protocol
 ### SEARCH ROSTERS
 
 ```
-1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
+1. client sends `{'Search,RosterId,Phones,_,_,[],contact}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Roster,RosterId,_,_,_,UserList,_,_,_,_,_,_}`
+2. server sends `{'Roster,RosterId,_,_,_,UserList,_,_,_,_,_,search}`
              or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
