@@ -13,6 +13,7 @@ Endpoints
 Tuples
 ------
 
+
 ```erlang
 -record('Search',   {id       =[] :: [] | integer(),
                      phone    =[] :: [] | list(binary()),
@@ -35,7 +36,7 @@ Protocol
 ### `Search/contact` — Search Contacts
 
 ```
-1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
+1. client sends `{'Search,RosterId,Phones,_,_,[],contact}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
