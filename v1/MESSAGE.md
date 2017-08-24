@@ -118,11 +118,9 @@ Protocol
 
 ```
 1. client sends `{'History',Id,Contact,MsgId,_,get}`
-           
              to `events/1//api/anon/:client/:token` once.
 
 2. server sends `{'History',Id,Contact,MsgId,Messages,get}`
-
              to `actions/1/api/:client` once or more.
 ```
 
