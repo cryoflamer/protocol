@@ -7,9 +7,6 @@ Endpoints
 --------
 
 * `actions/1/api/phone/:phone` — MQTT
-* `p2p/:from_phone_id/:to_phone_id` — MQTT
-* `p2p/:from_phone_id` — MQTT
-* `p2p/:from_phone_id/to_phone_id/:client` — MQTT
 * `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
