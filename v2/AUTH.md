@@ -105,10 +105,6 @@ In case of error client might want to send resend SMS for alredy registered toke
              to `events/2//api/anon/:client/:token` once.
 ```
 
-ClientId:
-
-* <<"emqttd_",Symbols/binary>> — MQTT persistent session indentifier (clean_session=false)
-
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
              to `actions/2/api/:client` once.
