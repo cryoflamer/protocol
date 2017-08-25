@@ -112,12 +112,12 @@ In case of error client might want to send resend SMS for alredy registered toke
 
 Result:
 
-{ok,login} — Logged in
-{error,session_not_found} — Auth record absent
-{error,mismatch_user_data} — Record is found but wrong
-{error,invalid_sms_code} — Wrong SMS
-{error,invalid_jwt_code} — Wrong SMS if `jwt` in services
-{error,attempts_expired} — Hacker?
+* `{ok,login}` — Logged in
+* `{error,session_not_found}` — Auth record absent
+* `{error,mismatch_user_data}` — Record is found but wrong
+* `{error,invalid_sms_code}` — Wrong SMS
+* `{error,invalid_jwt_code}` — Wrong SMS if `jwt` in services
+* `{error,attempts_expired}` — Hacker?
 
 ### Login
 
