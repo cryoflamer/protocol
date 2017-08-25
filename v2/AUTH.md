@@ -1,7 +1,7 @@
 AUTH: Contact Registration
 ==========================
 
-Version 2.0 Maxim Sokhatsky
+Version 2.0 Maxim Sokhatsky, Liubov Mykhailova
 
 Endpoints
 --------
