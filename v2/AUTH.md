@@ -152,7 +152,7 @@ Result:
 
 Result:
 
-`{ok,logout}` — Logged out
+* `{ok,logout}` — Logged out
 
 ### Invalid Messages
 
