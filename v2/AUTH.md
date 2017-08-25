@@ -92,7 +92,7 @@ Lang:
 
 Result:
 
-* `{ok,sms_sent}` — SMS sent
+* `{ok,call_in_progress}` — Call started
 * `{error,session_not_found}` — Auth record not found
 
 ### Verify
@@ -153,3 +153,16 @@ Result:
 Result:
 
 `{ok,logout}` — Logged out
+
+### Invalid Messages
+
+```
+1. client sends `{'Auth',_,_,_,_,_,_,_,_,_,_,_}`
+             to `events/2//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{io, {error,invalid_data}, {'Auth', Token}}`
+             to `actions/2/api/:client` once.
+```
+
