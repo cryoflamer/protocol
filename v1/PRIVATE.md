@@ -1,5 +1,5 @@
-PRIVATE: P2P Conversations
-==========================
+PRIVATE: Private Conversations
+==============================
 
 Version 1.0 Maxim Sokhatsky
 
@@ -43,13 +43,9 @@ Protocol
 ### Friend Request
 
 ```
-1. client sends `{'Friend',Id,UserId,FriendId,Status}`
+1. client sends `{'Friend',Id,UserId,FriendId,simple}`
+             or `{'Friend',Id,UserId,FriendIds,list}`
              to `events/1//api/anon/:client/:token` once.
-```
-
-For Example:
-```
- {'Friend', [], 1, «"2_2"», simple}
 ```
 
 ```
@@ -62,28 +58,24 @@ For Example:
 ### Confirmation / Authorization
 
 ```
-1. client sends `{'Confirm',Id,UserId,FriendId,Status}`
+1. client sends `{'Confirm',Id,UserId,FriendId,friend}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
-For Example:
 ```
- {'Confirm', [], 2, «"1_1"», friend}
-```
-
-```
-2. server sends `{io,{ok,added},<<>>}`
+2. server sends `<<>>`
              or `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/phone/:party_phone` once.
 ```
 
+```
 3.  server sends `{Contact,Party_phone,_,_,_,_,NewUpdateTime,_}`
-                to `actions/1/api/phone/:counterparty_phone`
-            and `{Contact,ConterParty_phone,_,_,_,_,NewUpdateTime,_}`
-                to `actions/1/api/phone/:party_phone`  once.
-   ```
+              to `actions/1/api/phone/:counterparty_phone`
+             and `{Contact,ConterParty_phone,_,_,_,_,NewUpdateTime,_}`
+              to `actions/1/api/phone/:party_phone` once.
+```
 
 ### Revoke
 
@@ -96,3 +88,4 @@ For Example:
 2. server sends `{'Revoke',Id,User,Status}`
              to `actions/1/api/phone/:party` once.
 ```
+
