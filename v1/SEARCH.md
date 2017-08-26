@@ -62,7 +62,7 @@ message (the search result envelop).
 Protocol
 --------
 
-### SEARCH ROSTERS
+### Search Contacts
 
 ```
 1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
