@@ -116,10 +116,11 @@ Protocol
              or `{io,{ok,removed},<<>>}`
              to `actions/1/api/:client` once.
 ```
+
+```
 3. server sends `{Contact,Phone+Id,_,_,_,_,_,NewUpdateTime,remove}`
                 to `p2p/:phone_id` once.
-   ```
-
+```
 
 ### Create Roster
 
