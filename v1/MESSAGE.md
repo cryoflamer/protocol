@@ -8,8 +8,6 @@ Endpoints
 
 * `actions/1/api/phone/:phone` — MQTT
 * `events/1//api/anon/:client/:token` — MQTT
-* `dev/:phone` — MQTT
-* `phone/:phone` — MQTT
 
 Tuples
 ------
