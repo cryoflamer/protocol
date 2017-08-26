@@ -72,12 +72,12 @@ Sub Protocols
 * [IO](https://github.com/NYNJA-MC/protocol/blob/master/v1/IO.md) — 1
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
-* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v2/AUTH.md) — 4
+* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v2/AUTH.md) — 5
 * [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/v1/PUBLIC.md) — 6
 * [PRIVATE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRIVATE.md) — 4
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
-* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 7
+* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
 
