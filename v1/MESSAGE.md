@@ -67,7 +67,7 @@ MESSAGE API deliver messages.
 Protocol
 --------
 
-### Sending P2P Message
+### Sending Message to Subscribers
 
 
 ```
@@ -83,21 +83,7 @@ Protocol
 
 ```
 
-### P2P Read/Unread
-```
-1. client sends `{'Message',LastReadId,_,_,_,_,_,_,FromPhoneId,
-                  ToPhoneId,_,_,_,_,_,_,_,last_read}` drops unread_counter
-             to `events/1//api/anon/:client/:token` once.
-
-2. server sends `{'Roster',FromId,_,_,_UserList,_,_,Phone,_,_,last_msg}`
-                to `p2p/:to_phone_id/:from_phone_id` once.
-                
-3. server sends `{'Roster',FromId,_,_,_UserList,_,_,Phone,_,_,last_msg}`
-                to `p2p/:to_phone_id/:from_phone_id` once.
-
-```
-
-### P2P Edit/Remove Message
+### Edit/Remove Message
 
 ```
 1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,
