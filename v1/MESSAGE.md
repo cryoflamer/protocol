@@ -67,7 +67,7 @@ MESSAGE API deliver messages.
 Protocol
 --------
 
-### Sending P2P Message
+### Sending Message to Subscribers
 
 
 ```
@@ -83,7 +83,7 @@ Protocol
 
 ```
 
-### P2P Edit/Remove Message
+### Edit/Remove Message
 
 ```
 1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,
