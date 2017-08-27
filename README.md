@@ -81,6 +81,38 @@ Sub Protocols
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
 
+Flat API
+--------
+
+* `Message/client` — Sending Message to Subscribers
+* `Message/edit` — Edit/Remove Message
+* `History/get` — Retrieve History
+* `Cursor/` — Set cursor
+* `Person/get` — Get Person
+* `Person/set` — Set Person
+* `Profile/get` — Profile retrieval
+* `Profile/update` — Profile update
+* `Profile/set` — Profile set
+* `Profile/remove` — Profile remove
+* `Roster/get` — Get Roster
+* `Roster/update` — Update Roster
+* `Roster/set` — Set Roster
+* `Roster/remove` — Remove Roster
+* `Roster/create` — Create Roster
+* `Roster/list` — List Rosters
+* `Roster/add` — Add Roster Contacts
+* `Roster/del` — Delete Roster Contacts
+* `Search/contact` — Search Contacts
+* `Auth/reg` — Registration
+* `Auth/voice` — Voice Call
+* `Auth/resend` — Resend
+* `Auth/verify` — Verify
+* `Auth/login` — Login
+* `Auth/logout` — Logout
+* `Friend/request` — Friendship Request
+* `Friend/confirm` — Confirm friendship
+* `Friend/revoke` — Revoke friendship
+
 Payloads
 --------
 
