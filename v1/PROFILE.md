@@ -33,7 +33,7 @@ ROSTER API manages different accounts with different contact lists.
 Protocol
 --------
 
-### GET PROFILE
+### `Profile/get` — Profile retrieval
 
 ```
 1. client sends `{'Profile',Phone,_,_,_,_,_get}`
@@ -46,7 +46,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### UPDATE PROFILE
+### `Profile/update` — Profile update
 
 ```
 1. client sends `{'Profile',Phone,_,_,_,UpdateTime,_,update}`
@@ -59,7 +59,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### SET PROFILE
+### `Profile/set` — Profile set
 
 ```
 1. client sends `{'Profile',Phone,_,_,_,_,_,set}`
@@ -72,7 +72,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### REMOVE PROFILE
+### `Profile/remove` — Profile remove
 
 ```
 1. client sends `{'Profile',Phone,_,_,_,_,_,remove}`

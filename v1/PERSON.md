@@ -42,7 +42,7 @@ It is also a linking table for external ids, etc.
 Protocol
 --------
 
-### Get Person
+### `Person/get` — Get Person
 
 ```
 1. client sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,get}`
@@ -54,7 +54,7 @@ Protocol
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
-### Set Person
+### `Person/set` — Set Person
 
 ```
 1. client sends `{'Person',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,set}`

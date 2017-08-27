@@ -163,7 +163,7 @@ Result:
 * `{error,session_not_found}` — Auth record is not found
 * `{error,mismatch_user_data}` — Record is found but wrong
 
-### 'Auth/logout' — Logout
+### `Auth/logout` — Logout
 
 ```
 1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[]}`

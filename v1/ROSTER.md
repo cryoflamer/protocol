@@ -56,7 +56,7 @@ ROSTER API manages different accounts with different contact lists.
 Protocol
 --------
 
-### Get Roster
+### `Roster/get` — Get Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,get}`
@@ -70,7 +70,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### Update Roster
+### `Roster/update` — Update Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,[],[],_,_,_,UpdateTime,update}`
@@ -84,7 +84,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### Set Roster
+### `Roster/set` — Set Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,set}`
@@ -102,7 +102,7 @@ Protocol
              to `p2p/:phone_id` once.
 ```
 
-### Remove Roster
+### `Roster/remove` — Remove Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,remove}`
@@ -122,7 +122,7 @@ Protocol
                 to `p2p/:phone_id` once.
 ```
 
-### Create Roster
+### `Roster/create` — Create Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,create}`
@@ -135,7 +135,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### List Rosters
+### `Roster/list` — List Rosters
 
 ```
 1. client sends `{'Roster,_,_,_,_,_,_,_,_,Phone,_,list}`
@@ -148,7 +148,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### Add Roster Contacts
+### `Roster/add` — Add Roster Contacts
 
 ```
 1. client sends `{'Roster,Id,_,_,_,List,_,_,_,_,_,add}`
@@ -163,7 +163,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### Delete Roster Contacts
+### `Roster/del` — Delete Roster Contacts
 
 ```
 1. client sends `{'Roster,Id,_,_,_,List,_,_,_,_,_,del}`
