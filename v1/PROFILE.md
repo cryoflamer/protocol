@@ -33,7 +33,7 @@ ROSTER API manages different accounts with different contact lists.
 Protocol
 --------
 
-### `Profile/get` — Profile retrieval
+### `Profile/get` — Profile retrival
 
 ```
 1. client sends `{'Profile',Phone,_,_,_,_,_get}`

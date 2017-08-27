@@ -90,7 +90,7 @@ Flat API
 * `Cursor/` — Set cursor
 * `Person/get` — Get Person
 * `Person/set` — Set Person
-* `Profile/get` — Profile retrieval
+* `Profile/get` — Profile retrival
 * `Profile/update` — Profile update
 * `Profile/set` — Profile set
 * `Profile/remove` — Profile remove
