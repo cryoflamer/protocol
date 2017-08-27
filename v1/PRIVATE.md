@@ -12,24 +12,30 @@ Endpoints
 Tuples
 ------
 
+### `Friend/simple` — Send friend request
+
 ```erlang
 -record('Friend',   {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | simple | list | atom()}).
+                     status=[] :: [] | simple | list }).
 ```
+
+### `Confirm/friend` — Confirm friend
 
 ```erlang
 -record('Confirm',  {id=[] :: [] | binary(),
                      roster_id = [] :: [] | integer(),
                      friend_id = [] :: [] | binary(),
-                     status=[] :: [] | roster | friend | atom()}).
+                     status=[] :: [] | friend}).
 ```
+
+### `Revoke/friend` — Revoke friend
 
 ```erlang
 -record('Revoke',   {id=[] :: [] | binary(),
                      user=[] :: [] | binary(),
-                     status=[] :: [] | atom()}).
+                     status=[] :: [] | revoke}).
 ```
 
 Overview

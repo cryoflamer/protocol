@@ -18,6 +18,11 @@ Tuples
 ```
 
 ```erlang
+-record(p2p,        {from=[] :: [] | binary(),
+                     to=[] :: [] | binary()}).
+```
+
+```erlang
 -record('History',  {roster_id= [] :: [] | binary(),
                      contact_id=[] :: [] | binary(),
                      cursor :: [] | integer() | binary(),
@@ -67,7 +72,7 @@ MESSAGE API deliver messages.
 Protocol
 --------
 
-### Sending Message to Subscribers
+### `Message/client` — Sending Message to Subscribers
 
 ```
 1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,client}`
@@ -84,7 +89,7 @@ Protocol
                 to `p2p/:FromPhoneId/:ToPhoneId` once.
 ```
 
-### Edit/Remove Message
+### `Message/edit` — Edit/Remove Message
 
 ```
 1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,
@@ -104,7 +109,7 @@ Protocol
              to `actions/1/api/phone/:from_phone` to issuer.
 ```
 
-### Retrieve History
+### `History/get` — Retrieve History
 
 ```
 1. client sends `{'History',Id,Contact,MsgId,_,get}`
@@ -116,3 +121,20 @@ Protocol
              to `actions/1/api/:client` once or more.
 ```
 
+### `Cursor/` — Set cursor
+
+Sets marker to feed for counterparty.
+
+```
+1. client sends `{'Cursor',Feed,Side,Position}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+Feed — `#p2p{}` key of the conversation
+Side — `1` or `2` for counterparty
+Position — id of the message you want cursor to point
+
+```
+2. server sends `{'History',Id,Contact,MsgId,Messages,get}`
+             to `actions/1/api/:client` once or more.
+```
