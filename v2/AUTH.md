@@ -58,7 +58,7 @@ AUTH API is dedicated for process of user registration via external confirmation
 Protocol
 --------
 
-### Registration `Auth/reg`
+### `Auth/reg` — Registration
 
 New clients should send `Auth/reg` registration request before start using the system.
 Server will store the `token` and `client_id` fields of `Auth` record and database
@@ -80,7 +80,7 @@ Result:
 
 * `{ok,sms_sent}` — the genrated SMS code is sent successfully.
 
-### Voice Call `Auth/voice`
+###  `Auth/voice` — Voice Call
 
 The are several channels of verification.
 `Auth/voice` API is dedicated for IVR confirmation.
@@ -104,7 +104,7 @@ Result:
 * `{ok,call_in_progress}` — Call started
 * `{error,session_not_found}` — Auth record not found
 
-### Resend `Auth/resend`
+### `Auth/resend` — Resend
 
 In case of error client might want to send resend SMS for alredy registered token.
 
@@ -123,7 +123,7 @@ Result:
 * `{ok,sms_sent}` — the genrated SMS code is sent successfully.
 * `{error,session_not_found}` — Auth record absent
 
-### Verify `Auth/verify`
+### `Auth/verify` — Verify
 
 ```
 1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[]}`
@@ -145,7 +145,7 @@ Result:
 * `{error,invalid_jwt_code}` — Wrong SMS if `jwt` in services
 * `{error,attempts_expired}` — Hacker?
 
-### Login
+### `Auth/login` — Login
 
 ```
 1. client sends `{'Auth',Token,DevKey,ClientId,Phone,[],login,[],[],[],[],[]}`
@@ -163,7 +163,7 @@ Result:
 * `{error,session_not_found}` — Auth record is not found
 * `{error,mismatch_user_data}` — Record is found but wrong
 
-### Logout
+### 'Auth/logout' — Logout
 
 ```
 1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[]}`
