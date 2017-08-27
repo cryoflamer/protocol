@@ -84,7 +84,7 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### `Roster/set` — Set Roster
+### `Roster/set` or `Roster/patch` — Set Roster
 
 ```
 1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,set}`
