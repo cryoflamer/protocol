@@ -75,6 +75,7 @@ Sub Protocols
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v2/AUTH.md) — 5
 * [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/v1/PUBLIC.md) — 6
 * [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v2/FRIEND.md) — 4
+* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 3
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
