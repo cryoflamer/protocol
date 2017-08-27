@@ -80,7 +80,7 @@ Result:
 
 * `{ok,sms_sent}` — the genrated SMS code is sent successfully.
 
-###  `Auth/voice` — Voice Call
+### `Auth/voice` — Voice Call
 
 The are several channels of verification.
 `Auth/voice` API is dedicated for IVR confirmation.

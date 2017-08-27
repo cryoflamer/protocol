@@ -135,6 +135,6 @@ Side — `1` or `2` for counterparty
 Position — id of the message you want cursor to point
 
 ```
-2. server sends `{'History',Id,Contact,MsgId,Messages,get}`
+2. server sends `{ok2,Feed,Count}`
              to `actions/1/api/:client` once or more.
 ```
