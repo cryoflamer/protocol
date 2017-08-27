@@ -20,7 +20,8 @@ Auth tuple represents token storage instances.
                  user_id=[] :: [] | binary(),
                  phone=[] :: [] | binary(),
                  client_id=[] :: [] | binary(),
-                 type=[] :: reg | resend | voice | verify | login | logout,
+                 type=[] :: reg | resend | voice
+                                | verify | login | logout,
                  sms_code=[] :: [] | binary(),
                  attempts=[] :: [] | integer(),
                  services=[] :: list(atom()),
@@ -37,9 +38,9 @@ Client Id
 `<<"emqttd_",Symbols/binary>>`
 
 ClientId resembles all tuple fields to represent a unique
-row indexed naturally by token. ClientId is an unique MQTT
-session identifier that respawned with clear_session to `false`.
-Also ClientId should resemble all session columns:
+device identifier connected with an given token.
+ClientId is an unique MQTT session identifier that
+respawned with clear_session to `false`.
 
 ```
 TOKEN PHONE      DEVKEY CLIENTID OS      SERVICES
@@ -52,12 +53,17 @@ TOKEN PHONE      DEVKEY CLIENTID OS      SERVICES
 Overview
 --------
 
-AUTH API is dedicated for process of user registration with SMS confirmation.
+AUTH API is dedicated for process of user registration via external confirmation providers.
 
 Protocol
 --------
 
-### Registration
+### Registration `Auth/reg`
+
+New clients should send `Auth/reg` registration request before start using the system.
+Server will store the `token` and `client_id` fields of `Auth` record and database
+and issue a SMS or JWT authentication mechanism. To verify device user then should send
+`Auth/voice` for IVR verification or `Auth/verify` for SMS verification.
 
 ```
 1. client sends `{'Auth',[],[],[],Phone,[],reg,[],[],[],[],[]}`
@@ -74,7 +80,10 @@ Result:
 
 * `{ok,sms_sent}` — the genrated SMS code is sent successfully.
 
-### Voice Call
+### Voice Call `Auth/voice`
+
+The are several channels of verification.
+`Auth/voice` API is dedicated for IVR confirmation.
 
 ```
 1. client sends `{'Auth',Token,[],[],[],[],voice,[],[],[Lang],[],[]}`
@@ -95,9 +104,26 @@ Result:
 * `{ok,call_in_progress}` — Call started
 * `{error,session_not_found}` — Auth record not found
 
-### Verify
+### Resend `Auth/resend`
 
 In case of error client might want to send resend SMS for alredy registered token.
+
+```
+1. client sends `{'Auth',Token,[],[],[],[],resend,[],[],[],[],[]}`
+             to `events/2//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{io, Result, {'Auth', Token}}`
+             to `actions/2/api/:client` once.
+```
+
+Result:
+
+* `{ok,sms_sent}` — the genrated SMS code is sent successfully.
+* `{error,session_not_found}` — Auth record absent
+
+### Verify `Auth/verify`
 
 ```
 1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[]}`
@@ -136,7 +162,6 @@ Result:
 * `{ok,login}` — Logged in
 * `{error,session_not_found}` — Auth record is not found
 * `{error,mismatch_user_data}` — Record is found but wrong
-
 
 ### Logout
 
