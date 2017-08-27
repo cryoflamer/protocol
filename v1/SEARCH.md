@@ -35,7 +35,9 @@ Tuples
                      phone=[] :: [] | binary(),
                      avatar=[] :: [] | binary(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | get | update | set | remove | create | del | add | list | last_msg | atom()}).
+                     status=[] :: [] | get | update | set | remove 
+                                     | create | del | add | list 
+                                     | last_msg | atom()}).
 ```
 
 ```erlang
@@ -46,7 +48,9 @@ Tuples
                      person_id=[] :: [] | binary(),
                      unread=[] :: [] | integer(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | request | authorization | friend | last_msg | ban | banned | atom()}).
+                     status=[] :: [] | request | authorization 
+                                     | friend | last_msg | ban 
+                                     | banned | atom()}).
 ```
 
 Overview
@@ -58,7 +62,7 @@ message (the search result envelop).
 Protocol
 --------
 
-### SEARCH ROSTERS
+### Search Contacts
 
 ```
 1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`

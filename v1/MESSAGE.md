@@ -69,18 +69,19 @@ Protocol
 
 ### Sending Message to Subscribers
 
-
 ```
 1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,client}`
              to `events/1//api/anon/:client/:token` once.
+```
 
+```
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
                 to `p2p/:from_phone_id/:to_phone_id` once.
+```
 
+```
 3. server sends `{'Message',Id,_,_,_,_,_,_,ToPhoneId,FromPhoneId,_,Created,_,_,Payload,_,_,sent}`
-                to `p2p/:from_phone_id/:to_phone_id` once.
-
-
+                to `p2p/:FromPhoneId/:ToPhoneId` once.
 ```
 
 ### Edit/Remove Message
@@ -89,23 +90,28 @@ Protocol
 1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,
                   ToPhoneId,_,_,_,_,Payload,SeenBy,EditMsgId,edit}`
              to `events/1//api/anon/:client/:token` once.
+```
 
+```
 2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,
                   Created,_,_,Payload,SeenBy,EditMsgId,edit}`
-             to `p2p/:from_phone_id/:to_phone_id` counterparty.
+             to `p2p/:FromPhoneId/:ToPhoneId` counterparty.
+```
 
+```
 3. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,
                   Created,_,_,Payload,SeenBy,EditMsgId,edit}`
              to `actions/1/api/phone/:from_phone` to issuer.
 ```
-
 
 ### Retrieve History
 
 ```
 1. client sends `{'History',Id,Contact,MsgId,_,get}`
              to `events/1//api/anon/:client/:token` once.
+```
 
+```
 2. server sends `{'History',Id,Contact,MsgId,Messages,get}`
              to `actions/1/api/:client` once or more.
 ```
