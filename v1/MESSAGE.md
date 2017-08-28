@@ -52,15 +52,15 @@ Tuples
 ```
 
 ```erlang
--record('Desc',     {mime = [] :: [] | binary(),
+-record('Desc',     {mime    = [] :: [] | binary(),
                      payload = [] :: [] | binary() }).
 
 ```
 
 ```erlang
--record('Cursor',   {phone = [] :: [] | binary(),
-                     roster = [] :: [] | integer(),
-                     position = [] :: [] | integer() }).
+-record('Cursor',   {phone    = [] :: {p2p, binary(), binary()},
+                     roster   = [] :: integer(),
+                     position = [] :: integer() }).
 
 ```
 
