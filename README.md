@@ -51,21 +51,6 @@ URI Components
 * `events/2/3/index/maxim@synrc.com/emqttd_198234215548221`
 * `events/1/2/login/anon/emqttd_198234215548221`
 
-### Review Application Subscriptions:
-
-* `room/n2o`
-
-Metawords
----------
-
-* `randomly` — may be received by client randomly
-* `once` — should be received exactly once
-* `more` — provided with `or` gives you infinity
-* `issues` — sends randomly
-* `sends` — ususal sending
-* `participants` — depending on number of mates
-* `counterpaty` — in private and public chats
-
 Sub Protocols
 -------------
 
