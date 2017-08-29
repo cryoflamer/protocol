@@ -179,6 +179,26 @@ Result:
 
 * `{ok,logout}` — Logged out
 
+### `Auth/push` — Logout
+
+```
+1. client sends `{'Auth',[],[],[],[],[],push,[],Push,OS,[],[]}`
+             to `events/2//api/anon/:client/:token` once.
+```
+
+* OS — android, ios, web
+* Push — OS specific Push token 
+
+```
+2. server sends `{io, Result, <<>>}`
+             to `actions/2/api/:client` once.
+```
+
+Result:
+
+* `<<>>` — OK
+* `{error,mismatch_user_data}` — Record is found but wrong
+
 ### Invalid Messages
 
 ```
