@@ -25,6 +25,8 @@ Auth tuple represents token storage instances.
                  sms_code=[] :: [] | binary(),
                  attempts=[] :: [] | integer(),
                  services=[] :: list(atom()),
+                 push=[] :: [] | binary(),
+                 os=[] :: [] | ios | android | web,
                  created = [] :: [] | integer() | binary(),
                  last_online = [] :: [] | integer() | binary()}).
 ```
