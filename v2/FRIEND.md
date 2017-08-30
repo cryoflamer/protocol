@@ -13,11 +13,9 @@ Tuples
 ------
 
 ```erlang
--record('Friend',   {id=[] :: [] | binary(),
-                     roster_id = [] :: [] | integer(),
-                     friend_id = [] :: [] | binary(),
-                     status=[] :: [] | request | list
-                                     | confirm | revoke }).
+-record('Friend', {phone_id = [] :: [] | binary(),
+                   friend_id = [] :: [] | binary(),
+                   status=[] :: [] | request | confirm | revoke }).
 ```
 
 Overview
@@ -33,7 +31,6 @@ Protocol
 
 ```
 1. client sends `{'Friend',Id,UserId,FriendId,request}`
-             or `{'Friend',Id,UserId,FriendIds,massfollowing}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
