@@ -32,8 +32,8 @@ Protocol
 ### `Friend/request` — Friendship Request
 
 ```
-1. client sends `{'Friend',Id,UserId,FriendId,simple}`
-             or `{'Friend',Id,UserId,FriendIds,list}`
+1. client sends `{'Friend',Id,UserId,FriendId,request}`
+             or `{'Friend',Id,UserId,FriendIds,massfollowing}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
