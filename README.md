@@ -72,7 +72,7 @@ Flat API
 
 * `Message/client` — Publishing Message to Subscribers
 * `Message/edit` — Edit/Remove Message
-* `History/get` — Retrieve History by Message stream key
+* `History/get` — Retrieve History from Message stream
 * `Cursor/` — Set cursor for Message stream
 * `Person/get` — Get Person settings by Phone
 * `Person/set` — Set Person settings
