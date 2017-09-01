@@ -70,17 +70,17 @@ Sub Protocols
 Flat API
 --------
 
-* `Message/client` — Sending Message to Subscribers
+* `Message/client` — Publishing Message to Subscribers
 * `Message/edit` — Edit/Remove Message
-* `History/get` — Retrieve History
+* `History/get` — Retrieve History by Message stream key
 * `Cursor/` — Set cursor for Message stream
-* `Person/get` — Get Person settings
+* `Person/get` — Get Person settings by Phone
 * `Person/set` — Set Person settings
-* `Profile/get` — Profile retrival
+* `Profile/get` — Profile retrival by Phone
 * `Profile/update` — Profile update
 * `Profile/set` — Profile set
 * `Profile/remove` — Remove Profile with all Rosters and Auth tokens
-* `Roster/get` — Get Roster
+* `Roster/get` — Get Roster by Id
 * `Roster/update` — Update Roster
 * `Roster/set` — Set Roster
 * `Roster/remove` — Remove Roster
