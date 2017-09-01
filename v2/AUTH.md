@@ -127,6 +127,8 @@ Result:
 
 ### `Auth/verify` — Verify
 
+Verify that SMS you've entered and the one we sent you are same.
+
 ```
 1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[]}`
              or `{'Auth',Token,[],[],[],[],verify,SMS,[],[jwt],[],[]}`
@@ -149,6 +151,8 @@ Result:
 
 ### `Auth/login` — Login
 
+Proceed Authentication with a given credentials.
+
 ```
 1. client sends `{'Auth',Token,DevKey,ClientId,Phone,[],login,[],[],[],[],[]}`
              to `events/2//api/anon/:client/:token` once.
@@ -167,6 +171,8 @@ Result:
 
 ### `Auth/logout` — Logout
 
+Logging out means your device token removal. You'll need to be reregistered on this device.
+
 ```
 1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[]}`
              to `events/2//api/anon/:client/:token` once.
@@ -181,7 +187,7 @@ Result:
 
 * `{ok,logout}` — Logged out
 
-### `Auth/push` — Logout
+### `Auth/push` — Write Google or Apple token to Auth table
 
 ```
 1. client sends `{'Auth',[],[],[],[],[],push,[],Push,OS,[],[]}`
