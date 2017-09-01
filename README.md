@@ -74,8 +74,8 @@ Flat API
 * `Message/edit` — Edit/Remove Message
 * `History/get` — Retrieve History
 * `Cursor/` — Set cursor for Message stream
-* `Person/get` — Get Person
-* `Person/set` — Set Person
+* `Person/get` — Get Person settings
+* `Person/set` — Set Person settings
 * `Profile/get` — Profile retrival
 * `Profile/update` — Profile update
 * `Profile/set` — Profile set
