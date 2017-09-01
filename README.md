@@ -79,7 +79,7 @@ Flat API
 * `Profile/get` — Profile retrival
 * `Profile/update` — Profile update
 * `Profile/set` — Profile set
-* `Profile/remove` — Profile remove
+* `Profile/remove` — Remove Profile with all Rosters and Auth tokens
 * `Roster/get` — Get Roster
 * `Roster/update` — Update Roster
 * `Roster/set` — Set Roster
