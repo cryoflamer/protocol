@@ -73,7 +73,7 @@ Flat API
 * `Message/client` — Sending Message to Subscribers
 * `Message/edit` — Edit/Remove Message
 * `History/get` — Retrieve History
-* `Cursor/` — Set cursor
+* `Cursor/` — Set cursor for Message stream
 * `Person/get` — Get Person
 * `Person/set` — Set Person
 * `Profile/get` — Profile retrival
@@ -86,15 +86,16 @@ Flat API
 * `Roster/remove` — Remove Roster
 * `Roster/create` — Create Roster
 * `Roster/list` — List Rosters
-* `Roster/add` — Add Roster Contacts
-* `Roster/del` — Delete Roster Contacts
-* `Search/contact` — Search Contacts
+* `Roster/add` — Add Contacts to Roster
+* `Roster/del` — Delete Contacts from Roster
+* `Search/contact` — Search Contacts across NYNJA database
 * `Auth/reg` — Registration
-* `Auth/voice` — Voice Call
 * `Auth/resend` — Resend
-* `Auth/verify` — Verify
+* `Auth/voice` — Voice by Voice
+* `Auth/verify` — Verify SMS
 * `Auth/login` — Login
 * `Auth/logout` — Logout
+* `Auth/push` — Save Apple or Google Push token to Auth record
 * `Friend/request` — Friendship Request
 * `Friend/confirm` — Confirm friendship
 * `Friend/revoke` — Revoke friendship
