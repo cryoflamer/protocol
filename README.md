@@ -90,9 +90,9 @@ Flat API
 * `Roster/del` — Delete Contacts from Roster
 * `Search/contact` — Search Contacts across NYNJA database
 * `Auth/reg` — Registration
-* `Auth/resend` — Resend
+* `Auth/resend` — Resend SMS
+* `Auth/verify` — Verify by SMS
 * `Auth/voice` — Voice by Voice
-* `Auth/verify` — Verify SMS
 * `Auth/login` — Login
 * `Auth/logout` — Logout
 * `Auth/push` — Save Apple or Google Push token to Auth record
