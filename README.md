@@ -93,7 +93,6 @@ Flat API
 * `Auth/resend` — Resend SMS
 * `Auth/verify` — Verify by SMS
 * `Auth/voice` — Voice by Voice
-* `Auth/login` — Login
 * `Auth/logout` — Logout
 * `Auth/push` — Save Apple or Google Push token to Auth record
 * `Friend/request` — Friendship Request
