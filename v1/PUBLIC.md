@@ -1,5 +1,5 @@
-PUBLIC: MUC/TRIBE Conversations
-===============================
+TRIBE: MUC Conversations
+========================
 
 Version 1.0 Maxim Sokhatsky
 
