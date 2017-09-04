@@ -58,7 +58,7 @@ Sub Protocols
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 5
-* [PUBLIC](https://github.com/NYNJA-MC/protocol/blob/master/v1/PUBLIC.md) — 6
+* [TRIBE](https://github.com/NYNJA-MC/protocol/blob/master/v1/TRIBE.md) — 6
 * [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 4
 * [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 3
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
