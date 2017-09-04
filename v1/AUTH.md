@@ -70,12 +70,12 @@ and issue a SMS or JWT authentication mechanism. To verify device user then shou
 ```
 1. client sends `{'Auth',[],[],[],Phone,[],reg,[],[],[],[],[]}`
              or `{'Auth',[],[],[],Phone,[],reg,[],[],[jwt],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -89,7 +89,7 @@ The are several channels of verification.
 
 ```
 1. client sends `{'Auth',Token,[],[],[],[],voice,[],[],[Lang],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 Lang:
