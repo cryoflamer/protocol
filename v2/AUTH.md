@@ -6,8 +6,8 @@ Version 2.0 Maxim Sokhatsky, Liubov Mykhailova
 Endpoints
 --------
 
-* `actions/2/api/:client` — MQTT
-* `events/2//api/anon/:client/:token` — MQTT
+* `actions/1/api/:client` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -112,12 +112,12 @@ In case of error client might want to send resend SMS for alredy registered toke
 
 ```
 1. client sends `{'Auth',Token,[],[],[],[],resend,[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -132,12 +132,12 @@ Verify that SMS you've entered and the one we sent you are same.
 ```
 1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[]}`
              or `{'Auth',Token,[],[],[],[],verify,SMS,[],[jwt],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -155,12 +155,12 @@ Proceed Authentication with a given credentials.
 
 ```
 1. client sends `{'Auth',Token,DevKey,ClientId,Phone,[],login,[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -175,12 +175,12 @@ Logging out means your device token removal. You'll need to be reregistered on t
 
 ```
 1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -191,7 +191,7 @@ Result:
 
 ```
 1. client sends `{'Auth',[],[],[],[],[],push,[],Push,OS,[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 * OS — android, ios, web
@@ -199,7 +199,7 @@ Result:
 
 ```
 2. server sends `{io, Result, <<>>}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -211,11 +211,11 @@ Result:
 
 ```
 1. client sends `{'Auth',_,_,_,_,_,_,_,_,_,_,_}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, {error,invalid_data}, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
