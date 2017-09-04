@@ -6,8 +6,8 @@ Version 2.0 Maxim Sokhatsky, Liubov Mykhailova
 Endpoints
 --------
 
-* `actions/2/api/:client` — MQTT
-* `events/2//api/anon/:client/:token` — MQTT
+* `actions/1/api/:client` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
 
 Tuples
 ------
@@ -68,8 +68,8 @@ and issue a SMS or JWT authentication mechanism. To verify device user then shou
 `Auth/voice` for IVR verification or `Auth/verify` for SMS verification.
 
 ```
-1. client sends `{'Auth',[],[],[],Phone,[],reg,[],[],[],[],[],[],[]}`
-             or `{'Auth',[],[],[],Phone,[],reg,[],[],[jwt],[],[],[],[]}`
+1. client sends `{'Auth',[],[],[],Phone,[],reg,[],[],[],[],[]}`
+             or `{'Auth',[],[],[],Phone,[],reg,[],[],[jwt],[],[]}`
              to `events/2//api/anon/:client/:token` once.
 ```
 
@@ -88,7 +88,7 @@ The are several channels of verification.
 `Auth/voice` API is dedicated for IVR confirmation.
 
 ```
-1. client sends `{'Auth',Token,[],[],[],[],voice,[],[],[Lang],[],[],[],[]}`
+1. client sends `{'Auth',Token,[],[],[],[],voice,[],[],[Lang],[],[]}`
              to `events/2//api/anon/:client/:token` once.
 ```
 
@@ -97,7 +97,7 @@ Lang:
 * ua, en, it — ANSI country codes as atoms
 
 ```
-2. server sends `{io, Result, <<>>}`
+2. server sends `{io, Result, {'Auth', Token}}`
              to `actions/1/api/:client` once.
 ```
 
@@ -111,13 +111,13 @@ Result:
 In case of error client might want to send resend SMS for alredy registered token.
 
 ```
-1. client sends `{'Auth',Token,[],[],[],[],resend,[],[],[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+1. client sends `{'Auth',Token,[],[],[],[],resend,[],[],[],[],[]}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{io, Result, <<>>}`
-             to `actions/2/api/:client` once.
+2. server sends `{io, Result, {'Auth', Token}}`
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -127,15 +127,17 @@ Result:
 
 ### `Auth/verify` — Verify
 
+Verify that SMS you've entered and the one we sent you are same.
+
 ```
-1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[],[],[]}`
-             or `{'Auth',Token,[],[],[],[],verify,SMS,[],[jwt],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+1. client sends `{'Auth',Token,[],[],[],[],verify,SMS,[],[],[],[]}`
+             or `{'Auth',Token,[],[],[],[],verify,SMS,[],[jwt],[],[]}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{io, Result, <<>>}`
-             to `actions/2/api/:client` once.
+2. server sends `{io, Result, {'Auth', Token}}`
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -149,14 +151,16 @@ Result:
 
 ### `Auth/login` — Login
 
+Proceed Authentication with a given credentials.
+
 ```
-1. client sends `{'Auth',Token,DevKey,ClientId,Phone,[],login,[],[],[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+1. client sends `{'Auth',Token,DevKey,ClientId,Phone,[],login,[],[],[],[],[]}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{io, Result, {'Auth', Token}}`
-             to `actions/2/api/:client` once.
+             to `actions/1/api/:client` once.
 ```
 
 Result:
@@ -167,29 +171,51 @@ Result:
 
 ### `Auth/logout` — Logout
 
+Logging out means your device token removal. You'll need to be reregistered on this device.
+
 ```
-1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[],[],[]}`
-             to `events/2//api/anon/:client/:token` once.
+1. client sends `{'Auth',[],[],[],[],[],logout,[],[],[],[],[]}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{io, Result, <<>>}`
-             to `actions/2/api/:client` once.
+2. server sends `{io, Result, {'Auth', Token}}`
+             to `actions/1/api/:client` once.
 ```
 
 Result:
 
 * `{ok,logout}` — Logged out
 
+### `Auth/push` — Write Google or Apple token to Auth table
+
+```
+1. client sends `{'Auth',[],[],[],[],[],push,[],Push,OS,[],[]}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+* OS — android, ios, web
+* Push — OS specific Push token 
+
+```
+2. server sends `{io, Result, <<>>}`
+             to `actions/1/api/:client` once.
+```
+
+Result:
+
+* `<<>>` — OK
+* `{error,mismatch_user_data}` — Record is found but wrong
+
 ### Invalid Messages
 
 ```
 1. client sends `{'Auth',_,_,_,_,_,_,_,_,_,_,_}`
-             to `events/2//api/anon/:client/:token` once.
+             to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{io, {error,invalid_data}, <<>>}`
-             to `actions/2/api/:client` once.
+2. server sends `{io, {error,invalid_data}, {'Auth', Token}}`
+             to `actions/1/api/:client` once.
 ```
 

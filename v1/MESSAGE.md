@@ -130,9 +130,9 @@ Sets marker to feed for counterparty.
              to `events/1//api/anon/:client/:token` once.
 ```
 
-Feed — `#p2p{}` key of the conversation
-Side — `1` or `2` for counterparty
-Position — id of the message you want cursor to point
+* Feed — `#p2p{}` key of the conversation
+* Side — `1` or `2` for counterparty
+* Position — id of the message you want cursor to point
 
 ```
 2. server sends `{ok2,Feed,Count}`

@@ -51,21 +51,6 @@ URI Components
 * `events/2/3/index/maxim@synrc.com/emqttd_198234215548221`
 * `events/1/2/login/anon/emqttd_198234215548221`
 
-### Review Application Subscriptions:
-
-* `room/n2o`
-
-Metawords
----------
-
-* `randomly` — may be received by client randomly
-* `once` — should be received exactly once
-* `more` — provided with `or` gives you infinity
-* `issues` — sends randomly
-* `sends` — ususal sending
-* `participants` — depending on number of mates
-* `counterpaty` — in private and public chats
-
 Sub Protocols
 -------------
 
@@ -85,31 +70,31 @@ Sub Protocols
 Flat API
 --------
 
-* `Message/client` — Sending Message to Subscribers
+* `Message/client` — Publishing Message to Subscribers
 * `Message/edit` — Edit/Remove Message
-* `History/get` — Retrieve History
-* `Cursor/` — Set cursor
-* `Person/get` — Get Person
-* `Person/set` — Set Person
-* `Profile/get` — Profile retrival
+* `History/get` — Retrieve History from Message stream
+* `Cursor/` — Set cursor for Message stream
+* `Person/get` — Get Person settings by Phone
+* `Person/set` — Set Person settings
+* `Profile/get` — Profile retrival by Phone
 * `Profile/update` — Profile update
 * `Profile/set` — Profile set
-* `Profile/remove` — Profile remove
-* `Roster/get` — Get Roster
+* `Profile/remove` — Remove Profile with all Rosters and Auth tokens
+* `Roster/get` — Get Roster by Id
 * `Roster/update` — Update Roster
 * `Roster/set` — Set Roster
 * `Roster/remove` — Remove Roster
 * `Roster/create` — Create Roster
 * `Roster/list` — List Rosters
-* `Roster/add` — Add Roster Contacts
-* `Roster/del` — Delete Roster Contacts
-* `Search/contact` — Search Contacts
+* `Roster/add` — Add Contacts to Roster
+* `Roster/del` — Delete Contacts from Roster
+* `Search/contact` — Search Contacts across NYNJA database
 * `Auth/reg` — Registration
-* `Auth/voice` — Voice Call
-* `Auth/resend` — Resend
-* `Auth/verify` — Verify
-* `Auth/login` — Login
+* `Auth/resend` — Resend SMS
+* `Auth/verify` — Verify by SMS
+* `Auth/voice` — Voice by Voice
 * `Auth/logout` — Logout
+* `Auth/push` — Save Apple or Google Push token to Auth record
 * `Friend/request` — Friendship Request
 * `Friend/confirm` — Confirm friendship
 * `Friend/revoke` — Revoke friendship
