@@ -49,11 +49,11 @@ Topics
 * `p2p/:phone_roster/:phone_roster` — MQTT
 * `tribe/:name` — MQTT
 
-The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens.
+The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens. New devices should be subscribed to this topic on registration.
 
-The `ac/:phone_roster` topic is representing the subscription mesh, consructed on friending. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours.
+The `ac/:phone_roster` topic is representing the subscription mesh, base on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours. New devices of friends should be subscribed to this topic on registration.
 
-The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_1/380670002234_1`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen.
+The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_1/380670002234_1`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
 
 Sub Protocols
 -------------
