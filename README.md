@@ -47,7 +47,7 @@ Topics
 * `ses/:phone` — Devices Broadcast
 * `ac/:phone_roster` — Friendship Broadcast
 * `p2p/:phone_roster/:phone_roster` — Private Chat
-* `tribe/:name` — Multiuser Chats
+* `tribe/:name` — Multiuser Chat
 
 The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens. New devices should be subscribed to this topic on registration.
 
