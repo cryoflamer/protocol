@@ -3,7 +3,7 @@ NYNJA PROTOCOL SPECIFICATION
 
 Version 1.0 Maxim Sokhatsky
 
-OVERVIEW
+Overview
 --------
 
 To support the development of messaging apps and IOT infrastructure,
@@ -21,35 +21,39 @@ communication platforms. NYNJA Protocol has been made open source
 for the benefit of the global community of developers. NYNJA Protocol
 powers the NYNJA Mobile Communicator.
 
-FEATURES
+Features
 --------
 
-* Versioning
-* Two-topic: Actions/Events Async Event Bus Topics
 * Media: Voice, Video, File Transfer, GPS, Text
 * Multi-User Conferences (Tribes)
 * Multi Accounts (Rosters)
 
-INTRO
+Intro
 -----
 
 * Messages: Schema Definition
 * Endpoints: Topic Subscriptions (MQTT), WebSockets (WS)
 
-URI Components
---------------
+Topics
+------
 
-### Client Subscriptions:
+### N2O RPC Topics
 
-* `actions/1/index/emqttd_198234215548221` &mdash; version 1
-* `actions/2/index/emqttd_198234215548221` &mdash; version 2
-* `actions/1/api/:client/:token` &mdash; version 1
+* `actions/:vsn/:module/:client_id`
+* `events/:vsn/:node/:module/:username/:client_id/:token`
 
-### Server Subscriptions:
+### ROSTER Topics
 
-* `events/1//api/anon/:client/:token` &mdash; AUTH v1
-* `events/2/3/index/maxim@synrc.com/emqttd_198234215548221`
-* `events/1/2/login/anon/emqttd_198234215548221`
+* `ses/:phone` — MQTT
+* `ac/:phone_roster` — MQTT
+* `p2p/:phone_roster/:phone_roster` — MQTT
+* `tribe/:name` — MQTT
+
+The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens.
+
+The `ac/:phone_roster` topic is representing the subscription mesh, consructed on friending. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours.
+
+The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_1/380670002234_1`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen.
 
 Sub Protocols
 -------------
