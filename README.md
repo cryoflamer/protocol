@@ -39,15 +39,15 @@ Topics
 
 ### N2O RPC Topics
 
-* `actions/:vsn/:module/:client_id`
-* `events/:vsn/:node/:module/:username/:client_id/:token`
+* `actions/:vsn/:module/:client_id` — Client Topic
+* `events/:vsn/:node/:module/:username/:client_id/:token` — Server Topic
 
 ### ROSTER Topics
 
-* `ses/:phone` — MQTT
-* `ac/:phone_roster` — MQTT
-* `p2p/:phone_roster/:phone_roster` — MQTT
-* `tribe/:name` — MQTT
+* `ses/:phone` — Devices Broadcast
+* `ac/:phone_roster` — Friendship Broadcast
+* `p2p/:phone_roster/:phone_roster` — Private Chat
+* `tribe/:name` — Multiuser Chats
 
 The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens. New devices should be subscribed to this topic on registration.
 
