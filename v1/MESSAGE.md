@@ -8,6 +8,16 @@ Endpoints
 
 * `actions/1/api/phone/:phone` — MQTT
 * `events/1//api/anon/:client/:token` — MQTT
+* `ses/:phone` — MQTT
+* `ac/:phone_roster` — MQTT
+* `p2p/:phone_roster/:phone_roster` — MQTT
+* `tribe/:name` — MQTT
+
+The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens.
+
+The `ac/:phone_roster` topic is representing the subscription mesh, consructed on friending. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours.
+
+The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_1/380670002234_1`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen.
 
 Tuples
 ------
