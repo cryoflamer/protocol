@@ -53,7 +53,7 @@ The `ses/:phone` topic is dedicated for accumulating all device sessions under t
 
 The `ac/:phone_roster` topic is representing the subscription mesh, base on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours. New devices of friends should be subscribed to this topic on registration.
 
-The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_1/380670002234_1`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
+The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_12525/380670002234_12334`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
 
 Sub Protocols
 -------------
