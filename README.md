@@ -64,16 +64,16 @@ Sub Protocols
 
 * [IO](https://github.com/NYNJA-MC/protocol/blob/master/v1/IO.md) — 1
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
-* [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 5
-* [TRIBE](https://github.com/NYNJA-MC/protocol/blob/master/v1/TRIBE.md) — 6
-* [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 4
-* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 3
-* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
-* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
+* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 3
+* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
+* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
+* [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 4
+* [TRIBE](https://github.com/NYNJA-MC/protocol/blob/master/v1/TRIBE.md) — 6
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
+* [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
 
 Flat API
 --------
