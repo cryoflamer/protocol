@@ -37,27 +37,25 @@ Intro
 Topics
 ------
 
-### N2O RPC Topics
-
 * `actions/:vsn/:module/:client_id` — Client Topic
+
+This topic is subscribed when connection established. This is done on server so client don't need to subscribe to this topic. All incoming mesages come to this topic.
+
 * `events/:vsn/:node/:module/:username/:client_id/:token` — Server Topic
 
-The `actions/:vsn/:module/:client_id` topic is subscribed when connection established. This is done on server so client don't need to subscribe to this topic. All incoming mesages come to this topic.
-
-The `events/:vsn/:node/:module/:username/:client_id/:token` topics are equal number of cores. Client sends API requesus to one of these topics and listen for answers on 'actions' topic.
-
-### ROSTER Topics
+The number of these topics are equal to the number of cores. Client sends API requesus to one of these topics and listen for answers on 'actions' topic.
 
 * `ses/:phone` — Devices Broadcast
+
+This topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens. New devices should be subscribed to this topic on registration.
+
 * `ac/:phone_roster` — Friendship Broadcast
+
+This topic is representing the subscription mesh, base on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours. New devices of friends should be subscribed to this topic on registration.
+
 * `p2p/:phone_roster/:phone_roster` — Private Chat
-* `tribe/:name` — Multiuser Chat
 
-The `ses/:phone` topic is dedicated for accumulating all device sessions under the single topic indexed by the phone. If you send to this topic, all devices of the given phone will receive the message. If you have no right to send to this phone nothing will happens. New devices should be subscribed to this topic on registration.
-
-The `ac/:phone_roster` topic is representing the subscription mesh, base on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours. New devices of friends should be subscribed to this topic on registration.
-
-The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_12525/380670002234_12334`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
+This topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_12525/380670002234_12334`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
 
 Message Formats
 ---------------
