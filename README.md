@@ -59,8 +59,8 @@ The `ac/:phone_roster` topic is representing the subscription mesh, base on frie
 
 The `p2p/:phone_roster/:phone_roster` topic is representing the private chat between two users. The name of the topic is constructed from two sorted roster identifiers, e.g. `380670001234_12525/380670002234_12334`, left phone is always less or equal then right. If you send to this topic, all devices of two counterparties will recieve the message. If you are not owner of one of these rosters, nothing will happen. New devices of counterparties should be subscribed to this topic on registration.
 
-Sub Protocols
--------------
+Message Formats
+---------------
 
 * [IO](https://github.com/NYNJA-MC/protocol/blob/master/v1/IO.md) — 1
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
