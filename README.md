@@ -75,8 +75,8 @@ Sub Protocols
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
 
-Flat API
---------
+Client API RPC Specification
+----------------------------
 
 * `Message/client` — Publishing Message to Subscribers
 * `Message/edit` — Edit/Remove Message
