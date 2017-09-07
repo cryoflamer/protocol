@@ -42,6 +42,10 @@ Topics
 * `actions/:vsn/:module/:client_id` — Client Topic
 * `events/:vsn/:node/:module/:username/:client_id/:token` — Server Topic
 
+The `actions/:vsn/:module/:client_id` topic is subscribed when connection established. This is done on server so client don't need to subscribe to this topic. All incoming mesages come to this topic.
+
+The `events/:vsn/:node/:module/:username/:client_id/:token` topics are equal number of cores. Client sends API requesus to one of these topics and listen for answers on 'actions' topic.
+
 ### ROSTER Topics
 
 * `ses/:phone` — Devices Broadcast
