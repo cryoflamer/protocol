@@ -51,7 +51,7 @@ This topic is dedicated for accumulating all device sessions under the single to
 
 * `ac/:phone_roster` — Friendship Broadcast
 
-This topic is representing the subscription mesh, based on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topic than yours. New devices of friends should be subscribed to this topic on registration. On friendship all friend devices are added to this topic.
+This topic is representing the subscription mesh, based on friendship logic. If you send to this topic, all devices of your friends will recieve this message. For sure server will strict you from sending to other topics than yours. New devices of friends should be subscribed to this topic on registration. On friendship all friend devices are added to this topic.
 
 * `p2p/:phone_roster/:phone_roster` — Private Chat
 
