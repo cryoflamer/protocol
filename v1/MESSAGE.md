@@ -32,11 +32,6 @@ Tuples
 
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
-                     container = chain,
-                     feed_id=[] :: term() | {p2p, binary(), binary()},
-                     prev=[] :: [] | integer(),
-                     next=[] :: [] | integer(),
-                     feeds=[] :: list(),
                      msg_id = [] :: [] | binary(),
                      from = [] :: [] | binary(),
                      to = [] :: [] | binary(),
@@ -44,23 +39,23 @@ Tuples
                      created = [] :: [] | integer() | binary(),
                      access = [] :: [],
                      starred = [] :: [],
-                     files = [] :: [] | list(#'Desc'{}), %% will be added after alpha version
-                     seen_by = [],
+                     files = [] :: [] | list(#'Desc'{}),
+                     seen_by = [] :: [],
                      edit_msg = [] :: [] | integer(),
-                     status = [] :: [] | atom() | client | sent | offline
-                            | online | internal | last_read | edit }).
+                     status = [] :: [] | atom() | client | sent | offline | online | internal | last_read | edit}).
 ```
 
 ```erlang
 -record('Desc',     {mime    = [] :: [] | binary(),
-                     payload = [] :: [] | binary() }).
-
+                     payload = [] :: [] | binary(),
+                     filename= [] :: [] | binary(),
+                     info= [] :: [] | binary()}).                   
 ```
 
 ```erlang
 -record('Cursor',   {phone    = [] :: {p2p, binary(), binary()},
                      roster   = [] :: integer(),
-                     position = [] :: integer() }).
+                     position = [] :: integer()}).
 
 ```
 
