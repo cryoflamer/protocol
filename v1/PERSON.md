@@ -14,22 +14,22 @@ Tuples
 
 ```erlang
 -record('Person',  {id=[] :: [] | binary(),
-                    name=[] :: list(),
-                    surname=[] :: list(),
-                    username=[] :: list(),
-                    phonelist=[] :: list(),
+                    names=[] :: binary(),
+                    surnames=[] :: binary(),
+                    username=[] :: binary(),
+                    phonelist=[] :: list(binary()),
                     alias=[] :: list(),
-                    avatar=[] :: list(),
+                    avatar=[] :: binary(),
                     localize=[] :: list(),
                     'NotificationSettings'=[] :: list(),
                     'SoundSettings'=[] :: list(),
-                    'ThemeID'=[] :: list(),
-                    'voxImplantID'=[] :: list(),
+                    'ThemeID'=[] :: binary(),
+                    'voxImplantID'=[] :: binary(),
                     'voxImplantLogin'=[] :: binary(),
                     'voxImplantPassword'=[] :: binary(),
-                    'BlockUsers'=[] :: list(),
-                    'balance'=0 :: integer(),
-                    'isParticipants'=[] :: list(),
+                    'BlockUsers'=[] :: list(binary()),
+                    'balance'= 0 :: integer(),
+                    'isParticipants'=[] :: list(atom()),
                     status=[] :: atom() | []}).
 ```
 
