@@ -21,8 +21,8 @@ Profile has one-to-one linkage to Person and may hold custom data.
                      person_id=[] :: [] | binary(),
                      accounts=[] :: list(integer() | #'Roster'{}),
                      update=[] :: [] | integer(),
-                     presence=[] :: [] | online | offline,
-                     status=[] :: [] | get | set | remove | remove }).
+                     presence=[] :: [] | atom() | online | offline,
+                     status=[] :: [] | atom() | get | set | remove}).
 ```
 
 Overview
