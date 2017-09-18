@@ -41,8 +41,14 @@ Client Id
 
 ClientId resembles all tuple fields to represent a unique
 device identifier connected with an given token.
-ClientId is an unique MQTT session identifier that
-respawned with clear_session to `false`.
+ClientId is an unique MQTT session identifier.
+ClientId must be `<<"emqttd_reg_",Symbols/binary>>` and respawned with
+clean_session to `true` if registration process starts. After
+verify the client gets the new ClientId without `_reg_` suffix
+(`<<"emqttd_",Symbols/binary>>`), Token and must disconnect and connect
+with the new ClientId and clean_session to `false`. The mqtt client
+password is the received Token. If connect is ok then the user is login.
+
 
 ```
 TOKEN PHONE      DEVKEY CLIENTID OS      SERVICES
@@ -63,6 +69,7 @@ Protocol
 ### `Auth/reg` — Registration
 
 New clients should send `Auth/reg` registration request before start using the system.
+
 Server will store the `token` and `client_id` fields of `Auth` record and database
 and issue a SMS or JWT authentication mechanism. To verify device user then should send
 `Auth/voice` for IVR verification or `Auth/verify` for SMS verification.
@@ -142,7 +149,7 @@ Verify that SMS you've entered and the one we sent you are same.
 
 Result:
 
-* `{ok,login}` — Logged in
+* `{ok2,login, {'Client', ClientId}}` — Logged in
 * `{error,session_not_found}` — Auth record absent
 * `{error,mismatch_user_data}` — Record is found but wrong
 * `{error,invalid_sms_code}` — Wrong SMS
