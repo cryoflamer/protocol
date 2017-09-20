@@ -27,7 +27,8 @@ Tuples
                      contact_id=[] :: [] | binary(),
                      cursor :: [] | integer() | binary(),
                      data=[] :: list(#'Message'{}),
-                     status=[] :: atom() | updated | last_loaded | last_msg}).
+                     status=[] :: atom() | updated
+                             | last_loaded | last_msg}).
 ```
 
 ```erlang
@@ -47,14 +48,16 @@ Tuples
                      files = [] :: [] | list(#'Desc'{}),
                      seen_by = [] :: [],
                      edit_msg = [] :: [] | integer(),
-                     status = [] :: [] | atom() | client | sent | offline | online | internal | last_read | edit}).
+                     status = [] :: [] | atom() | client | sent
+                            | offline | online | internal
+                            | last_read | edit}).
 ```
 
 ```erlang
 -record('Desc',     {mime    = [] :: [] | binary(),
                      payload = [] :: [] | binary(),
                      filename= [] :: [] | binary(),
-                     info= [] :: [] | binary()}).                   
+                     info= [] :: [] | binary()}).
 ```
 
 ```erlang

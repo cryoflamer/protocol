@@ -35,8 +35,8 @@ Tuples
                      phone=[] :: [] | binary(),
                      avatar=[] :: [] | binary(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | get | update | set | remove 
-                                     | create | del | add | list 
+                     status=[] :: [] | get | update | set | remove
+                                     | create | del | add | list
                                      | last_msg | atom()}).
 ```
 
@@ -48,16 +48,16 @@ Tuples
                      person_id=[] :: [] | binary(),
                      unread=[] :: [] | integer(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | request | authorization 
-                                     | friend | last_msg | ban 
+                     status=[] :: [] | request | authorization
+                                     | friend | last_msg | ban
                                      | banned | atom()}).
 ```
 
 Overview
 --------
 
-User emits Search request and gets Contacts (which represents the found rosters) packed in Roster
-message (the search result envelop).
+User emits Search request and gets Contacts (which represents
+the found rosters) packed in Roster message (the search result envelop).
 
 Protocol
 --------
