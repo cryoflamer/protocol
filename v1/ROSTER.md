@@ -28,7 +28,7 @@ Phone or Profile or Device.
                      phone=[] :: [] | binary(),
                      avatar=[] :: [] | binary(),
                      update=[] :: [] | integer(),
-                     status=[] :: [] | get | update | set | remove | 
+                     status=[] :: [] | get | update | set | remove |
                                 create | del | add | list | last_msg | atom()}).
 ```
 
