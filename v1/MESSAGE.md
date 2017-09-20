@@ -32,6 +32,11 @@ Tuples
 
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
+                     container = chain,
+                     feed_id=[] :: term() | {p2p, binary(), binary()},
+                     prev=[] :: [] | integer(),
+                     next=[] :: [] | integer(),
+                     args=[] :: list(),
                      msg_id = [] :: [] | binary(),
                      from = [] :: [] | binary(),
                      to = [] :: [] | binary(),
