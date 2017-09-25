@@ -6,6 +6,7 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
+* `p2p/:phone_id/:phone_id` — MQTT
 * `actions/1/api/phone/:phone` — MQTT
 * `events/1//api/anon/:client/:token` — MQTT
 
@@ -27,30 +28,29 @@ Tuples
                      contact_id=[] :: [] | binary(),
                      cursor :: [] | integer() | binary(),
                      data=[] :: list(#'Message'{}),
-                     status=[] :: atom() | updated
+                     status=[] :: get | updated
                              | last_loaded | last_msg}).
 ```
 
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
-                     container = chain,
-                     feed_id=[] :: term() | {p2p, binary(), binary()},
+                     container = chain | cur,
+                     feed_id=[] :: term()
+                                | {p2p, binary(), binary()}
+                                | {room, binary()},
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
-                     args=[] :: list(),
                      msg_id = [] :: [] | binary(),
                      from = [] :: [] | binary(),
                      to = [] :: [] | binary(),
-                     sync = [] :: [],
                      created = [] :: [] | integer() | binary(),
-                     access = [] :: [],
-                     starred = [] :: [],
                      files = [] :: [] | list(#'Desc'{}),
-                     seen_by = [] :: [],
+                     type = [] :: [] | reply | forward | sched
+                          | online | offline | join | leave,
                      edit_msg = [] :: [] | integer(),
-                     status = [] :: [] | atom() | client | sent
-                            | offline | online | internal
-                            | last_read | edit}).
+                     status = [] :: [] | atom() | client | async
+                            | sent | internal | last_read | edit
+                            | muc }).
 ```
 
 ```erlang

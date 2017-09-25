@@ -21,11 +21,12 @@ Auth tuple represents token storage instances.
                  phone=[] :: [] | binary(),
                  client_id=[] :: [] | binary(),
                  type=[] :: reg | resend | voice
-                                | verify | login | logout,
+                                | verify | logout,
                  sms_code=[] :: [] | binary(),
                  attempts=[] :: [] | integer(),
                  services=[] :: list(atom()),
                  push=[] :: [] | binary(),
+                 comments=[] :: [] | binary(),
                  os=[] :: [] | ios | android | web,
                  created = [] :: [] | integer() | binary(),
                  last_online = [] :: [] | integer() | binary()}).
@@ -206,6 +207,18 @@ Result:
 
 * `<<>>` — OK
 * `{error,mismatch_user_data}` — Record is found but wrong
+
+### `Auth/list` — List of client sessions
+
+```
+1. client sends `{'Auth',[],[],[],[],[],list,[],[],[],[],[]}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Auth',_,_,_,_,_,_,_,_,_,_,_}`
+             to `actions/1/api/:client` number of sessions times.
+```
 
 ### Invalid Messages
 

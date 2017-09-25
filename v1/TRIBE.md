@@ -16,87 +16,34 @@ Tuples
 ```erlang
 -record('Room',     {room=[] :: [] | binary(),
                      description=[] :: [] | binary(),
-                     acl=[] :: list(),
-                     settings=[] :: list()}).
-```
-
-```erlang
--record('Join',     {id=[] :: [] | binary(),
-                     user=[] :: [] | binary(),
-                     room=[] :: [] | binary(),
-                     answer=[] :: [] | binary()}).
-```
-
-```erlang
--record('Leave',    {id=[] :: [] | binary(),
-                     user=[] :: [] | binary(),
-                     room=[] :: [] | binary(),
-                     answer=[] :: [] | binary()}).
-```
-
-```erlang
--record('Approve',  {id=[] :: [] | binary(),
-                     user=[] :: [] | binary(),
-                     room=[] :: [] | binary(),
-                     answer=[] :: [] | binary()}).
+                     settings=[] :: list(),
+                     members=[] :: list(#'Member'{}),
+                     admins=[]  :: list(#'Member'{}),
+                     type=[] :: [] | group | channel,
+                     tos=[] :: [] | binary(),
+                     status=[] :: [] | create | join | leave
+                            | ban | uban | add_admins | rem_admins
+                            | add_members | remove_members
+                            | patch | get | delete | settings
+                            | voice | video }).
 ```
 
 Overview
 --------
 
-PUBLIC API serves the MUC groupchat conversations.
+TRIBE API serves the MUC groupchat conversations.
 
 Protocol
 --------
 
-### Join Room
+### Room/create
 
 ```
-1. client sends `{'Join',_,_,_}`
-             to `events/1/:node/api/anon/:client/:token` once.
+1. client sends `{'Room',_,_,_,_,_,_,_,_}`
+             to `events/1//api/anon/:client/:token` once.
 ```
 
-### Auto Join
-
 ```
-2. server sends `{'Room',_,_,_,_}`
+2. server sends `{'Room',_,_,_,_,_,_,_,_}`
              to `actions/1/api/:client/:token` once.
-```
-
-### Approve Join
-
-```
-1. client sends `{'Approve',_,_,_}`
-             to `events/1/:node/api/anon/:client/:token` once.
-```
-
-```
-2. server sends `{'Room',_,_,_,_}`
-             to `actions/1/api/:party/:token` once.
-```
-
-### Leave Room
-
-```
-1. client sends `{'Leave',_,_,_}`
-             to `events/1/:node/api/anon/:client/:token` once.
-```
-
-```
-2. server sends `{'Room',_,_,_,_}`
-             to `actions/1/api/:client/:token` participants times.
-```
-
-### Joined
-
-```
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
-             to `room/Room` participants times.
-```
-
-### Leaved
-
-```
-1. server sends `{'Message',_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}`
-             to `room/Room` participants times.
 ```

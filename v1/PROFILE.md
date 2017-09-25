@@ -72,6 +72,13 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
+### `Profile/email` — Profile email
+
+```
+1. client sends `{'Profile',Phone,_,_,_,_,_,email}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
 ### `Profile/remove` — Profile remove
 
 ```
@@ -81,6 +88,21 @@ Protocol
 
 ```
 2. server sends `{'Profile',Phone,_,_,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
+             to `actions/1/api/:client` once.
+```
+
+### `Profile/migrate` — Profile migration
+
+```
+1. client sends `{'Profile',NewPhone,_,_,_,_,_,migration}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+### `Profile/confirm` — Profile confirmation
+
+```
+1. client sends `{'Profile',NewPhone,_,_,_,_,_,confirm}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
