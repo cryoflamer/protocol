@@ -1,0 +1,28 @@
+LOC: Location Protocol
+===========================
+
+Version 1.0 Maxim Sokhatsky
+
+Endpoints
+--------
+
+* `actions/1/api/phone/:phone` — MQTT
+* `events/1//api/anon/:client/:token` — MQTT
+
+Tuples
+------
+
+* `{location,X,Y,Z}`
+
+Overview
+--------
+
+Location API dedicated for sending GPS coordinates of the device.
+
+Protocol
+--------
+
+```
+1. client sends `{loaction,X,Y,Z}`
+             to `events/1//api/anon/:client/:token` once.
+```
