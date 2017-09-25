@@ -1,5 +1,5 @@
-AUTH: Contact Registration
-==========================
+AUTH: User Registration
+=======================
 
 Version 2.0 Maxim Sokhatsky, Liubov Mykhailova
 
