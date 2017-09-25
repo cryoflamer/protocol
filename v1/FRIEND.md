@@ -35,8 +35,7 @@ Protocol
 ```
 
 ```
-2. server sends `<<>>`
-             or `{io,{error,roster_not_found},<<>>}`
+2. server sends `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/phone/:party_phone` once.
 ```
@@ -52,17 +51,16 @@ conversation MQTT topic are being created for both counterparties.
 ```
 
 ```
-2. server sends `<<>>`
-             or `{io,{ok,{already_present,_}},<<>>}`
+2. server sends `{io,{ok,{already_present,_}},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/phone/:party` once.
 ```
 
 ```
-3.  server sends `{Contact,Party,_,_,_,_,Time,_}`
+3.  server sends `{'Contact',Party,_,_,_,_,Time,_}`
               to `actions/1/api/phone/:counterparty`
-             and `{Contact,ConterParty_phone,_,_,_,_,Time,_}`
+             and `{'Contact',ConterParty,_,_,_,_,Time,_}`
               to `actions/1/api/phone/:party` once.
 ```
 
@@ -77,6 +75,36 @@ conversation MQTT topic are being removed for both counterparties.
 ```
 
 ```
-2. server sends `{'Contacte',Party,,Status}`
+2. server sends `{'Contact',Party,_,_,_,_,Time,_}`
+             to `actions/1/api/phone/:party` once.
+```
+
+### `Friend/ban` — Ban friend
+
+This is the moment when subscriptions to private
+conversation MQTT topic are being removed for both counterparties.
+
+```
+1. client sends `{'Friend',Id,User,revoke}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Contact',Party,_,_,_,_,Time,_}`
+             to `actions/1/api/phone/:party` once.
+```
+
+### `Friend/mute` — Mute friend
+
+This is the moment when subscriptions to private
+conversation MQTT topic are being removed for both counterparties.
+
+```
+1. client sends `{'Friend',Id,User,mute}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Contact',Party,_,_,_,_,Time,_}`
              to `actions/1/api/phone/:party` once.
 ```
