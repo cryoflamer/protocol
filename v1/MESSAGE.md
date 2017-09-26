@@ -79,14 +79,15 @@ Protocol
 ### `Message/client` — General Sending Message to Subscribers
 
 ```
-1. client sends `{'Message',_,_,_,_,_,Id,From,To,Files,Time,Type,_,client}`
+1. client sends `{'Message',[],_,Feed,_,_,Id,From,To,Files,Time,Type,_,client}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 Examples:
 
-From — `380676631870_1`
-To  — `380676631870_1` or `lobby`
+* From — `380676631870_1`
+* To — `380676631870_1` or `lobby`
+* Feed — `{p2p,_,_}` or `{room,_}`
 
 ```
 2. server sends `{'Message',Id,_,_,_,_,_,To,From,Files,Time,Type,_,sent}`
@@ -97,7 +98,7 @@ To  — `380676631870_1` or `lobby`
 ### `Message/upload` — Sending Async Upload Message
 
 ```
-1. client sends `{'Message',_,_,_,_,_,Id,From,To,Files,Time,Type,_,upload}`
+1. client sends `{'Message',[],_,_,_,_,Id,From,To,Files,Time,Type,_,upload}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
