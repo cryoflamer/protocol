@@ -62,14 +62,14 @@ Message Formats
 
 * [IO](https://github.com/NYNJA-MC/protocol/blob/master/v1/IO.md) — 1
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
-* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 5
+* [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 8
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
-* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 3
-* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 3
+* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 8
+* [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 4
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
-* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 3
-* [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 4
-* [TRIBE](https://github.com/NYNJA-MC/protocol/blob/master/v1/TRIBE.md) — 6
+* [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 5
+* [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 7
+* [ROOM](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROOM.md) — 6
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
 * [FAV](https://github.com/NYNJA-MC/protocol/blob/master/v1/FAV.md) — 5
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
