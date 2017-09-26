@@ -23,36 +23,6 @@ Tuples
                      status = [] :: [] | contact | atom()}).
 ```
 
-```erlang
-
--record('Roster',   {id=[] :: [] | integer(),
-                     names=[] :: [] | binary(),
-                     surnames=[] :: [] | binary(),
-                     size=0 :: integer(),
-                     userlist=[] :: list(#'Contact'{}),
-                     roomlist=[] :: list(#'Room'{}),
-                     subscribe=true :: boolean(),
-                     phone=[] :: [] | binary(),
-                     avatar=[] :: [] | binary(),
-                     update=[] :: [] | integer(),
-                     status=[] :: [] | get | update | set | remove
-                                     | create | del | add | list
-                                     | last_msg | atom()}).
-```
-
-```erlang
--record('Contact',  {phone_id=[] :: [] | binary(),
-                     avatar=[] :: [] | binary(),
-                     names=[] :: [] | binary(),
-                     surnames=[] :: [] | binary(),
-                     person_id=[] :: [] | binary(),
-                     unread=[] :: [] | integer(),
-                     update=[] :: [] | integer(),
-                     status=[] :: [] | request | authorization
-                                     | friend | last_msg | ban
-                                     | banned | atom()}).
-```
-
 Overview
 --------
 
@@ -70,10 +40,9 @@ Protocol
 ```
 
 ```
-2. server sends `{'Roster,RosterId,_,_,_,UserList,_,_,_,_,_,_}`
+2. server sends `{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_}`
              or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
 ```
-
