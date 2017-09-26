@@ -1,4 +1,4 @@
-TRIBE: MUC Conversations
+ROOM: MUC Conversations
 ========================
 
 Version 1.0 Maxim Sokhatsky
