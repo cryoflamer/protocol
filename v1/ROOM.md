@@ -126,3 +126,28 @@ Protocol
              to `room/:room` members times.
 ```
 
+
+### `Room/mute` — Mute Group
+
+```
+1. client sends `{'Room',Name,_,_,Members,_,_,_,mute}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,mute}`
+             to `room/:room` members times.
+```
+
+### `Room/unmute` — Unmute Group
+
+```
+1. client sends `{'Room',Name,_,_,_,_,_,_,unmute}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,unmute}`
+             to `room/:room` members times.
+```
+
