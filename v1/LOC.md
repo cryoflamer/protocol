@@ -12,7 +12,7 @@ Endpoints
 Tuples
 ------
 
-* `{location,X,Y,Z}`
+* `{'Loc',X,Y,Z}`
 
 Overview
 --------
@@ -21,6 +21,8 @@ Location API dedicated for sending GPS coordinates of the device.
 
 Protocol
 --------
+
+### `Loc/` — Send Location
 
 ```
 1. client sends `{loaction,X,Y,Z}`
