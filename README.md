@@ -87,7 +87,7 @@ Client API RPC Specification
 * `Auth/push` — Write Google or Apple token to Auth table
 * `Auth/list` — List of client sessions
 * `Tag/create` — Create Tag
-* `Tag/remove` — Create Tag
+* `Tag/remove` — Remove Tag
 * `Tag/edit` — Edit Tag
 * `Star/add` — Add to Favorites
 * `Star/remove` — Remove from Favorites
