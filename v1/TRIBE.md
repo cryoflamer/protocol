@@ -14,6 +14,23 @@ Tuples
 ------
 
 ```erlang
+-record('Member',   {id=[] :: [] | integer(),
+                     container = chain | cur,
+                     feed_id=[] :: #room{} | #p2p{},
+                     prev=[] :: [] | integer(),
+                     next=[] :: [] | integer(),
+                     phone_id=[] :: [] | binary(),
+                     avatar=[] :: [] | binary(),
+                     names=[] :: [] | binary(),
+                     surnames=[] :: [] | binary(),
+                     nick= [] :: [] | binary(),
+                     email=[] :: [] | binary(),
+                     person_id=[] :: [] | binary(),
+                     unread=0 :: [] | integer(),
+                     update=0 :: [] | integer(),
+                     presence=[] :: [] | online | offline,
+                     status=[] :: [] | admin | member | patch}).
+
 -record('Room',     {room=[] :: [] | binary(),
                      description=[] :: [] | binary(),
                      settings=[] :: list(),
