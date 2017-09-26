@@ -19,8 +19,11 @@ Tuples
 ```
 
 ```erlang
--record(p2p,        {from=[] :: [] | binary(),
-                     to=[] :: [] | binary()}).
+-record(room,       {name = [] :: [] | binary() }).
+-record(group,      {name = [] :: [] | binary() }).
+-record(p2p,        {from = [] :: [] | binary(),
+                     to   = [] :: [] | binary() }).
+
 ```
 
 ```erlang
@@ -35,9 +38,7 @@ Tuples
 ```erlang
 -record('Message',  {id=[] :: [] | integer(),
                      container = chain | cur,
-                     feed_id=[] :: term()
-                                | {p2p, binary(), binary()}
-                                | {room, binary()},
+                     feed_id=[] :: #p2p{} | #room{}},
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
                      msg_id = [] :: [] | binary(),
@@ -46,11 +47,11 @@ Tuples
                      created = [] :: [] | integer() | binary(),
                      files = [] :: [] | list(#'Desc'{}),
                      type = [] :: [] | reply | forward | sched
-                          | online | offline | join | leave,
+                          | online | offline | join | leave
+                          | removed,
                      edit_msg = [] :: [] | integer(),
                      status = [] :: [] | atom() | client | async
-                            | sent | internal | last_read | edit
-                            | muc }).
+                            | sent | internal | last_read | edit }).
 ```
 
 ```erlang
@@ -75,41 +76,59 @@ MESSAGE API deliver messages.
 Protocol
 --------
 
-### `Message/client` — Sending Message to Subscribers
+### `Message/client` — General Sending Message to Subscribers
 
 ```
-1. client sends `{'Message',_,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,_,_,_,Payload,_,_,client}`
+1. client sends `{'Message',_,_,_,_,_,Id,From,To,Files,Time,Type,_,client}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+Examples:
+
+From — `380676631870_1`
+To  — `380676631870_1` or `lobby`
+
+```
+2. server sends `{'Message',Id,_,_,_,_,_,To,From,Files,Time,Type,_,sent}`
+             to `p2p/:address` twice
+             or `room/:room` members times.
+```
+
+### `Message/upload` — Sending Async Upload Message
+
+```
+1. client sends `{'Message',_,_,_,_,_,Id,From,To,Files,Time,Type,_,upload}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,Created,_,_,Payload,_,_,sent}`
-                to `p2p/:from_phone_id/:to_phone_id` once.
+2. server sends `{'Message',Id,_,_,_,_,_,To,From,Files,Time,Type,_,link}`
+             to `p2p/:address' twice
+             or `room/:to` members times.
 ```
 
 ```
-3. server sends `{'Message',Id,_,_,_,_,_,_,ToPhoneId,FromPhoneId,_,Created,_,_,Payload,_,_,sent}`
-                to `p2p/:FromPhoneId/:ToPhoneId` once.
+3. client sends `{'Message',Id,_,_,_,_,_,From,To,Files,Time,Type,_,complete}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+4. server sends `{'Message',Id,_,_,_,_,_,To,From,Files,Time,Type,_,sent}`
+             to `p2p/:address' twice
+             or `room/:to` members times.
 ```
 
 ### `Message/edit` — Edit/Remove Message
 
 ```
-1. client sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,
-                  ToPhoneId,_,_,_,_,Payload,SeenBy,EditMsgId,edit}`
+1. client sends `{'Message',Id,_,_,_,_,_,_,_,Files,Time,Type,_,edit}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,
-                  Created,_,_,Payload,SeenBy,EditMsgId,edit}`
-             to `p2p/:FromPhoneId/:ToPhoneId` counterparty.
-```
-
-```
-3. server sends `{'Message',Id,_,_,_,_,_,_,FromPhoneId,ToPhoneId,_,
-                  Created,_,_,Payload,SeenBy,EditMsgId,edit}`
-             to `actions/1/api/phone/:from_phone` to issuer.
+2. server sends `{'Message',Id,_,_,_,_,_,_,_,Files,Time,Type,_,edit}`
+             to `p2p/:address' twice
+             or `room/:to` member times.
 ```
 
 ### `History/get` — Retrieve History
