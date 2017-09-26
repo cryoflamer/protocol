@@ -78,34 +78,57 @@ Message Formats
 Client API RPC Specification
 ----------------------------
 
-* `Message/client` — Publishing Message to Subscribers
-* `Message/edit` — Edit/Remove Message
-* `History/get` — Retrieve History from Message stream
-* `Cursor/` — Set cursor for Message stream
-* `Person/get` — Get Person settings by Phone
-* `Person/set` — Set Person settings
-* `Profile/get` — Profile retrival by Phone
-* `Profile/update` — Profile update
-* `Profile/set` — Profile set
-* `Profile/remove` — Remove Profile with all Rosters and Auth tokens
-* `Roster/get` — Get Roster by Id
-* `Roster/update` — Update Roster
-* `Roster/set` — Set Roster
-* `Roster/remove` — Remove Roster
-* `Roster/create` — Create Roster
-* `Roster/list` — List Rosters
-* `Roster/add` — Add Contacts to Roster
-* `Roster/del` — Delete Contacts from Roster
-* `Search/contact` — Search Contacts across NYNJA database
 * `Auth/reg` — Registration
-* `Auth/resend` — Resend SMS
-* `Auth/verify` — Verify by SMS
-* `Auth/voice` — Voice by Voice
+* `Auth/voice` — Voice Call
+* `Auth/resend` — Resend
+* `Auth/verify` — Verify
+* `Auth/login` — Login
 * `Auth/logout` — Logout
-* `Auth/push` — Save Apple or Google Push token to Auth record
+* `Auth/push` — Write Google or Apple token to Auth table
+* `Auth/list` — List of client sessions
+* `Tag/create` — Create Tag
+* `Tag/remove` — Create Tag
+* `Tag/edit` — Edit Tag
+* `Star/add` — Add to Favorites
+* `Star/remove` — Remove from Favorites
 * `Friend/request` — Friendship Request
 * `Friend/confirm` — Confirm friendship
 * `Friend/revoke` — Revoke friendship
+* `Friend/ban` — Ban friend
+* `Friend/unban` — Unban friend
+* `Friend/mute` — Mute friend
+* `Friend/unmute` — Unute friend
+* `Loc/` — Send Location
+* `Message/client` — General Sending Message to Subscribers
+* `Message/upload` — Sending Async Upload Message
+* `Message/edit` — Edit/Remove Message
+* `History/get` — Retrieve History
+* `Cursor/` — Set cursor
+* `Person/get` — Get Person
+* `Person/set` — Set Person
+* `Profile/get` — Profile retrival
+* `Profile/update` — Profile update in friend's rosters
+* `Profile/set` — Profile raw set
+* `Profile/link` — Link email to Profile
+* `Profile/email` — Confirm email
+* `Profile/remove` — Profile remove
+* `Profile/migrate` — Profile migration
+* `Profile/phone` — Confirm Device Migration
+* `Room/create` — Create MUC
+* `Room/patch` — Modify MUC Settings
+* `Room/join` — Join Members by Admin
+* `Room/leave` — Leave Members by Admin
+* `Room/ban` — Ban Members by Admin
+* `Room/unban` — Unban Members by Admin
+* `Roster/get` — Get Roster
+* `Roster/update` — Update Roster
+* `Roster/patch` — Update Roster
+* `Roster/remove` — Remove Roster
+* `Roster/create` — Create Roster
+* `Roster/list` — List Rosters
+* `Roster/add` — Add Roster Contacts
+* `Roster/del` — Delete Roster Contacts
+* `Search/contact` — Search Contacts
 
 Payloads
 --------
