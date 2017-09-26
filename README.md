@@ -120,6 +120,8 @@ Client API RPC Specification
 * `Room/leave` — Leave Members by Admin
 * `Room/ban` — Ban Members by Admin
 * `Room/unban` — Unban Members by Admin
+* `Room/mute` — Mute Group
+* `Room/unmute` — Unmute Group
 * `Roster/get` — Get Roster
 * `Roster/update` — Update Roster
 * `Roster/patch` — Update Roster
@@ -129,6 +131,7 @@ Client API RPC Specification
 * `Roster/add` — Add Roster Contacts
 * `Roster/del` — Delete Roster Contacts
 * `Search/contact` — Search Contacts
+* `CDR/` — Call Data Record
 
 Payloads
 --------
