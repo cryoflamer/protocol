@@ -115,9 +115,9 @@ Protocol
 
 Result:
 
-* `{ok,migration}` — proceed the migration to a new device.
+* `{ok,migration}` — proceed the migration to a new phone.
 
-### `Profile/phone` — Confirm Device Migration
+### `Profile/phone` — Confirm Phone Migration
 
 ```
 1. client sends `{'Profile',NewPhone,_,_,_,_,Time,_,phone}`
