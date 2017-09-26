@@ -16,6 +16,7 @@ The Roster class represents User Impersonified Account or
 Contact Book or Contact List of the User. Each account connected to single
 Phone or Profile or Device.
 
+```erlang
 -record('Roster',   {id=[] :: [] | integer(),
                      names=[] :: [] | binary(),
                      surnames=[] :: [] | binary(),
@@ -30,6 +31,7 @@ Phone or Profile or Device.
                      update=0 :: [] | integer(),
                      status=[] :: [] | get | set | create | del | remove
                        | add | update | list | patch | last_msg | atom()}).
+```
 
 ```erlang
 -record('Contact',  {phone_id=[] :: [] | binary(),
