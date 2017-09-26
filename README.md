@@ -113,7 +113,7 @@ Client API RPC Specification
 * `Profile/email` — Confirm email
 * `Profile/remove` — Profile remove
 * `Profile/migrate` — Profile migration
-* `Profile/phone` — Confirm Device Migration
+* `Profile/phone` — Confirm phone migration
 * `Room/create` — Create MUC
 * `Room/patch` — Modify MUC Settings
 * `Room/join` — Join Members by Admin
