@@ -72,12 +72,12 @@ Protocol
 ### `Roster/update` — Update Roster
 
 ```
-1. client sends `{'Roster,Id,_,_,_,[],[],_,_,_,_,_,_,_,Time,_,update}`
+1. client sends `{'Roster,Id,Names,Surnames,Email,Nick,[],[],Stars,Tags,Phone,Avatar,Time,update}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Roster,Id,Names,Surnames,Email,Nick,Contacts,Rooms,Stars,Tags,Phone,Avatar,Time,update}`
+2. server sends `{'Roster,Id,Names,Surnames,Email,Nick,[],[],Stars,Tags,Phone,Avatar,Time,update}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
