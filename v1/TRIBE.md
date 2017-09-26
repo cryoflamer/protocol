@@ -16,7 +16,7 @@ Tuples
 ```erlang
 -record('Member',   {id=[] :: [] | integer(),
                      container = chain | cur,
-                     feed_id=[] :: #room{} | #p2p{},
+                     feed_id=[] :: #room{},
                      prev=[] :: [] | integer(),
                      next=[] :: [] | integer(),
                      phone_id=[] :: [] | binary(),
@@ -28,7 +28,9 @@ Tuples
                      person_id=[] :: [] | binary(),
                      unread=0 :: [] | integer(),
                      update=0 :: [] | integer(),
-                     presence=[] :: [] | online | offline,
+                     options=[] :: [] | list(),
+                     fetch=[] :: [] | integer(),
+                     presence=[] :: [] | online | offline | join | leave,
                      status=[] :: [] | admin | member | patch}).
 
 -record('Room',     {room=[] :: [] | binary(),
@@ -39,8 +41,7 @@ Tuples
                      type=[] :: [] | group | channel,
                      tos=[] :: [] | binary(),
                      status=[] :: [] | create | join | leave
-                            | ban | uban | add_admins | rem_admins
-                            | add_members | remove_members
+                            | ban | uban 
                             | patch | get | delete | settings
                             | voice | video }).
 ```
@@ -53,14 +54,75 @@ TRIBE API serves the MUC groupchat conversations.
 Protocol
 --------
 
-### Room/create
+### `Room/create` — Create MUC
 
 ```
-1. client sends `{'Room',_,_,_,_,_,_,_,_}`
+1. client sends `{'Room',Name,Desc,_,_,_,_,_,create}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,_}`
+2. server sends `{'Room',Name,Desc,_,_,_,_,_,create}`
              to `actions/1/api/:client/:token` once.
 ```
+
+### `Room/patch` — Modify MUC Settings
+
+```
+1. client sends `{'Room',Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
+             to `room/:room` members times.
+```
+
+### `Room/join` — Join Members by Admin
+
+```
+1. client sends `{'Room',Name,_,_,Members,Admins,_,_,join}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,join}`
+             to `room/:room` members times.
+```
+
+### `Room/leave` — Leave Members by Admin
+
+```
+1. client sends `{'Room',Name,_,_,Members,Admins,_,_,leave}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,leave}`
+             to `room/:room` members times.
+```
+
+### `Room/ban` — Ban Members by Admin
+
+```
+1. client sends `{'Room',Name,_,_,Members,_,_,_,ban}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,ban}`
+             to `room/:room` members times.
+```
+
+### `Room/unban` — Unban Members by Admin
+
+```
+1. client sends `{'Room',Name,_,_,Members,_,_,_,unban}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Room',_,_,_,_,_,_,_,unban}`
+             to `room/:room` members times.
+```
+
