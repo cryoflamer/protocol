@@ -25,6 +25,6 @@ Protocol
 ### `Loc/` — Send Location
 
 ```
-1. client sends `{loaction,X,Y,Z}`
+1. client sends `{'Loc',X,Y,Z}`
              to `events/1//api/anon/:client/:token` once.
 ```
