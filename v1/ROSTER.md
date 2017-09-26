@@ -84,21 +84,21 @@ Protocol
              to `actions/1/api/:client` once.
 ```
 
-### `Roster/set` or `Roster/patch` — Set Roster
+### `Roster/patch` — Update Roster
 
 ```
-1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,set}`
+1. client sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,patch}`
              to `events/1/:node/api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Roster,Id,_,_,_,_,_,_,Phone,_,NewUpdateTime,update}`
+2. server sends `{'Roster,Id,_,_,_,_,_,_,Phone,_,UpdateTime,patch}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/phone/:phone` once.
 ```
 
 ```
-3. server sends `{Contact,Phone+Id,_,_,_,_,_,_,NewUpdateTime,_}`
+3. server sends `{Contact,Id,_,_,_,_,_,_,UpdateTime,_}`
              to `p2p/:phone_id` once.
 ```
 
