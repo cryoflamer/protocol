@@ -71,7 +71,9 @@ Message Formats
 * [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 4
 * [TRIBE](https://github.com/NYNJA-MC/protocol/blob/master/v1/TRIBE.md) — 6
 * [SEARCH](https://github.com/NYNJA-MC/protocol/blob/master/v1/SEARCH.md) — 1
+* [FAV](https://github.com/NYNJA-MC/protocol/blob/master/v1/FAV.md) — 5
 * [FTP](https://github.com/NYNJA-MC/protocol/blob/master/v1/FTP.md) — 1
+* [LOC](https://github.com/NYNJA-MC/protocol/blob/master/v1/LOC.md) — 1
 
 Client API RPC Specification
 ----------------------------
