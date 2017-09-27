@@ -146,7 +146,6 @@ Credits
 -------
 
 * Marshall Taplits
-* Maxim Sokhatsky
 * Yuri Maslovsky
 * Igor Kharin
 * Liubov Mykhailova
