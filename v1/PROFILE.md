@@ -79,12 +79,31 @@ Protocol
              to `events/1//api/anon/:client/:token` once.
 ```
 
+```
+2. server sends `{io, Result, <<>>}`
+             to `actions/1/api/:client` once.
+```
+
+Result:
+
+* `{ok,email_sent}` — send email to email from Services.
+
 ### `Profile/email` — Confirm email
 
 ```
 1. client sends `{'Profile',Phone,Services,_,_,Time,_,email}`
              to `events/1//api/anon/:client/:token` once.
 ```
+
+```
+2. server sends `{io, Result, <<>>}`
+             to `actions/1/api/:client` once.
+```
+
+Result:
+
+* `{ok,verified}` — email linked successfully.
+* `{error,wrong_code}` — the verification has failed.
 
 ### `Profile/remove` — Profile remove
 
