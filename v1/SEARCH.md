@@ -20,7 +20,7 @@ Tuples
                      names = [] :: [] | binary(),
                      surnames = [] :: [] | binary(),
                      query = [] :: [] | binary(),
-                     status = [] :: [] | contact | atom()}).
+                     status = [] :: [] | contact | nick | name }).
 ```
 
 Overview
