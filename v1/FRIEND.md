@@ -98,7 +98,7 @@ conversation MQTT topic are being removed for both counterparties.
 ```
 
 ```
-2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,ban}`
+2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,banned}`
              to `ses/:party` once.
             and `ses/:counterparty` once.
 ```
@@ -111,7 +111,7 @@ conversation MQTT topic are being removed for both counterparties.
 ```
 
 ```
-2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,unban}`
+2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,unbanned}`
              to `ses/:party` once.
             and `ses/:counterparty` once.
 ```
@@ -124,7 +124,7 @@ conversation MQTT topic are being removed for both counterparties.
 ```
 
 ```
-2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,mute}`
+2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,muted}`
              to `ses/:party` once.
 ```
 
@@ -136,6 +136,6 @@ conversation MQTT topic are being removed for both counterparties.
 ```
 
 ```
-2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,unmute}`
+2. server sends `{'Contact',_,_,_,_,_,_,_,_,_,_,_,unmuted}`
              to `ses/:party` once.
 ```
