@@ -44,7 +44,7 @@ Phone or Profile or Device.
                      update=[] :: [] | integer(),
                      presence=[] :: [] | online | offline | atom(),
                      status=[] :: [] | request | authorization | friend
-                                      | last_msg | ban | banned | atom()}).
+                                      | last_msg | muted | banned | atom()}).
 ```
 
 * person_id — VoxImplant User Id
