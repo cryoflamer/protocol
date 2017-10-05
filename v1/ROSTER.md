@@ -44,7 +44,7 @@ Phone or Profile or Device.
                      update=[] :: [] | integer(),
                      presence=[] :: [] | online | offline | atom(),
                      status=[] :: [] | request | authorization | friend
-                                      | last_msg | ban | banned | atom()}).
+                                      | last_msg | muted | banned | atom()}).
 ```
 
 * person_id — VoxImplant User Id
@@ -95,6 +95,7 @@ Protocol
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
+             or `{io,{error,nick_taken},<<>>}`
              to `actions/1/api/phone/:phone` once.
 ```
 

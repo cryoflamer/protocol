@@ -13,7 +13,6 @@ Endpoints
 Tuples
 ------
 
-
 ```erlang
 -record('Search',   {id       =[] :: [] | integer(),
                      phone    =[] :: [] | list(binary()),
