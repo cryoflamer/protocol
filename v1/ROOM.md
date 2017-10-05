@@ -30,6 +30,7 @@ Tuples
                      update=0 :: [] | integer(),
                      options=[] :: [] | list(),
                      fetch=[] :: [] | integer(),
+                     pie= {100,0} :: {integer(),integer()},
                      presence=[] :: [] | online | offline | join | leave,
                      status=[] :: [] | admin | member | patch}).
 
