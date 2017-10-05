@@ -37,7 +37,7 @@ Tuples
 -record('Room',     {room=[] :: [] | binary(),
                      description=[] :: [] | binary(),
                      settings=[] :: list(),
-                     owners=[] :: list(#'Owner'{}),
+                     owners=[] :: list(#'Member'{}),
                      members=[] :: list(#'Member'{}),
                      admins=[]  :: list(#'Member'{}),
                      type=[] :: [] | group | channel,
