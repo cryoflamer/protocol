@@ -25,6 +25,14 @@ Profile has one-to-one linkage to Person and may hold custom data.
                      status    =[] :: [] | atom()}).
 ```
 
+```erlang
+-record('Service',  {id       =[] :: [] | binary(),
+                     type     =[] :: [] | atom() | email | facebook | aws
+                                        | twitter | github | apple | microsoft,
+                     external =[] :: [] | term(),
+                     status   =[] :: [] | atom() | verified | added}).
+```
+
 Overview
 --------
 
