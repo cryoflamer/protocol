@@ -13,14 +13,14 @@ Endpoints
 Tuples
 ------
 
-
 ```erlang
--record('Search',   {id = [] :: [] | integer(),
-                     phone = [] :: [] | list(binary()),
-                     names = [] :: [] | binary(),
-                     surnames = [] :: [] | binary(),
-                     query = [] :: [] | binary(),
-                     status = [] :: [] | contact | nick | name }).
+-record('Search',   {id       =[] :: [] | integer(),
+                     phone    =[] :: [] | list(binary()),
+                     names    =[] :: [] | binary(),
+                     surnames =[] :: [] | binary(),
+                     query    =[] :: [] | binary(),
+                     status   =[] :: [] | contact | qrcode | nick
+                                        | names | phone | phonebook }).
 ```
 
 Overview
