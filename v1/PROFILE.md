@@ -27,10 +27,11 @@ Profile has one-to-one linkage to Person and may hold custom data.
 
 ```erlang
 -record('Service',  {id       =[] :: [] | binary(),
-                     type     =[] :: [] | atom() | email | facebook | aws
-                                        | twitter | github | apple | microsoft,
-                     external =[] :: [] | term(),
-                     status   =[] :: [] | atom() | verified | added}).
+                     type     =[] :: [] | email | vox | aws,
+                     data     =[] :: term(),
+                     login    =[] :: [] | binary(),
+                     password =[] :: [] | binary(),
+                     status   =[] :: [] | verified | added}).
 ```
 
 Overview
@@ -112,6 +113,23 @@ Result:
 
 * `{ok,verified}` — email linked successfully.
 * `{error,wrong_code}` — the verification has failed.
+
+### `Profile/aws` — Get temporary AWS credentials
+
+```
+1. client sends `{'Profile',Phone,_,_,_,_,_,aws}`
+             to `events/1//api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{io, Result, <<>>}`
+             to `actions/1/api/:client` once.
+```
+
+Result:
+
+* `{ok,{'Service',AccessKeyId,aws,_,SecretAccessKey,SessionToken,added}}` — temporary credentials were created successfully.
+* `{error,aws_failed}` — the creation has failed.
 
 ### `Profile/remove` — Profile remove
 
