@@ -111,6 +111,7 @@ Client API RPC Specification
 * `Profile/set` — Profile raw set
 * `Profile/link` — Link email to Profile
 * `Profile/email` — Confirm email
+* `Profile/aws` — Get temporary AWS credentials
 * `Profile/remove` — Profile remove
 * `Profile/migrate` — Profile migration
 * `Profile/phone` — Confirm phone migration
