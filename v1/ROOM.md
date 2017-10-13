@@ -30,6 +30,7 @@ Tuples
                      update=0 :: [] | integer(),
                      options=[] :: [] | list(),
                      fetch=[] :: [] | integer(),
+                     pie= {100,0} :: {integer(),integer()},
                      presence=[] :: [] | online | offline | join | leave,
                      status=[] :: [] | admin | member | patch}).
 
@@ -81,12 +82,12 @@ Protocol
 ### `Room/join` — Join Members by Admin
 
 ```
-1. client sends `{'Room',Name,_,_,Members,Admins,_,_,join}`
+1. client sends `{'Room',Name,_,_,Members,Admins,_,_,_,join}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,join}`
+2. server sends `{'Room',_,_,_,_,_,_,_,_,join}`
              to `room/:room` members times.
 ```
 
@@ -98,7 +99,7 @@ Protocol
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,leave}`
+2. server sends `{'Room',_,_,_,_,_,_,leave}`
              to `room/:room` members times.
 ```
 
