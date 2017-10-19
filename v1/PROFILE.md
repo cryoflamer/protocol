@@ -26,12 +26,13 @@ Profile has one-to-one linkage to Person and may hold custom data.
 ```
 
 ```erlang
--record('Service',  {id       =[] :: [] | binary(),
-                     type     =[] :: [] | email | vox | aws,
-                     data     =[] :: term(),
-                     login    =[] :: [] | binary(),
-                     password =[] :: [] | binary(),
-                     status   =[] :: [] | verified | added}).
+-record('Service',  {id         =[] :: [] | binary(),
+                     type       =[] :: [] | email | vox | aws,
+                     data       =[] :: term(),
+                     login      =[] :: [] | binary(),
+                     password   =[] :: [] | binary(),
+                     expiration =[] :: [] | integer(),
+                     status     =[] :: [] | verified | added}).
 ```
 
 Overview
@@ -128,7 +129,8 @@ Result:
 
 Result:
 
-* `{ok,{'Service',AccessKeyId,aws,_,SecretAccessKey,SessionToken,added}}` — temporary credentials were created successfully.
+* `{ok2,aws,{'Service',_,aws,_,_,_,_,added}}` — temporary credentials were requested.
+* `{ok2,aws,{'Service',AccessKeyId,aws,_,SecretAccessKey,SessionToken,Expiration,verified}}` — temporary credentials were created successfully.
 * `{error,aws_failed}` — the creation has failed.
 
 ### `Profile/remove` — Profile remove
