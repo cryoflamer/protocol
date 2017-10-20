@@ -64,7 +64,7 @@ Message Formats
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 8
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
-* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 8
+* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 9
 * [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 4
 * [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 5
