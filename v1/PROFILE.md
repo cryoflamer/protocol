@@ -123,15 +123,12 @@ Result:
 ```
 
 ```
-2. server sends `{io, Result, <<>>}`
-             to `actions/1/api/:client` once.
+2. server sends 
+       `{io,{ok,aws},{'Service',_,aws,_,_,_,_,added}}`  — temporary credentials were requested.
+    or `{io,{ok,aws},{'Service',AccessKeyId,aws,_,SecretAccessKey,SessionToken,Expiration,verified}}` — temporary credentials were created successfully.
+    or `{io,{error,aws},<<>>}` — the creation has failed.
+    to `actions/1/api/:client` once.
 ```
-
-Result:
-
-* `{ok2,aws,{'Service',_,aws,_,_,_,_,added}}` — temporary credentials were requested.
-* `{ok2,aws,{'Service',AccessKeyId,aws,_,SecretAccessKey,SessionToken,Expiration,verified}}` — temporary credentials were created successfully.
-* `{error,aws_failed}` — the creation has failed.
 
 ### `Profile/remove` — Profile remove
 
