@@ -8,43 +8,48 @@ Endpoints
 
 * `room/Room` — MQTT
 * `actions/1/api/:client/:token` — MQTT
-* `events/1/:node/api/anon/:client/:token` — MQTT
+* `events/1/:node/api/anon//` — MQTT
 
 Tuples
 ------
 
 ```erlang
--record('Member',   {id=[] :: [] | integer(),
-                     container = chain | cur,
-                     feed_id=[] :: #room{},
-                     prev=[] :: [] | integer(),
-                     next=[] :: [] | integer(),
-                     phone_id=[] :: [] | binary(),
-                     avatar=[] :: [] | binary(),
-                     names=[] :: [] | binary(),
-                     surnames=[] :: [] | binary(),
-                     nick= [] :: [] | binary(),
-                     email=[] :: [] | binary(),
-                     person_id=[] :: [] | binary(),
-                     unread=0 :: [] | integer(),
-                     update=0 :: [] | integer(),
-                     options=[] :: [] | list(),
-                     fetch=[] :: [] | integer(),
-                     pie= {100,0} :: {integer(),integer()},
-                     presence=[] :: [] | online | offline | join | leave,
-                     status=[] :: [] | admin | member | patch}).
+-record('Member',   {id        =[] :: [] | integer(),
+                     container = chain :: atom() | chain | cur,
+                     feed_id   =[] :: #muc{} | #p2p{},
+                     prev      =[] :: [] | integer(),
+                     next      =[] :: [] | integer(),
+                     feeds     =[] :: list(),
+                     phone_id  =[] :: [] | binary(),
+                     avatar    =[] :: [] | binary(),
+                     names     =[] :: [] | binary(),
+                     surnames  =[] :: [] | binary(),
+                     alias     =[] :: [] | binary(),
+                     email     =[] :: [] | binary(),
+                     vox_id    =[] :: [] | binary(),
+                     reader    = 0 :: [] | integer(),
+                     update    = 0 :: [] | integer(),
+                     presence  =[] :: [] | online | offline,
+                     status    =[] :: [] | admin | member | removed | patch }).
 
--record('Room',     {room=[] :: [] | binary(),
-                     description=[] :: [] | binary(),
-                     settings=[] :: list(),
-                     members=[] :: list(#'Member'{}),
-                     admins=[]  :: list(#'Member'{}),
-                     type=[] :: [] | group | channel,
-                     tos=[] :: [] | binary(),
-                     status=[] :: [] | create | join | leave
-                            | ban | uban 
-                            | patch | get | delete | settings
-                            | voice | video }).
+-record('Room',     {id          =[] :: [] | binary(),
+                     name        =[] :: [] | binary(),
+                     description =[] :: [] | binary(),
+                     settings    =[] :: list(),
+                     members     =[] :: list(#'Member'{}),
+                     admins      =[] :: list(#'Member'{}),
+                     data        =[] :: [] | list(#'Desc'{}),
+                     type        =[] :: [] | atom() | group | channel,
+                     tos         =[] :: [] | binary(),
+                     unread      = 0 :: [] | integer(),
+                     last_msg    =[] :: [] | #'Message'{},
+                     update      = 0 :: [] | integer(),
+                     created     = 0 :: [] | integer(),
+                     status      =[] :: [] | create | join | leave
+                     | ban | unban | add | remove | mute | unmute
+                     | patch | get | delete | settings
+                     | voice | video }).
+
 ```
 
 Overview
@@ -58,72 +63,118 @@ Protocol
 ### `Room/create` — Create MUC
 
 ```
-1. client sends `{'Room',Name,Desc,_,_,_,_,_,create}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',_,Name,Desc,Settings,Members,Admins,Data,Type,_,_,_,_,_,create}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',Name,Desc,_,_,_,_,_,create}`
+2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,Unread,LastMsg,Update,Created,create}`
+             to `actions/1/api/:client/:token` once.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,AddMsg,_,_,muc}`
+             to `room/:room` members times.
+```
+
+### `Room/get` — Get MUC room
+
+```
+1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,get}`
+             to `events/1/:node/api/anon//` once.
+```
+
+```
+2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,Unread,LastMsg,Update,Created,get}`
              to `actions/1/api/:client/:token` once.
 ```
 
 ### `Room/patch` — Modify MUC Settings
 
 ```
-1. client sends `{'Room',Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
-             to `events/1//api/anon/:client/:token` once.
+1. `{'Room',Id,Name,Desc,Settings,_,_,Data,Type,Tos,_,_,_,_,patch}`
+             to `events/1//api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
+2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
              to `room/:room` members times.
 ```
 
-### `Room/join` — Join Members by Admin
+### `Member/patch` — Modify self Member
 
 ```
-1. client sends `{'Room',Name,_,_,Members,Admins,_,_,_,join}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Member',_,_,_,_,_,_,_,Avatar,Names,Surnames,Alias,Email,Vox,_,_,_,patch}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,_,join}`
+2. server sends `{'Member',Id,_,_,_,_,_,_,Avatar,Names,Surnames,Alias,Email,Vox,_,_,_,patch}`
+             to `Member/:member` members times.
+```
+
+### `Room/add` — Add Members by Admin
+
+```
+1. client sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,add}`
+             to `events/1/:node/api/anon//` once.
+```
+
+```
+2. server sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,add}`
+             to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,AddMsg,_,_,muc}`
              to `room/:room` members times.
 ```
 
-### `Room/leave` — Leave Members by Admin
+### `Room/remove` — Remove Members by Admin
 
 ```
-1. client sends `{'Room',Name,_,_,Members,Admins,_,_,leave}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,remove}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,leave}`
+2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,remove}`
+             to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,RemoveMsg,_,_,muc}`
+             to `room/:room` members times.
+
+```
+
+### `Room/leave` — Leave Room by self Member
+
+```
+1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,leave}`
+             to `events/1/:node/api/anon//` once.
+```
+
+```
+2. server sends `{'Room',Id,_,_,_,_,[Member],_,_,_,_,_,_,_,_,leave}`
+             to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,LeaveMsg,_,_,muc}`
              to `room/:room` members times.
 ```
+
 
 ### `Room/ban` — Ban Members by Admin
 
 ```
-1. client sends `{'Room',Name,_,_,Members,_,_,_,ban}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,ban}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,ban}`
+2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,ban}`
              to `room/:room` members times.
 ```
 
 ### `Room/unban` — Unban Members by Admin
 
 ```
-1. client sends `{'Room',Name,_,_,Members,_,_,_,unban}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,unban}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,unban}`
+2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unban}`
              to `room/:room` members times.
 ```
 
@@ -131,24 +182,24 @@ Protocol
 ### `Room/mute` — Mute Group
 
 ```
-1. client sends `{'Room',Name,_,_,Members,_,_,_,mute}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,mute}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,mute}`
+2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,mute}`
              to `room/:room` members times.
 ```
 
 ### `Room/unmute` — Unmute Group
 
 ```
-1. client sends `{'Room',Name,_,_,_,_,_,_,unmute}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,unmute}`
+             to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',_,_,_,_,_,_,_,unmute}`
+2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unmute}`
              to `room/:room` members times.
 ```
 
