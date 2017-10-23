@@ -70,6 +70,8 @@ Protocol
 ```
 2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,Unread,LastMsg,Update,Created,create}`
              to `actions/1/api/:client/:token` once.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,AddMsg,_,_,muc}`
+             to `room/:room` members times.
 ```
 
 ### `Room/get` — Get MUC room
@@ -118,6 +120,8 @@ Protocol
 ```
 2. server sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,add}`
              to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,AddMsg,_,_,muc}`
+             to `room/:room` members times.
 ```
 
 ### `Room/remove` — Remove Members by Admin
@@ -130,6 +134,9 @@ Protocol
 ```
 2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,remove}`
              to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,RemoveMsg,_,_,muc}`
+             to `room/:room` members times.
+
 ```
 
 ### `Room/leave` — Leave Room by self Member
@@ -140,7 +147,9 @@ Protocol
 ```
 
 ```
-2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,leave}`
+2. server sends `{'Room',Id,_,_,_,_,[Member],_,_,_,_,_,_,_,_,leave}`
+             to `room/:room` members times.
+    server sends `{'Message',_,_,_,_,_,_,_,_,_,_,LeaveMsg,_,_,muc}`
              to `room/:room` members times.
 ```
 
