@@ -95,7 +95,25 @@ Protocol
 ```
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
-             or `{io,{error,nick_taken},<<>>}`
+             to `actions/1/api/phone/:phone` once.
+```
+
+```
+3. server sends `{Contact,Id,_,_,_,_,_,_,Time,_}`
+             to `p2p/:phone_id` once.
+```
+
+### `Roster/nick` — Update Nick
+
+```
+1. client sends `{'Roster,Id,_,_,_,Nick,_,_,_,_,_,_,_,nick}`
+             to `events/1/:node/api/anon/:client/:token` once.
+```
+
+```
+2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_,_,_}`
+             or `{io,{error,not_authorized},<<>>}`
+             or `{io,{error,nick},<<>>}`
              to `actions/1/api/phone/:phone` once.
 ```
 
