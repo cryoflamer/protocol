@@ -66,7 +66,7 @@ Message Formats
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
 * [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 9
 * [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 4
-* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
+* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 9
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 5
 * [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 7
 * [ROOM](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROOM.md) — 6
