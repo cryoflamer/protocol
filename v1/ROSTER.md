@@ -7,7 +7,8 @@ Endpoints
 --------
 
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon/:client/:token` — MQTT
+* `events/1//api/anon//` — MQTT
+* `p2p/:phone_id` - MQTT
 
 Tuples
 ------
@@ -93,8 +94,9 @@ Protocol
 ```
 
 ```
+
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_,_,_}`
-             or `{io,{error,not_authorized},<<>>}`
+         or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,nick_taken},<<>>}`
              to `actions/1/api/phone/:phone` once.
 ```
@@ -176,6 +178,6 @@ Protocol
 2. server sends `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,contacts_not_found},<<>>}`
-             or `{io,{ok,removed},<<>>}`
+             or `{io,{ok2,removed,List},<<>>}`
              to `actions/1/api/:client` once.
 ```

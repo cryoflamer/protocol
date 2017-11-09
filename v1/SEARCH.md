@@ -8,20 +8,18 @@ Endpoints
 
 * `actions/1/api/phone/:phone` — MQTT
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon/:client/:token` — MQTT
+* `events/1//api/anon//` — MQTT
 
 Tuples
 ------
 
-```erlang
 -record('Search',   {id       =[] :: [] | integer(),
-                     phone    =[] :: [] | list(binary()),
-                     names    =[] :: [] | binary(),
-                     surnames =[] :: [] | binary(),
-                     query    =[] :: [] | binary(),
-                     status   =[] :: [] | contact | qrcode | nick
-                                        | names | phone | phonebook }).
-```
+                     ref      =[] :: [] | binary(),
+                     field    =[] :: [] | binary(),
+                     type     =[] :: [] | '==' | '!=' | 'like',
+                     value    =[] :: [] | term(),
+                     status   =[] :: [] | profile | roster | contact | member | room }).
+``
 
 Overview
 --------
@@ -35,13 +33,13 @@ Protocol
 ### `Search/contact` — Search Contacts
 
 ```
-1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
+1. client sends `{'Search,RosterId,Phones,_,_,[],contact}`
              to `events/1//api/anon/:client/:token` once.
 ```
 
 ```
 2. server sends `{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_}`
-             or `{io,{error,profile_not_found},<<>>}`
+         or `{io,{error,profile_not_found},<<>>}`
              or `{io,{error,roster_not_found},<<>>}`
              or `{io,{error,not_authorized},<<>>}`
              to `actions/1/api/:client` once.
