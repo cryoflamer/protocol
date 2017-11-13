@@ -6,25 +6,29 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/:node/api/:client` — MQTT
+* `actions/1//api/` — MQTT
+* `ac/:phone_id` — MQTT
+* `muc/:phone_id` — MQTT
 
 Tuples
 ------
 
 ```erlang
--record('Contact',  {phone_id=[]  :: [] | binary(),
-                     avatar=[]    :: [] | binary(),
-                     names=[]     :: [] | binary(),
-                     surnames=[]  :: [] | binary(),
-                     nick= []     :: [] | binary(),
-                     email = []   :: [] | binary(),
-                     person_id=[] :: [] | binary(),
-                     unread=0     :: [] | integer(),
-                     last_msg=[]  :: [] | #'Message'{},
-                     update=0     :: [] | integer(),
-                     presence=[]  :: [] | atom(),
-                     status=[]    :: [] | request | authorization
-                          | friend | last_msg | atom()}).
+-record('Contact',  {phone_id  =[] :: [] | binary(),
+                     avatar    =[] :: [] | binary(),
+                     names     =[] :: [] | binary(),
+                     surnames  =[] :: [] | binary(),
+                     nick      =[] :: [] | binary(),
+                     email     =[] :: [] | binary(),
+                     vox_id    =[] :: [] | binary(),
+                     reader    = 0 :: [] | integer(),
+                     unread    = 0 :: [] | integer(),
+                     last_msg  =[] :: [] | #'Message'{},
+                     update    = 0 :: [] | integer(),
+                     settings  =[] :: [] | list(#'Feature'{}),
+                     presence  =[] :: [] | atom(),
+                     status    =[] :: [] | request | authorization | internal
+                                         | friend | last_msg | ban | banned | deleted }).
 ```
 
 Overview
@@ -36,21 +40,21 @@ Protocol
 --------
 
 ```
-1. server issues `{'Contact',Phone,Avatar,_,_,_,_,_,_,_,_,_,_}`
-              to `actions/1/api/:client` on avatar changing.
+1. server issues `{'Contact',PhoneId,Avatar,_,_,_,_,_,_,_,_,_,_,_,_}`
+              to `ac/:phone_id` and `muc/:phone_id` on avatar changing.
 ```
 
 ```
-2. server issues `{'Contact',Phone,_,Names,Surnames,_,_,_,_,_,_,_,_}`
-              to `actions/1/api/:client` on name changing.
+2. server issues `{'Contact',PhoneId,_,Names,Surnames,_,_,_,_,_,_,_,_,_,_}`
+              to `ac/:phone_id` on name changing.
 ```
 
 ```
-3. server issues `{'Contact',Phone,_,_,_,_,_,_,_,_,_,Presence,_}`
-              to `actions/1/api/:client` on presence changing.
+3. server issues `{'Contact',PhoneId,_,_,_,_,_,_,_,_,_,_,_,Presence,_}`
+              to `ac/:phone_id` and `muc/:phone_id` on presence changing.
 ```
 
 ```
-4. server issues `{'Contact',Phone,_,_,_,_,_,_,_,_,_,_,Status}`
-              to `actions/1/api/:client` on status changing.
+4. server issues `{'Contact',PhoneId,_,_,_,_,_,_,_,_,_,_,_,_,Status}`
+              to `ac/:phone_id` on status changing.
 ```
