@@ -36,14 +36,13 @@ Protocol
 ### `Search/contact` — Search Contacts
 
 ```
-1. client sends `{'Search,RosterId,Phones,_,_,[],contact}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Search,RosterId,Ref,Field,'==',Value,Status}`
+             to `events/1//api/anon//` once.
 ```
 
 ```
-2. server sends `{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_}`
-             or `{io,{error,profile_not_found},<<>>}`
-             or `{io,{error,roster_not_found},<<>>}`
-             or `{io,{error,not_authorized},<<>>}`
+
+2. server sends `{io, {ok, Ref},{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_,Status}}`
              to `actions/1/api/:client` once.
 ```
+
