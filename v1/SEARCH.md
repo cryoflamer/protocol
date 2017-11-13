@@ -6,7 +6,6 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/api/phone/:phone` — MQTT
 * `actions/1/api/:client` — MQTT
 * `events/1//api/anon/:client/:token` — MQTT
 

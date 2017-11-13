@@ -6,10 +6,12 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `p2p/:phone_id/:phone_id` — MQTT
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon//` — MQTT
- to `ses/:party` once
+* `events/1//api//` — MQTT
+* `ses/:phone` - MQTT
+* `p2p/:phone_id/:phone_id` — MQTT
+* `room/:room` — MQTT
+
 
 Tuples
 ------
@@ -75,7 +77,7 @@ Protocol
 
 ```
 1. client sends `{'Message',[],_,Feed,_,_,_,From,To,_,Files,Type,_,client}`
-             to `events/1//api/anon//` once.
+             to `events/1//api//` once.
 ```
 
 Examples:
@@ -94,48 +96,48 @@ Examples:
 
 ```
 1. client sends `{'Message',[],_,_,_,_,Id,From,To,_,Files,Type,_,upload}`
-             to `events/1//api/anon//` once.
+             to `events/1//api//` once.
 ```
 
 ```
 2. server sends `{'Message',Id,_,_,_,_,_,To,From,_,Files,Type,_,link}`
              to `p2p/:address' twice
-             or `room/:to` members times.
+             or `room/:room` members times.
 ```
 
 ```
 3. client sends `{'Message',Id,_,_,_,_,_,From,To,_,Files,Type,_,complete}`
-             to `events/1//api/anon//` once.
+             to `events/1//api//` once.
 ```
 
 ```
 4. server sends `{'Message',Id,_,_,_,_,_,To,From,_,Files,Type,_,sent}`
              to `p2p/:address' twice
-             or `room/:to` members times.
+             or `room/:room` members times.
 ```
 
 ### `Message/edit` — Edit/Remove Message
 
 ```
 1. client sends `{'Message',Id,_,_,_,_,_,_,_,_,Files,Type,_,edit}`
-             to `events/1//api/anon//` once.
+             to `events/1//api//` once.
 ```
 
 ```
 2. server sends `{'Message',Id,_,_,_,_,_,_,_,_,Files,Type,_,edit}`
              to `p2p/:address' twice
-             or `room/:to` member times.
+             or `room/:room` member times.
 ``
 
 ### `History/get` — Retrieve History
 
 ```
 1. client sends `{'History',Id,Feed,Size,EntityId,_,get}`
-             to `events/1//api/anon//` once.
+             to `events/1//api//` once.
 ```
 * Feed — `#p2p{}` or '#muc{}' key of the conversation
 
-* EntityId — id of the message beginning from which you want to get list of next or prev messages.
+* EntityId — id of the message(or other entity) beginning from which you want to get list of next or prev messages.
 
 ```
 2. server sends `{'History',PhoneId,Feed,NewPos,EntityId,Data,get}`	     
@@ -149,7 +151,7 @@ Sets marker to feed for counterparty.
 
 ```
 1. client sends `{'History',PhoneId,Feed,_,Position,[],update}`
-	     to `events/1//api/anon//` once.
+	     to `events/1//api//` once.
 ```
 
 
