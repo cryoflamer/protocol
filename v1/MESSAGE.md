@@ -127,7 +127,7 @@ Examples:
 2. server sends `{'Message',Id,_,_,_,_,_,_,_,_,Files,Type,_,edit}`
              to `p2p/:address' twice
              or `room/:room` member times.
-``
+```
 
 ### `History/get` — Retrieve History
 
@@ -135,8 +135,8 @@ Examples:
 1. client sends `{'History',Id,Feed,Size,EntityId,_,get}`
              to `events/1//api//` once.
 ```
-* Feed — `#p2p{}` or '#muc{}' key of the conversation
 
+* Feed — `#p2p{}` or '#muc{}' key of the conversation
 * EntityId — id of the message(or other entity) beginning from which you want to get list of next or prev messages.
 
 ```
