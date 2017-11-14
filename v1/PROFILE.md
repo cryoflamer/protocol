@@ -7,7 +7,7 @@ Endpoints
 ---------
 
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon/:client/:token` — MQTT
+* `events/1//api/anon//` — MQTT
 
 Records
 -------
