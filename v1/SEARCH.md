@@ -19,7 +19,7 @@ Tuples
                      type     =[] :: [] | '==' | '!=' | 'like',
                      value    =[] :: [] | term(),
                      status   =[] :: [] | profile | roster | contact | member | room }).
-``
+```
 
 Overview
 --------
