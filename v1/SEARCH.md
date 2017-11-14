@@ -7,7 +7,7 @@ Endpoints
 --------
 
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon/:client/:token` — MQTT
+* `events/1//api/anon//` — MQTT
 
 Tuples
 ------
@@ -19,8 +19,7 @@ Tuples
                      names    =[] :: [] | binary(),
                      surnames =[] :: [] | binary(),
                      query    =[] :: [] | binary(),
-                     status   =[] :: [] | contact | qrcode | nick
-                                        | names | phone | phonebook }).
+                     status   =[] :: [] | profile | roster | contact | member | room }).
 ```
 
 Overview
@@ -32,7 +31,7 @@ the found rosters) packed in Roster message (the search result envelop).
 Protocol
 --------
 
-### `Search/contact` — Search Contacts
+### `Search/contacts` — Search Contacts
 
 ```
 1. client sends `{'Search,RosterId,Ref,Field,'==',Value,Status}`

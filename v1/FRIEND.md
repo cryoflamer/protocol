@@ -61,8 +61,8 @@ conversation MQTT topic are being created for both counterparties.
 
 ```
 2. server sends `{io,{ok,added},{ok,added}}`
-	     or `{io,{ok,added},{error,roster_not_found}}`
-             or `{io,{error,roster_not_found},{ok,added}}`
+	     or `{io,{ok,added},{error,contact_not_found}}`
+             or `{io,{error,contact_not_found},{ok,added}}`
              or `{io,{error,contacts_not_found},{error,contacts_not_found}}`
              to `actions/1/api/:client` once.
 ```
