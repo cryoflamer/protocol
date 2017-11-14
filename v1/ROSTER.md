@@ -113,11 +113,13 @@ Protocol
 ```
 
 ```
+
 2. server sends `{'Roster,Id,_,_,_,_,_,_,_,_,_,_,_,_}`
              or `{io,{error,not_authorized},<<>>}`
              or `{io,{error,nick},<<>>}`               - nick is already in use by another user
              or `{io,{error,invalid_nick},<<>>}`       - wrong nick format
              to `actions/1/api/:client` once.
+
 ```
 
 ```

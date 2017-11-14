@@ -12,15 +12,16 @@ Endpoints
 Tuples
 ------
 
+<<<<<<< HEAD
 
 ```erlang
 -record('Search',   {id       =[] :: [] | integer(),
-                     phone    =[] :: [] | list(binary()),
-                     names    =[] :: [] | binary(),
-                     surnames =[] :: [] | binary(),
-                     query    =[] :: [] | binary(),
+                     ref      =[] :: [] | binary(),
+                     field    =[] :: [] | binary(),
+                     type     =[] :: [] | '==' | '!=' | 'like',
+                     value    =[] :: [] | term(),
                      status   =[] :: [] | profile | roster | contact | member | room }).
-```
+``
 
 Overview
 --------
