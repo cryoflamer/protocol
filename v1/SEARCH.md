@@ -12,8 +12,6 @@ Endpoints
 Tuples
 ------
 
-<<<<<<< HEAD
-
 ```erlang
 -record('Search',   {id       =[] :: [] | integer(),
                      ref      =[] :: [] | binary(),

@@ -161,7 +161,7 @@ Sets marker to feed for counterparty.
 
 2. server sends `{Contact,PhoneId,_,_,_,_,_,_,_,_,Unread,_,_,_,_,last_msg}` 
 	     or `{Room,Name,_,_,_,_,_,_,_,_,_,Unread,_,_,_,last_msg}` 
-	     to `ses/:party` once 
+	     to `ses/:phone` once 
     	     or `{io,{error,invalid_data},<<>>}`
              to `actions/1/api/:client` once.
 ```

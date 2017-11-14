@@ -6,7 +6,7 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1//api/` — MQTT
+* `actions/1/api/:client` — MQTT
 * `ac/:phone_id` — MQTT
 * `muc/:phone_id` — MQTT
 
