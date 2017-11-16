@@ -6,21 +6,19 @@ Version 1.0 Maxim Sokhatsky
 Endpoints
 --------
 
-* `actions/1/api/phone/:phone` — MQTT
 * `actions/1/api/:client` — MQTT
-* `events/1//api/anon/:client/:token` — MQTT
+* `events/1//api/anon//` — MQTT
 
 Tuples
 ------
 
-
 ```erlang
--record('Search',   {id = [] :: [] | integer(),
-                     phone = [] :: [] | list(binary()),
-                     names = [] :: [] | binary(),
-                     surnames = [] :: [] | binary(),
-                     query = [] :: [] | binary(),
-                     status = [] :: [] | contact | atom()}).
+-record('Search',   {id       =[] :: [] | integer(),
+                     ref      =[] :: [] | binary(),
+                     field    =[] :: [] | binary(),
+                     type     =[] :: [] | '==' | '!=' | 'like',
+                     value    =[] :: [] | term(),
+                     status   =[] :: [] | profile | roster | contact | member | room }).
 ```
 
 Overview
@@ -32,17 +30,16 @@ the found rosters) packed in Roster message (the search result envelop).
 Protocol
 --------
 
-### `Search/contact` — Search Contacts
+### `Search/contacts` — Search Contacts
 
 ```
-1. client sends `{'Search,RosterId,Phone,_,_,[],contact}`
-             to `events/1//api/anon/:client/:token` once.
+1. client sends `{'Search,RosterId,Ref,Field,'==',Value,Status}`
+             to `events/1//api/anon//` once.
 ```
 
 ```
-2. server sends `{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_}`
-             or `{io,{error,profile_not_found},<<>>}`
-             or `{io,{error,roster_not_found},<<>>}`
-             or `{io,{error,not_authorized},<<>>}`
+
+2. server sends `{io, {ok, Ref},{'Roster,Id,_,_,_,UserList,_,_,_,_,_,_,Status}}`
              to `actions/1/api/:client` once.
 ```
+

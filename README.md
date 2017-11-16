@@ -64,9 +64,9 @@ Message Formats
 * [INIT](https://github.com/NYNJA-MC/protocol/blob/master/v1/INIT.md) — 1
 * [AUTH](https://github.com/NYNJA-MC/protocol/blob/master/v1/AUTH.md) — 8
 * [PERSON](https://github.com/NYNJA-MC/protocol/blob/master/v1/PERSON.md) — 2
-* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 8
+* [PROFILE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PROFILE.md) — 9
 * [PRESENCE](https://github.com/NYNJA-MC/protocol/blob/master/v1/PRESENCE.md) — 4
-* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 8
+* [ROSTER](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROSTER.md) — 9
 * [MESSAGE](https://github.com/NYNJA-MC/protocol/blob/master/v1/MESSAGE.md) — 5
 * [FRIEND](https://github.com/NYNJA-MC/protocol/blob/master/v1/FRIEND.md) — 7
 * [ROOM](https://github.com/NYNJA-MC/protocol/blob/master/v1/ROOM.md) — 6
@@ -111,6 +111,7 @@ Client API RPC Specification
 * `Profile/set` — Profile raw set
 * `Profile/link` — Link email to Profile
 * `Profile/email` — Confirm email
+* `Profile/aws` — Get temporary AWS credentials
 * `Profile/remove` — Profile remove
 * `Profile/migrate` — Profile migration
 * `Profile/phone` — Confirm phone migration
@@ -146,7 +147,9 @@ Credits
 -------
 
 * Marshall Taplits
-* Maxim Sokhatsky
 * Yuri Maslovsky
 * Igor Kharin
+* Maxim Sokhatsky
+* Dmitro Boiko
 * Liubov Mykhailova
+* Anton Makarov
