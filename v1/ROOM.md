@@ -29,6 +29,7 @@ Tuples
                      vox_id    =[] :: [] | binary(),
                      reader    = 0 :: [] | integer(),
                      update    = 0 :: [] | integer(),
+                     settings  =[] :: [] | list(#'Feature'{}),
                      presence  =[] :: [] | online | offline,
                      status    =[] :: [] | admin | member | removed | patch }).
 
@@ -41,6 +42,7 @@ Tuples
                      data        =[] :: [] | list(#'Desc'{}),
                      type        =[] :: [] | atom() | group | channel,
                      tos         =[] :: [] | binary(),
+                     tos_update  = 0 :: [] | integer(),
                      unread      = 0 :: [] | integer(),
                      last_msg    =[] :: [] | #'Message'{},
                      update      = 0 :: [] | integer(),
@@ -63,12 +65,12 @@ Protocol
 ### `Room/create` — Create MUC
 
 ```
-1. client sends `{'Room',_,Name,Desc,Settings,Members,Admins,Data,Type,_,_,_,_,_,create}`
+1. client sends `{'Room',_,Name,Desc,Settings,Members,Admins,Data,Type,_,_,_,_,_,_,create}`
              to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,Unread,LastMsg,Update,Created,create}`
+2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,TosUpdate,Unread,LastMsg,Update,Created,create}`
              to `actions/1/api/:client/:token` once.
     server sends `{'Message',_,_,_,_,_,_,_,_,_,_,AddMsg,_,_,muc}`
              to `room/:room` members times.
@@ -77,31 +79,31 @@ Protocol
 ### `Room/get` — Get MUC room
 
 ```
-1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,get}`
+1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,get}`
              to `events/1/:node/api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,Unread,LastMsg,Update,Created,get}`
+2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,TosUpdate,Unread,LastMsg,Update,Created,get}`
              to `actions/1/api/:client/:token` once.
 ```
 
 ### `Room/patch` — Modify MUC Settings
 
 ```
-1. `{'Room',Id,Name,Desc,Settings,_,_,Data,Type,Tos,_,_,_,_,patch}`
+1. `{'Room',Id,Name,Desc,Settings,_,_,Data,Type,Tos,_,_,_,_,_,patch}`
              to `events/1//api/anon//` once.
 ```
 
 ```
-2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Type,Tos,patch}`
+2. server sends `{'Room',Id,Name,Desc,Settings,[],[],Type,Tos,_,_,_,_,_,patch}`
              to `room/:room` members times.
 ```
 
 ### `Member/patch` — Modify self Member
 
 ```
-1. client sends `{'Member',_,_,_,_,_,_,_,Avatar,Names,Surnames,Alias,Email,Vox,_,_,_,patch}`
+1. client sends `{'Member',_,_,_,_,_,_,_,Avatar,Names,Surnames,Alias,Email,Vox,_,_,_,_,_,patch}`
              to `events/1/:node/api/anon//` once.
 ```
 
@@ -202,4 +204,3 @@ Protocol
 2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unmute}`
              to `room/:room` members times.
 ```
-
