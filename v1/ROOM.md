@@ -8,12 +8,18 @@ Endpoints
 
 * `room/Room` — MQTT
 * `actions/1/api/:client` — MQTT
-* `events/1/:node/api/anon//` — MQTT
+* `events/1//api/anon//` — MQTT
+* `ses/:phone` — MQTT
 
 Tuples
 ------
 
 ```erlang
+-record('Feature',  {id    =[] :: [] | binary(),
+                     key   =[] :: [] | binary(),
+                     value =[] :: [] | binary(),
+                     group =[] :: [] | binary() }).
+
 -record('Member',   {id        =[] :: [] | integer(),
                      container = chain :: atom() | chain | cur,
                      feed_id   =[] :: #muc{} | #p2p{},
@@ -66,7 +72,7 @@ Protocol
 
 ```
 1. client sends `{'Room',_,Name,Desc,Settings,Members,Admins,Data,Type,_,_,_,_,_,_,create}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
@@ -80,12 +86,12 @@ Protocol
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,get}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
 2. server sends `{'Room',Id,Name,Desc,Settings,Members,Admins,Data,Type,Tos,TosUpdate,Unread,LastMsg,Update,Created,get}`
-             to `actions/1/api/:client/:token` once.
+             to `actions/1/api/:client` once.
 ```
 
 ### `Room/patch` — Modify MUC Settings
@@ -104,7 +110,7 @@ Protocol
 
 ```
 1. client sends `{'Member',_,_,_,_,_,_,_,Avatar,Names,Surnames,Alias,Email,Vox,_,_,_,_,_,patch}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
@@ -116,7 +122,7 @@ Protocol
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,add}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
@@ -130,7 +136,7 @@ Protocol
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,Members,Admins,_,_,_,_,_,_,_,remove}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
@@ -145,7 +151,7 @@ Protocol
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,leave}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
@@ -156,51 +162,44 @@ Protocol
 ```
 
 
-### `Room/ban` — Ban Members by Admin
+<!-- ### Room/ban — Ban Members by Admin -->
 
-```
-1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,ban}`
-             to `events/1/:node/api/anon//` once.
-```
+<!-- 1. client sends {'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,ban}
+             to events/1//api/anon// once. -->
 
-```
-2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,ban}`
-             to `room/:room` members times.
-```
+<!-- 2. server sends {'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,ban}
+              to room/:room` members times. -->
 
-### `Room/unban` — Unban Members by Admin
+<!-- ### Room/unban — Unban Members by Admin -->
 
-```
-1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,unban}`
-             to `events/1/:node/api/anon//` once.
-```
+<!-- 1. client sends {'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,unban}
+              to events/1//api/anon// once. -->
 
-```
-2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unban}`
-             to `room/:room` members times.
-```
+<!-- 2. server sends {'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unban}
+              to room/:room` members times. -->
 
 
 ### `Room/mute` — Mute Group
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,mute}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
 2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,mute}`
-             to `room/:room` members times.
+             to `ses/:phone` members times.
 ```
 
 ### `Room/unmute` — Unmute Group
 
 ```
 1. client sends `{'Room',Id,_,_,_,_,Members,_,_,_,_,_,_,_,_,unmute}`
-             to `events/1/:node/api/anon//` once.
+             to `events/1//api/anon//` once.
 ```
 
 ```
 2. server sends `{'Room',Id,_,_,_,_,_,_,_,_,_,_,_,_,_,unmute}`
-             to `room/:room` members times.
+             to `ses/:phone` members times.
 ```
+
