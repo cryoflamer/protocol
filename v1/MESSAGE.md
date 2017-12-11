@@ -40,29 +40,31 @@ Tuples
 ```
 
 ```erlang
--record('Message',  {id       =[] :: [] | integer(),
-                     container = chain :: atom() | chain | cur,
-                     feed_id  =[] :: #muc{} | #p2p{},
-                     prev     =[] :: [] | integer(),
-                     next     =[] :: [] | integer(),
-                     msg_id   =[] :: [] | binary(),
-                     from     =[] :: [] | binary(),
-                     to       =[] :: [] | binary(),
-                     created  =[] :: [] | integer() | binary(),
-                     files    =[] :: [] | list(#'Desc'{}),
-                     type     =[] :: [] | atom() | reply | forward | sched
-                                        | online | offline | join | leave,
-                     edit_msg =[] :: [] | integer(),
-                     status   =[] :: [] | client | async
-                                        | sent | internal | last_read | edit | muc }).
+-record('Message',      {id        = [] :: [] | integer(),
+                         container = chain :: atom() | chain | cur,
+                         feed_id   = [] :: #muc{} | #p2p{},
+                         prev      = [] :: [] | integer(),
+                         next      = [] :: [] | integer(),
+                         msg_id    = [] :: [] | binary(),
+                         from      = [] :: [] | binary(),
+                         to        = [] :: [] | binary(),
+                         created   = [] :: [] | integer() | binary(),
+                         files     = [] :: [] | list(#'Desc'{}),
+                         type      = [] :: [] | atom() | reply | forward | sched
+                                              | online | offline | join | leave,
+                         edit_msg  = [] :: [] | integer(),
+                         seenby    = [] :: [] | integer() | list(integer()),
+                         status    = [] :: [] | client | async | deleted
+                                              | sent | internal | event | edit | muc }).
 ```
 
 ```erlang
--record('Desc',     {mime     = <<"text">> :: [] | binary(),
-                     payload  =[] :: [] | binary(),
-                     size     = 0 :: integer(),
-                     filename =[] :: [] | binary(),
-                     info     =[] :: [] | binary()}).
+-record('Desc',         {id       = [] :: [] | binary(),
+                         mime     = <<"text">> :: [] | binary(),
+                         payload  = [] :: [] | binary(),
+                         size     = 0  :: integer(),
+                         filename = [] :: [] | binary(),
+                         info     = [] :: [] | binary()}).
 ```
 
 Overview
