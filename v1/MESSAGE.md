@@ -52,8 +52,9 @@ Tuples
                          files     = [] :: [] | list(#'Desc'{}),
                          type      = [] :: [] | atom() | reply | forward | sched
                                               | online | offline | join | leave,
-                         edit_msg  = [] :: [] | integer(),
+                         link      = [] :: [] | integer(),
                          seenby    = [] :: [] | integer() | list(integer()),
+                         repliedby = [] :: [] | integer() | list(integer()),
                          status    = [] :: [] | client | async | deleted
                                               | sent | internal | event | edit | muc }).
 ```
@@ -78,21 +79,55 @@ Protocol
 ### `Message/client` — General Sending Message to Subscribers
 
 ```
-1. client sends `{'Message',[],_,Feed,_,_,_,From,To,_,Files,Type,_,client}`
+1. client sends `{'Message',[],_,Feed,_,_,_,From,To,_,Files,Type,_,SeenBy,RepliedBy,client}`
              to `events/1//api//` once.
 ```
+Explanations:
+* SeenBy - Якщо повідомлення всередині рума, то це список `id` мемберів, що не мають бачити
+це повідомлення. В подальшому може бути звортній фільтр - тобто список тільки тих мемберів, що можуть
+бачити повідомлення. Відповідно `id` мають бути від'ємні.
 
 Examples:
 
 * From — `380676631870_1`
 * To — `380676631870_1` or `lobby`
 * Feed — `{p2p,_,_}` or `{muc,_}`
+* SeenBy - `[11, 24]` or `[]`
 
 ```
-2. server sends `{'Message',Id,_,Feed,_,_,_,From,To,_,Files,Type,_,sent}`
+2. server sends `{'Message',Id,_,Feed,_,_,_,From,To,_,Files,Type,_,_,_,sent}`
              to `p2p/:address` twice
              or `room/:room` members times.
 ```
+
+### `Message/reply` — Sending Reply Message to Subscribers
+
+```
+1. client sends `{'Message',[],_,Feed,_,_,_,From,To,_,Files,reply,Link,_,_,client}`
+             to `events/1//api//` once.
+```
+Explanations:
+* Link - вказує на `id` повідомлення, що цитується.
+
+Examples:
+
+* From — `380676631870_1`
+* To — `380676631870_1` or `lobby`
+* Feed — `{p2p,_,_}` or `{muc,_}`
+* SeenBy - `[11, 24]` or `[]`
+
+```
+2. server sends `{'Message',Id,_,Feed,_,_,_,From,To,_,Files,Type,LinkId,_,_,sent}`
+             to `p2p/:address` twice
+             or `room/:room` members times.
+   (?) server sends `{'Message',LinkId,_,Feed,_,_,_,From,To,_,Files,Type,_,_,RepliedBy,sent}`
+             to `p2p/:address` twice
+             or `room/:room` members times.
+
+```
+Explanations:
+* RepliedBy - список `id` повідомлень, що цитують LinkId повідомлення.
+
 
 ### `Message/upload` — Sending Async Upload Message
 
@@ -146,6 +181,8 @@ Examples:
              or `{io,{error,invalid_data},<<>>}`	    
              to `actions/1/api/:client` once or more.
 ```
+
+* Data    — list of messages.
 
 ### `History/update` — Set cursor
 
