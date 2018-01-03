@@ -65,6 +65,16 @@ AUTH API is dedicated for process of user registration via external confirmation
 Protocol
 --------
 
+### Connect
+<!-- При коннекті з сервером клієнт має записати в параметр `will_topic` поточну версію клієнта -->
+<!-- як `version/<v>`. Де `v` - ціле число. -->
+<!-- Якщо версія сервера не дорівнює версії клієнта повертається помилка `invalid_version`. -->
+<!-- На сервері версія хардкодиться в `roster_auth.erl` файл. -->
+When connecting to the server, the client must write the `will_topic` parameter to the current version of the client
+as `version/<v>`. Where `v` is an integer.
+If the version of the server is not equal to the version of the client returns the error `invalid_version`.
+The server version is written to the `roster_auth.erl` file.
+
 ### `Auth/reg` — Registration
 
 New clients should send `Auth/reg` registration request before start using the system.
